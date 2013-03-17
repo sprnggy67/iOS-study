@@ -1,0 +1,51 @@
+<html>
+<head>
+
+<script src="iosBridge.js" type="text/javascript"></script>
+<script>
+    
+console.time("init");
+
+var articleData = null;
+
+function onLoad()
+{
+	if (articleData) {
+		document.getElementById("heading").innerHTML=articleData.headline;
+		document.getElementById("standFirst").innerHTML=articleData.standFirst;
+		document.getElementById("body").innerHTML=articleData.body;
+	}
+	console.timeEnd("init");
+}
+</script>
+
+<style type="text/css">
+    h1 {font-family:"Arial", Times, sans-serif; color:blue;}
+    h2 {font-family:"Arial", Times, serif;}
+    p {font-family:"Times New Roman", Times, serif;}
+</style>
+    
+</head>
+
+<body onload="onLoad()">
+	<h1 id="headline">New Zealand v England: Rain washes out first day of Test series</h1> 
+	<h2 id="standFirst">Rain washed out the first day of the Test series between New Zealand and England in Dunedin.</h2>
+	<div id="body">
+		<p>
+			Although New Zealand won the toss and asked the tourists to bat, no play was possible at the University Oval.
+		</p>
+		<p>
+			Earlier, England off-spinner Graeme Swann was ruled out of the series with an elbow injury that requires surgery.
+		</p>
+		<p>
+			Slow left-armer Monty Panesar replaced Swann, while 32-year-old left-arm spinner Bruce Martin won his first Test cap for the hosts.
+		</p>
+		<p>
+		Rain arrived shortly after bad light delayed the scheduled 21:30 GMT start and, although it relented, a wet outfield forced play to be abandoned at 03:15. Play will start half an hour early - at 21:00 GMT - on Wednesday to help make up for lost time.
+		</p>
+		<p>
+			The match is the first in a three-Test series also featuring games in Wellington and Auckland.
+		</p>
+</div>
+</body>
+</html>

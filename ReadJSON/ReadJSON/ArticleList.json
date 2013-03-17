@@ -1,0 +1,33 @@
+ [
+  {
+  "id":"001",
+  "headline":"Cardinal O'Brien complainant 'warned' of risk of damage to Church",
+  "standfirst":"One of four men who made claims against Cardinal Keith O'Brien in the days before he resigned says he went public despite being warned he could damage the Catholic Church's reputation.",
+  "body":"The ex-priest told the Observer he was disappointed by the 'cold disapproval' he faced for 'daring to break ranks'."
+  
+  },
+  {
+  "id":"002",
+  "headline":"CITES meeting to deal with species 'extinction crisis'",
+  "standfirst":"New plans to protect elephants, rhinos and other species will be discussed at a critical meeting that begins in Bangkok on Sunday.",
+  "body":"Delegates will review the convention on the international trade in endangered species (CITES).",
+  "components":{
+  "relatedImages":[
+                   {
+                   "url":"http://test.domain.com/image1.jpg"
+                   },
+                   {
+                   "url":"http://test.domain.com/image1.jpg"
+                   }
+                   ],
+  "inlineImages":[
+                   {
+                   "url":"http://test.domain.com/image1.jpg"
+                   },
+                   {
+                   "url":"http://test.domain.com/image1.jpg"
+                   }
+                   ]
+  }
+  }
+  ]
