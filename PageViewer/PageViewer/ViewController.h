@@ -11,11 +11,12 @@
 
 @interface ViewController : UIViewController <UIPageViewControllerDataSource>
 {
-    UIPageViewController *pageController;
-    NSArray *pageContent;
+    UIPageViewController * pageController;
+    NSArray * articleList;
+    TemplateFactory * templateFactory;
 }
 
-@property (strong, nonatomic) UIPageViewController *pageController;
-@property (strong, nonatomic) NSArray *pageContent;
+@property (strong) UIPageViewController * pageController;
+@property (strong) NSArray * articleList;
 
 @end

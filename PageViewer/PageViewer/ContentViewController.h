@@ -8,14 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import <UIKit/UIWebView.h>
+#import "WebViewDelegate.h"
+#import "TemplateFactory.h"
+#import "Template.h"
+#import "Article.h"
 
 @interface ContentViewController : UIViewController <UIWebViewDelegate> {
-    IBOutlet UIWebView *webView;
+    IBOutlet UIWebView * webView;
+    Article * article;
+    WebViewDelegate * webViewDelegate;
+    TemplateFactory * templateFactory;
 }
 
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
-@property (strong, nonatomic) id dataObject;
-@property (strong, nonatomic) NSString * template;
+@property (strong) IBOutlet UIWebView * webView;
+@property (strong) Article * article;
+@property (strong) TemplateFactory * templateFactory;
 
 @end
 

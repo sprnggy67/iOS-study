@@ -13,22 +13,27 @@
     
 }
 
-@synthesize headline = _headline;
-@synthesize standfirst = _standfirst;
-@synthesize body = _body;
-@synthesize dictionary = _dictionary;
+@synthesize templateName, headline, dictionary, jsonData;
 
--(id)initWithDictionary:(NSDictionary *)dictionary {
-    [self setDictionary:dictionary];
-    [self setHeadline:[dictionary valueForKey:@"headline"]];
-    [self setStandfirst:[dictionary valueForKey:@"standfirst"]];
-    [self setBody:[dictionary valueForKey:@"body"]];
+-(id)initWithDictionary:(NSDictionary *)dict {
+    self = [super init];
+    if (self) {
+        [self setDictionary:dict];
+        [self setTemplateName:[dict valueForKey:@"templateName"]];
+        [self setHeadline:[dict valueForKey:@"headline"]];
+        
+        NSError *e = nil;
+        NSData * data = [NSJSONSerialization dataWithJSONObject: dict options: NSJSONWritingPrettyPrinted error: &e];
+        [self setJsonData:[[NSString alloc] initWithData:data
+                                                 encoding:NSUTF8StringEncoding]];
+    }
     return self;
 }
 
 -(NSString *)description {
-    return [[NSString alloc] initWithFormat:@"Article %@, dictionary%@",
+    return [[NSString alloc] initWithFormat:@"Article %@, template %@, dictionary%@",
             [self headline],
+            [self templateName],
             [self dictionary]];
 }
 

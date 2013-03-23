@@ -10,15 +10,15 @@
 
 @interface Article : NSObject
 {
-    NSString * _headline;
-    NSString * _standfirst;
-    NSString * _body;
-    NSDictionary * _dictionary;
+    NSString * templateName;
+    NSString * headline;
+    NSString * jsonData;
+    NSDictionary * dictionary;
 }
 
+@property (nonatomic, strong) NSString * templateName;
 @property (nonatomic, strong) NSString * headline;
-@property (nonatomic, strong) NSString * standfirst;
-@property (nonatomic, strong) NSString * body;
+@property (nonatomic, strong) NSString * jsonData;
 @property (nonatomic, strong) NSDictionary * dictionary;
 
 -(id)initWithDictionary:(NSDictionary *)dictionary;

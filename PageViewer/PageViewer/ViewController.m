@@ -15,7 +15,7 @@
 
 @implementation ViewController
 
-@synthesize pageController, pageContent;
+@synthesize pageController, articleList;
 
 - (void)viewDidLoad
 {
@@ -58,44 +58,35 @@
 {
     // Load the page contents
     NewsDataFactory * factory = [[NewsDataFactory alloc] init];
-    NSArray * articleList = [factory parseResource:@"ArticleList"];
-
-    // DS: Delete this code
+    articleList= [factory parseResource:@"ArticleList"];
+    NSLog(@"Articles: %@", articleList);
     
-    NSMutableArray *pageStrings = [[NSMutableArray alloc] init];
-    for (int i = 1; i < 11; i++)
-    {
-        NSString *contentString = [[NSString alloc]
-                                   initWithFormat:@"<html><head></head><body><h1>Article %d</h1><p>This is the page %d of content displayed using UIPageViewController in iOS 5.</p></body></html>", i, i];
-        [pageStrings addObject:contentString];
-    }
-    pageContent = [[NSArray alloc] initWithArray:pageStrings];
+    // Create the template factory
+    templateFactory = [[TemplateFactory alloc] init];
 }
 
 - (ContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
     // Return the data view controller for the given index.
-    if (([self.pageContent count] == 0) ||
-        (index >= [self.pageContent count])) {
+    if (([self.articleList count] == 0) ||
+        (index >= [self.articleList count])) {
         return nil;
     }
     
     // Create a new view controller and pass suitable data.
+    Article * article = [articleList objectAtIndex:index];
     ContentViewController *dataViewController = [[ContentViewController alloc]
                                                  initWithNibName:@"ContentViewController"
                                                  bundle:nil];
-    dataViewController.dataObject = [self.pageContent objectAtIndex:index];
-    if (index % 3 == 1) {
-        dataViewController.template = @"ArticleTemplate";     
-    } else if (index % 3 == 2) {
-        dataViewController.template = @"OpinionTemplate";
-    }
-    return dataViewController;
+    [dataViewController setArticle:article];
+    [dataViewController setTemplateFactory:templateFactory];
+     
+     return dataViewController;
 }
 
 - (NSUInteger)indexOfViewController:(ContentViewController *)viewController
 {
-    return [self.pageContent indexOfObject:viewController.dataObject];
+    return [self.articleList indexOfObject:[viewController article]];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
@@ -120,7 +111,7 @@
     }
     
     index++;
-    if (index == [self.pageContent count]) {
+    if (index == [self.articleList count]) {
         return nil;
     }
     return [self viewControllerAtIndex:index];

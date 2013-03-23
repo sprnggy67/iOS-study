@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		551F7D2F16F5AA1F00D7F4B0 /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = 551F7D2E16F5AA1F00D7F4B0 /* Templates */; };
 		551F7D3116F5AEE800D7F4B0 /* iOSBridge.js in Sources */ = {isa = PBXBuildFile; fileRef = 551F7D3016F5AEE800D7F4B0 /* iOSBridge.js */; };
+		55333DDC16FC2B5A00CAD539 /* WebViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55333DDB16FC2B5A00CAD539 /* WebViewDelegate.m */; };
 		55791BDE16E1DD420083AF02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDD16E1DD420083AF02 /* UIKit.framework */; };
 		55791BE016E1DD420083AF02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDF16E1DD420083AF02 /* Foundation.framework */; };
 		55791BE216E1DD420083AF02 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BE116E1DD420083AF02 /* CoreGraphics.framework */; };
@@ -28,6 +29,8 @@
 		55791C1B16E1DDB00083AF02 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55791C1916E1DDB00083AF02 /* ContentViewController.m */; };
 		55791C1C16E1DDB00083AF02 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55791C1A16E1DDB00083AF02 /* ContentViewController.xib */; };
 		55791C1E16E1E6DD0083AF02 /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 55791C1D16E1E6DD0083AF02 /* Notes */; };
+		557941E716FDA02600C6E9F4 /* TemplateFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 557941E616FDA02600C6E9F4 /* TemplateFactory.m */; };
+		559534D816FD8D490059FCF4 /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = 559534D716FD8D490059FCF4 /* Template.m */; };
 		55A69A2F16E71FB300D846EC /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A69A2C16E71FB300D846EC /* Article.m */; };
 		55A69A3016E71FB300D846EC /* NewsDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A69A2E16E71FB300D846EC /* NewsDataFactory.m */; };
 		55A69A3216E71FDE00D846EC /* ArticleList.json in Resources */ = {isa = PBXBuildFile; fileRef = 55A69A3116E71FDE00D846EC /* ArticleList.json */; };
@@ -46,6 +49,8 @@
 /* Begin PBXFileReference section */
 		551F7D2E16F5AA1F00D7F4B0 /* Templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Templates; sourceTree = "<group>"; };
 		551F7D3016F5AEE800D7F4B0 /* iOSBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = iOSBridge.js; path = PageViewer/Templates/iOSBridge.js; sourceTree = "<group>"; };
+		55333DDA16FC2B5A00CAD539 /* WebViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewDelegate.h; sourceTree = "<group>"; };
+		55333DDB16FC2B5A00CAD539 /* WebViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewDelegate.m; sourceTree = "<group>"; };
 		55791BDA16E1DD420083AF02 /* PageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55791BDD16E1DD420083AF02 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		55791BDF16E1DD420083AF02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -72,6 +77,10 @@
 		55791C1916E1DDB00083AF02 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		55791C1A16E1DDB00083AF02 /* ContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
 		55791C1D16E1E6DD0083AF02 /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
+		557941E516FDA02600C6E9F4 /* TemplateFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateFactory.h; sourceTree = "<group>"; };
+		557941E616FDA02600C6E9F4 /* TemplateFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateFactory.m; sourceTree = "<group>"; };
+		559534D616FD8D490059FCF4 /* Template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Template.h; sourceTree = "<group>"; };
+		559534D716FD8D490059FCF4 /* Template.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Template.m; sourceTree = "<group>"; };
 		55A69A2B16E71FB300D846EC /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		55A69A2C16E71FB300D846EC /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		55A69A2D16E71FB300D846EC /* NewsDataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDataFactory.h; sourceTree = "<group>"; };
@@ -146,11 +155,17 @@
 				55791C1816E1DDB00083AF02 /* ContentViewController.h */,
 				55791C1916E1DDB00083AF02 /* ContentViewController.m */,
 				55791C1A16E1DDB00083AF02 /* ContentViewController.xib */,
+				55791BE416E1DD420083AF02 /* Supporting Files */,
 				55A69A2B16E71FB300D846EC /* Article.h */,
 				55A69A2C16E71FB300D846EC /* Article.m */,
 				55A69A2D16E71FB300D846EC /* NewsDataFactory.h */,
 				55A69A2E16E71FB300D846EC /* NewsDataFactory.m */,
-				55791BE416E1DD420083AF02 /* Supporting Files */,
+				55333DDA16FC2B5A00CAD539 /* WebViewDelegate.h */,
+				55333DDB16FC2B5A00CAD539 /* WebViewDelegate.m */,
+				559534D616FD8D490059FCF4 /* Template.h */,
+				559534D716FD8D490059FCF4 /* Template.m */,
+				557941E516FDA02600C6E9F4 /* TemplateFactory.h */,
+				557941E616FDA02600C6E9F4 /* TemplateFactory.m */,
 			);
 			path = PageViewer;
 			sourceTree = "<group>";
@@ -311,6 +326,9 @@
 				55A69A2F16E71FB300D846EC /* Article.m in Sources */,
 				55A69A3016E71FB300D846EC /* NewsDataFactory.m in Sources */,
 				551F7D3116F5AEE800D7F4B0 /* iOSBridge.js in Sources */,
+				55333DDC16FC2B5A00CAD539 /* WebViewDelegate.m in Sources */,
+				559534D816FD8D490059FCF4 /* Template.m in Sources */,
+				557941E716FDA02600C6E9F4 /* TemplateFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +500,7 @@
 				55791C1116E1DD420083AF02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		55791C1216E1DD420083AF02 /* Build configuration list for PBXNativeTarget "PageViewer" */ = {
 			isa = XCConfigurationList;
@@ -491,7 +509,7 @@
 				55791C1416E1DD420083AF02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		55791C1516E1DD420083AF02 /* Build configuration list for PBXNativeTarget "PageViewerTests" */ = {
 			isa = XCConfigurationList;
@@ -500,7 +518,7 @@
 				55791C1716E1DD420083AF02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
