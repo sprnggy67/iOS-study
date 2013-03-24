@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Template.h"
 
+// Creates and manages the set of templates in use.
 @interface TemplateFactory : NSObject {
     @private
     NSMutableDictionary * dictionary;

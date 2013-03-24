@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIWebView.h>
 
+// A bridge between the web and native layers, supporting communication in both directions
 @interface WebViewDelegate : NSObject <UIWebViewDelegate> {
     @private
     UIWebView * __weak webView;

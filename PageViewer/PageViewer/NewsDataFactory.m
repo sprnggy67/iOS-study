@@ -22,11 +22,13 @@
     NSLog(@"Result: %@", result);
 }
 
+// Converts a string into an array of articles.
 -(NSArray *)parseString:(NSString*)str {
     NSData * data = [str dataUsingEncoding:NSUTF8StringEncoding];
     return [self parse:data];
 }
 
+// Reads a set of articles from a resource.
 -(NSArray *)parseResource:(NSString*)name {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:name ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];

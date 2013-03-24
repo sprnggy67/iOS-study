@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+// A story or article, consisting of a headline, template reference and additional JSON data.
 @interface Article : NSObject
 {
     NSString * templateName;

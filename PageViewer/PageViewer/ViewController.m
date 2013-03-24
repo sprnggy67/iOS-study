@@ -62,7 +62,6 @@
     // Load the page contents
     NewsDataFactory * factory = [[NewsDataFactory alloc] init];
     articleList= [factory parseResource:@"ArticleList"];
-    NSLog(@"Articles: %@", articleList);
     
     // Create the template factory
     templateFactory = [[TemplateFactory alloc] init];
@@ -92,6 +91,7 @@
     return [self.articleList indexOfObject:[viewController article]];
 }
 
+// Returns the previous view controller in the pager.
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerBeforeViewController:(UIViewController *)viewController
 {
@@ -104,6 +104,7 @@
     return [self viewControllerAtIndex:index];
 }
 
+// Returns the next view controller in the pager.
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController
 {

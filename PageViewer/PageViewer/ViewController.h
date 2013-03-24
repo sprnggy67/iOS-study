@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ContentViewController.h"
 
+// The top level controller for the application. It contains a page view controller.
 @interface ViewController : UIViewController <UIPageViewControllerDataSource>
 {
     @private

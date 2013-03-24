@@ -1,5 +1,5 @@
 //
-//  ContentViewController.h
+//  ContentViewController.m
 //  PageViewer
 //
 //  Created by Dave on 2013-03-02.
@@ -13,6 +13,7 @@
 #import "Template.h"
 #import "Article.h"
 
+// A controller for article content.
 @interface ContentViewController : UIViewController <UIWebViewDelegate> {
     IBOutlet UIWebView * webView;
     @private

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+// Generates an array of articles from a resource file
 @interface NewsDataFactory : NSObject
 
 -(void)test;

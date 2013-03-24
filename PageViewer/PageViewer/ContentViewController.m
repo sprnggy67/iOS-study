@@ -35,6 +35,7 @@
     [webView setDelegate:webViewDelegate];
 }
 
+// Loads the article into the webView.
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
