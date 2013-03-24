@@ -52,8 +52,10 @@
 
     // Inject the article data into the template and display it.
     NSString * contents = [template load:[article jsonData]];
+    NSString * path = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/Templates"];
+    NSURL * pathURL = [NSURL fileURLWithPath:path];
     [webView loadHTMLString:contents
-                    baseURL:[NSURL URLWithString:@""]];
+                    baseURL:pathURL];
 }
 
 - (void)didReceiveMemoryWarning

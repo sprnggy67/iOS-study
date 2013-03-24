@@ -13,6 +13,7 @@
     NSString * name;
     @private
     NSString * indexFile;
+    BOOL foundRange;
     NSRange variableRange;
 }
 

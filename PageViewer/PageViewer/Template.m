@@ -31,6 +31,8 @@ NSString *const TEMPLATE_VARIABLE = @"JSON_DATA_VARIABLE";
 }
 
 -(NSString *)load:(NSString *)contents {
+    if (!foundRange)
+        return indexFile;
     NSMutableString * result = [[NSMutableString alloc] initWithString:indexFile];
     [result replaceCharactersInRange:variableRange withString:contents];
     return result;
@@ -48,8 +50,10 @@ NSString *const TEMPLATE_VARIABLE = @"JSON_DATA_VARIABLE";
     // Split the file.
     variableRange = [indexFile rangeOfString:TEMPLATE_VARIABLE];
     if (variableRange.location == NSNotFound) {
+        foundRange = NO;
         NSLog(@"Unable to find template variable: %@", filePath);
-        return NO;
+    } else {
+        foundRange = YES;
     }
     
     return YES;

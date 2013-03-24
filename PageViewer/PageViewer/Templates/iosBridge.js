@@ -2,13 +2,18 @@
  This file contains a set of functions to bridge the gap between javascript and iOS
  */
 
+var oldConsole = console;
+
 function openCustomURLinIFrame(src)
 {
-    var rootElm = document.documentElement;
-    var newFrameElm = document.createElement("IFRAME");
-    newFrameElm.setAttribute("src",src);
-    rootElm.appendChild(newFrameElm);
-    newFrameElm.parentNode.removeChild(newFrameElm);
+    var iframe = document.createElement("IFRAME");
+    iframe.setAttribute("src",src);
+    // For some reason we need to set a non-empty size for the iOS6 simulator...
+    iframe.setAttribute("height", "1px");
+    iframe.setAttribute("width", "1px");
+    document.documentElement.appendChild(iframe);
+    iframe.parentNode.removeChild(iframe);
+    iframe = null;
 }
 
 function calliOSFunction(functionName, args, successCallback, errorCallback)
@@ -38,18 +43,36 @@ function calliOSFunction(functionName, args, successCallback, errorCallback)
 console = new Object();
 
 console.log = function(log) {
+    oldConsole.log(log);
     calliOSFunction("log", log);
 }
 
-console.debug = console.log;
-console.info = console.log;
-console.warn = console.log;
-console.error = console.log;
+console.debug = function(log) {
+    oldConsole.debug(log);
+    calliOSFunction("log", "debug:" + log);
+}
+
+console.info = function(log) {
+    oldConsole.info(log);
+    calliOSFunction("log", "info:" + log);
+}
+
+console.warn = function(log) {
+    oldConsole.warn(log);
+    calliOSFunction("log", "warn:" + log);
+}
+
+console.error = function(log) {
+    oldConsole.error(log);
+    calliOSFunction("log", "error:" + log);
+}
 
 console.time = function(label) {
-    console.log("time:" + label);
+    oldConsole.time(label);
+    calliOSFunction("log", "time:" + label);
 }
 
 console.timeEnd = function(label) {
-    console.log("timeEnd:" + label);
+    oldConsole.timeEnd(label);
+    calliOSFunction("log", "timeEnd:" + label);
 }
