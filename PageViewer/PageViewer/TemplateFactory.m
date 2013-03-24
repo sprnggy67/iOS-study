@@ -8,19 +8,27 @@
 
 #import "TemplateFactory.h"
 
+@interface TemplateFactory()
+
+@property (strong, nonatomic) NSMutableDictionary * dictionary;
+
+@end
+
 @implementation TemplateFactory
+
+@synthesize dictionary;
 
 -(id)init {
     self = [super init];
     if (self) {
-        dictionary = [[NSMutableDictionary alloc] init];
+        [self setDictionary:[[NSMutableDictionary alloc] init]];
     }
     return self;
 }
 
 -(Template *)template:(NSString *)name {
     // Look up the template.
-    Template * result = NULL;
+    Template * result = nil;
     result = [dictionary objectForKey:name];
     if (result)
         return result;

@@ -11,6 +11,9 @@
 
 @interface ViewController ()
 
+@property (strong, nonatomic) UIPageViewController * pageController;
+@property (strong, nonatomic) NSArray * articleList;
+
 @end
 
 @implementation ViewController
@@ -67,9 +70,9 @@
 
 - (ContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    // Return the data view controller for the given index.
-    if (([self.articleList count] == 0) ||
-        (index >= [self.articleList count])) {
+    // If index is out of bounds, return nil.
+    int articleCount = [self.articleList count];
+    if ((articleCount == 0) || (index >= articleCount)) {
         return nil;
     }
     
@@ -81,7 +84,7 @@
     [dataViewController setArticle:article];
     [dataViewController setTemplateFactory:templateFactory];
      
-     return dataViewController;
+    return dataViewController;
 }
 
 - (NSUInteger)indexOfViewController:(ContentViewController *)viewController
@@ -104,8 +107,7 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSUInteger index = [self indexOfViewController:
-                        (ContentViewController *)viewController];
+    NSUInteger index = [self indexOfViewController:(ContentViewController *)viewController];
     if (index == NSNotFound) {
         return nil;
     }

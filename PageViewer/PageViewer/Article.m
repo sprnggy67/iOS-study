@@ -22,6 +22,7 @@
         [self setTemplateName:[dict valueForKey:@"templateName"]];
         [self setHeadline:[dict valueForKey:@"headline"]];
         
+        // TODO: Add a catch for exceptions
         NSError *e = nil;
         NSData * data = [NSJSONSerialization dataWithJSONObject: dict options: NSJSONWritingPrettyPrinted error: &e];
         [self setJsonData:[[NSString alloc] initWithData:data
@@ -31,7 +32,7 @@
 }
 
 -(NSString *)description {
-    return [[NSString alloc] initWithFormat:@"Article %@, template %@, dictionary%@",
+    return [[NSString alloc] initWithFormat:@"Article %@, templateName %@, dictionary%@",
             [self headline],
             [self templateName],
             [self dictionary]];

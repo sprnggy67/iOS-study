@@ -8,9 +8,15 @@
 
 #import "Template.h"
 
+@interface Template()
+
+@property (strong, nonatomic) NSString * indexFile;
+
+@end
+
 @implementation Template
 
-@synthesize name;
+@synthesize name, indexFile;
 
 NSString *const TEMPLATE_VARIABLE = @"JSON_DATA_VARIABLE";
 
@@ -19,7 +25,7 @@ NSString *const TEMPLATE_VARIABLE = @"JSON_DATA_VARIABLE";
     if (self) {
         [self setName:nameParam];
         if (![self loadIndexFile])
-            return NULL;
+            return nil;
     }
     return self;
 }
@@ -33,8 +39,8 @@ NSString *const TEMPLATE_VARIABLE = @"JSON_DATA_VARIABLE";
 -(BOOL)loadIndexFile {
     // Load the file.
     NSString *filePath = [[NSBundle mainBundle] pathForResource:name ofType:@"html" inDirectory:@"Templates"];
-    indexFile = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
-    if (indexFile == NULL) {
+    self.indexFile = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+    if (self.indexFile == nil) {
         NSLog(@"Unable to read file: %@", filePath);
         return NO;
     }
@@ -48,6 +54,5 @@ NSString *const TEMPLATE_VARIABLE = @"JSON_DATA_VARIABLE";
     
     return YES;
 }
-
 
 @end

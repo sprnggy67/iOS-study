@@ -15,14 +15,15 @@
 
 @interface ContentViewController : UIViewController <UIWebViewDelegate> {
     IBOutlet UIWebView * webView;
+    @private
     Article * article;
     WebViewDelegate * webViewDelegate;
     TemplateFactory * templateFactory;
 }
 
-@property (strong) IBOutlet UIWebView * webView;
-@property (strong) Article * article;
-@property (strong) TemplateFactory * templateFactory;
+@property (strong, nonatomic) IBOutlet UIWebView * webView;
+@property (strong, nonatomic) Article * article;
+@property (strong, nonatomic) TemplateFactory * templateFactory;
 
 @end
 

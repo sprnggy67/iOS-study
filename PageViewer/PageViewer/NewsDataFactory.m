@@ -44,6 +44,7 @@
     
     if (!jsonArray) {
         NSLog(@"Error parsing JSON: %@", e);
+        return nil;
     } else {
         for(NSDictionary *item in jsonArray) {
             [results addObject:[[Article alloc] initWithDictionary:item]];

@@ -30,6 +30,7 @@
 {
     [super viewDidLoad];
 
+    // Set the web view delegate
     webViewDelegate = [[WebViewDelegate alloc] initWith:webView];
     [webView setDelegate:webViewDelegate];
 }
@@ -41,14 +42,14 @@
     // Get the article template
     NSString * templateName = [article templateName];
     Template * template = [templateFactory template:templateName];
-    if (template == NULL) {
+    if (template == nil) {
         NSLog(@"Could not load template: %@", templateName);
         [webView loadHTMLString:@"Could not load template"
                         baseURL:[NSURL URLWithString:@""]];
         return;
     }
 
-    // Inject the article data into the template and load it here.
+    // Inject the article data into the template and display it.
     NSString * contents = [template load:[article jsonData]];
     [webView loadHTMLString:contents
                     baseURL:[NSURL URLWithString:@""]];

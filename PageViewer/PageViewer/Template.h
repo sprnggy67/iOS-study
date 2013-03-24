@@ -10,11 +10,12 @@
 
 @interface Template : NSObject {
     NSString * name;
+    @private
     NSString * indexFile;
     NSRange variableRange;
 }
 
-@property (strong) NSString * name;
+@property (strong, nonatomic) NSString * name;
 
 -(id)initWith:(NSString *)name;
 -(NSString *)load:(NSString *)contents;

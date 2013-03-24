@@ -10,6 +10,7 @@
 #import "Template.h"
 
 @interface TemplateFactory : NSObject {
+    @private
     NSMutableDictionary * dictionary;
 }
 

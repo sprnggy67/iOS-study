@@ -10,11 +10,10 @@
 #import <UIKit/UIWebView.h>
 
 @interface WebViewDelegate : NSObject <UIWebViewDelegate> {
+    @private
     UIWebView * __weak webView;
 }
 
 -(id)initWith:(UIWebView *)webView;
-
-@property (weak) UIWebView *webView;
 
 @end

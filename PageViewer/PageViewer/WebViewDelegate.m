@@ -8,18 +8,28 @@
 
 #import "WebViewDelegate.h"
 
+@interface WebViewDelegate ()
+
+@property (weak) UIWebView *webView;
+
+@end
+
 @implementation WebViewDelegate
 
 @synthesize webView;
 
+NSString *const PROTOCOL_PREFIX = @"js2ios://";
+
 -(id)initWith:(UIWebView *)view {
-    [self setWebView:view];
+    self = [super init];
+    if (self) {
+        [self setWebView:view];
+    }
     return self;
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    
     NSURL *url = [request URL];
     NSString *urlStr = url.absoluteString;
     return [self processURL:urlStr];
@@ -29,26 +39,21 @@
 {
     NSString *urlStr = [NSString stringWithString:url];
     
-    NSString *protocolPrefix = @"js2ios://";
-    
     // process only our custom protocol
-    if ([[urlStr lowercaseString] hasPrefix:protocolPrefix])
+    if ([[urlStr lowercaseString] hasPrefix:PROTOCOL_PREFIX])
     {
         // strip protocol from the URL. We will get input to call a native method
-        urlStr = [urlStr substringFromIndex:protocolPrefix.length];
+        urlStr = [urlStr substringFromIndex:PROTOCOL_PREFIX.length];
         
         // Decode the url string
         urlStr = [urlStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
-        NSError *jsonError;
-        
         // parse JSON input in the URL
+        NSError *jsonError;
         NSDictionary *callInfo = [NSJSONSerialization
                                   JSONObjectWithData:[urlStr dataUsingEncoding:NSUTF8StringEncoding]
                                   options:kNilOptions
                                   error:&jsonError];
-        
-        // check if there was error in parsing JSON input
         if (jsonError != nil)
         {
             NSLog(@"Error parsing JSON for the url %@",url);
@@ -81,7 +86,7 @@
 {
     if ([name compare:@"log" options:NSCaseInsensitiveSearch] == NSOrderedSame)
     {
-        if (args != NULL)
+        if (args != nil)
         {
             NSLog(@"UIWebView log: %@", args);
         }
@@ -154,7 +159,7 @@
     
     if (jsonStr == nil)
     {
-        NSLog(@"jsonStr is null. count = %d", [args count]);
+        NSLog(@"jsonStr is nil. count = %d", [args count]);
     }
     
     [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@('%@');",name,jsonStr]];
