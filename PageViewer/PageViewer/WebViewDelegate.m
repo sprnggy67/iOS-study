@@ -88,13 +88,13 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
     {
         if (args != nil)
         {
-            NSLog(@"UIWebView log: %@", args);
+            NSLog(@"UIWebView.log: %@", args);
         }
         else
         {
             NSString *resultStr = [NSString stringWithFormat:@"Error calling function %@. Error : Missing argument", name];
             [self callErrorCallback:errorCallback withMessage:resultStr];
-            NSLog(@"UIWebView log: %@", resultStr);
+            NSLog(@"UIWebView.log: %@", resultStr);
         }
     }
     else

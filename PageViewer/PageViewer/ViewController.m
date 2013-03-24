@@ -22,6 +22,8 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"ViewController.viewDidLoad entered");
+    
     [super viewDidLoad];
     
     [self createContentPages];
@@ -49,6 +51,8 @@
     [self addChildViewController:pageController];
     [[self view] addSubview:[pageController view]];
     [pageController didMoveToParentViewController:self];
+
+    NSLog(@"ViewController.viewDidLoad done");
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,6 +73,8 @@
 
 - (ContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
+    NSLog(@"ViewController.viewControllerAtIndex:%d entered", index);
+    
     // If index is out of bounds, return nil.
     int articleCount = [self.articleList count];
     if ((articleCount == 0) || (index >= articleCount)) {
@@ -83,6 +89,8 @@
     [dataViewController setArticle:article];
     [dataViewController setTemplateFactory:templateFactory];
      
+    NSLog(@"ViewController.viewControllerAtIndex:%d done", index);
+
     return dataViewController;
 }
 
