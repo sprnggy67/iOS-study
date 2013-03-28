@@ -1,0 +1,36 @@
+<html>
+<head>
+
+<script src="iosBridge.js" type="text/javascript"></script>
+<script>
+    
+console.time("init");
+
+var inputData = JSON_DATA_VARIABLE;
+
+function onLoad()
+{
+	if (inputData) {
+		document.getElementById("headline").innerHTML=inputData.headline;
+		document.getElementById("standFirst").innerHTML=inputData.standFirst;
+		document.getElementById("body").innerHTML=inputData.body;
+	}
+	console.timeEnd("init");
+}
+    
+</script>
+
+<style type="text/css">
+    h1 {font-family:"Arial", Times, sans-serif; color:blue;}
+    h2 {font-family:"Arial", Times, serif;}
+    p {font-family:"Times New Roman", Times, serif;}
+</style>
+    
+</head>
+
+<body onload="onLoad()">
+	<h1 id="headline">Headline</h1>
+	<h2 id="standFirst">StandFirst</h2>
+	<div id="body">Body</div>
+</body>
+</html>
