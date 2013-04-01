@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "NewsDataFactory.h"
 #import "RSSNewsDataFactory.h"
+#import "Downloader.h"
 
 @interface ViewController ()
 
@@ -19,7 +20,10 @@
 
 @implementation ViewController
 
-@synthesize pageController, articleList;
+@synthesize pageController;
+@synthesize articleList;
+@synthesize progressLabel;
+@synthesize receivedData;
 
 - (void)viewDidLoad
 {
@@ -27,7 +31,92 @@
     
     [super viewDidLoad];
     
+    [self readContent];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)readContent {
+    // Download the feed
+    NSURL * url = [NSURL URLWithString:@"http://multitouchdesign.wordpress.com/feed/"];
+    
+    // Create the request.
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:url
+                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                          timeoutInterval:60.0];
+    
+    // create the connection with the request
+    // and start loading the data
+    NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    if (theConnection) {
+        // Create the NSMutableData to hold the received data.
+        // receivedData is an instance variable declared elsewhere.
+        receivedData = [NSMutableData data];
+        [progressLabel setText:@"Connected"];
+    } else {
+        [progressLabel setText:@"Unable to connect"];
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    // This method is called when the server has determined that it
+    // has enough information to create the NSURLResponse.
+    // It can be called multiple times, for example in the case of a
+    // redirect, so each time we reset the data.
+    NSLog(@"connection didReceiveResponse");
+    [receivedData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    // Append the new data to receivedData.
+    // receivedData is an instance variable declared elsewhere.
+    NSLog(@"connection didReceiveData");
+    [receivedData appendData:data];
+    [progressLabel setText:[NSString stringWithFormat:@"Received %d bytes of data",[receivedData length]]];
+}
+
+- (void)connection:(NSURLConnection *)connection
+  didFailWithError:(NSError *)error
+{
+    // inform the user
+    NSLog(@"connection didFailWithError: %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    [progressLabel setText:[error localizedDescription]];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    // do something with the data
+    // receivedData is declared as a method instance elsewhere
+    NSLog(@"connection connectionDidFinishLoading. Received %d bytes of data",[receivedData length]);
     [self createContentPages];
+}
+
+- (void) createContentPages
+{
+    // Parse the feed
+    RSSNewsDataFactory * factory = [[RSSNewsDataFactory alloc] init];
+    articleList = [factory parseData:receivedData];
+    if (articleList == nil) {
+        [progressLabel setText:@"Unable to parse feed content"];
+        return;
+    }
+    
+    // Create the template factory
+    templateFactory = [[TemplateFactory alloc] init];
+    
+    // Display the feed data
+    [self contentDidLoad];
+}
+
+- (void)contentDidLoad {
     
     NSDictionary *options = [NSDictionary dictionaryWithObject:
                              [NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin]
@@ -52,27 +141,8 @@
     [self addChildViewController:pageController];
     [[self view] addSubview:[pageController view]];
     [pageController didMoveToParentViewController:self];
-
-    NSLog(@"ViewController.viewDidLoad done");
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void) createContentPages
-{
-    // Load the page contents
-//    NewsDataFactory * factory = [[NewsDataFactory alloc] init];
-//    articleList= [factory parseResource:@"ArticleList"];
-
-    RSSNewsDataFactory * factory = [[RSSNewsDataFactory alloc] init];
-    articleList= [factory parseResource:@"ArticleList"];
     
-    // Create the template factory
-    templateFactory = [[TemplateFactory alloc] init];
+    NSLog(@"ViewController.viewDidLoad done");
 }
 
 - (ContentViewController *)viewControllerAtIndex:(NSUInteger)index

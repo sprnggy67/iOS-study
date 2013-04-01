@@ -15,7 +15,9 @@
 
 @implementation ContentViewController
 
-@synthesize webView, article, templateFactory;
+@synthesize webView;
+@synthesize article;
+@synthesize templateFactory;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

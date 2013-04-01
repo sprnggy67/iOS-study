@@ -40,20 +40,23 @@
 }
 
 -(NSArray *)parse:(NSData*)data {
-    NSError *e = nil;
+    NSError *e;
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
-    NSMutableArray * results = [[NSMutableArray alloc] initWithCapacity:10];
-    
     if (!jsonArray) {
         NSLog(@"Error parsing JSON: %@", e);
         return nil;
     } else {
+        NSMutableArray * results = [[NSMutableArray alloc] initWithCapacity:10];
         for(NSDictionary *item in jsonArray) {
-            [results addObject:[[Article alloc] initWithDictionary:item]];
+            Article * article = [Article articleFromDictionary:item];
+            if (article != nil) {
+                [results addObject:article];
+            } else {
+                NSLog(@"Unable to parse article");
+            }
         }
+        return results;
     }
-    
-    return results;
 }
 
 @end

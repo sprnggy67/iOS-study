@@ -19,6 +19,7 @@
 -(void)test;
 -(NSArray *)parseString:(NSString*)str;
 -(NSArray *)parseResource:(NSString*)name;
+-(NSArray *)parseData:(NSData*)data;
 
 @property (strong, nonatomic) NSMutableDictionary * currentArticleAttributes;
 @property (strong, nonatomic) NSString * currentStringValue;

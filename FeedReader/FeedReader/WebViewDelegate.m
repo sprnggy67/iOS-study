@@ -154,9 +154,7 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
     
     //initWithBytes:length:encoding
     NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
     NSLog(@"jsonStr = %@", jsonStr);
-    
     if (jsonStr == nil)
     {
         NSLog(@"jsonStr is nil. count = %d", [args count]);

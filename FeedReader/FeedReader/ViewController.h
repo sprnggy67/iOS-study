@@ -12,10 +12,16 @@
 // The top level controller for the application. It contains a page view controller.
 @interface ViewController : UIViewController <UIPageViewControllerDataSource>
 {
+    IBOutlet UILabel * progressLabel;
+    
     @private
     UIPageViewController * pageController;
     NSArray * articleList;
     TemplateFactory * templateFactory;
+    NSMutableData * receivedData;
 }
+
+@property (strong, nonatomic) NSMutableData * receivedData;
+@property (strong, nonatomic) IBOutlet UILabel * progressLabel;
 
 @end

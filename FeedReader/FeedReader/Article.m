@@ -13,25 +13,30 @@
     
 }
 
-@synthesize templateName, headline, dictionary, jsonData;
+@synthesize templateName;
+@synthesize headline;
+@synthesize dictionary;
+@synthesize jsonData;
 
 // Initialize the object from a dictionary. The headline and templateName are retrieved from the dictionary.
--(id)initWithDictionary:(NSDictionary *)dict {
-    self = [super init];
-    if (self) {
-        [self setDictionary:dict];
-        [self setTemplateName:[dict valueForKey:@"templateName"]];
-        [self setHeadline:[dict valueForKey:@"headline"]];
++(Article *)articleFromDictionary:(NSDictionary *)dict {
+    Article * article = [[Article alloc] init];
+    if (article) {
+        [article setDictionary:dict];
+        [article setTemplateName:[dict valueForKey:@"templateName"]];
+        [article setHeadline:[dict valueForKey:@"headline"]];
         
         // Create a JSON version of the object for rendering time.
-        // TODO: Find a more efficient way to do this. We currently read the data from a JSON, build the object, and then write the JSON again.
-        // TODO: Add a catch for exceptions.
-        NSError *e = nil;
+        NSError *e;
         NSData * data = [NSJSONSerialization dataWithJSONObject: dict options: NSJSONWritingPrettyPrinted error: &e];
-        [self setJsonData:[[NSString alloc] initWithData:data
-                                                 encoding:NSUTF8StringEncoding]];
+        if (data == nil) {
+            return nil;
+        } else {
+            [article setJsonData:[[NSString alloc] initWithData:data
+                                                     encoding:NSUTF8StringEncoding]];
+        }
     }
-    return self;
+    return article;
 }
 
 -(NSString *)description {

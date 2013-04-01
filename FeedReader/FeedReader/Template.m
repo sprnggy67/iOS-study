@@ -16,7 +16,8 @@
 
 @implementation Template
 
-@synthesize name, indexFile;
+@synthesize name;
+@synthesize indexFile;
 
 NSString *const TEMPLATE_VARIABLE = @"JSON_DATA_VARIABLE";
 

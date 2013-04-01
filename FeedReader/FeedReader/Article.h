@@ -22,6 +22,6 @@
 @property (nonatomic, strong) NSString * jsonData;
 @property (nonatomic, strong) NSDictionary * dictionary;
 
--(id)initWithDictionary:(NSDictionary *)dictionary;
++(Article *)articleFromDictionary:(NSDictionary *)dictionary;
 
 @end

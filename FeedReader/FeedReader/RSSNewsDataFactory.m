@@ -24,7 +24,7 @@
 // Converts a string into an array of articles.
 -(NSArray *)parseString:(NSString*)str {
     NSData * data = [str dataUsingEncoding:NSUTF8StringEncoding];
-    return [self parse:data];
+    return [self parseData:data];
 }
 
 // Reads a set of articles from a resource.
@@ -35,21 +35,30 @@
         NSLog(@"Unable to read file: %@", filePath);
         return nil;
     }
-    return [self parse:data];
+    return [self parseData:data];
 }
 
--(NSArray *)parse:(NSData*)data {
+-(NSArray *)parseData:(NSData*)data {
     // Init the result data.
     results = [[NSMutableArray alloc] initWithCapacity:10];
     currentArticleAttributes = nil;
     currentStringValue = nil;
     inItem = FALSE;
     
-    // Run the parser
+    // Initialize the parser
     NSXMLParser * parser = [[NSXMLParser alloc] initWithData:data];
+    if (parser == nil) {
+        NSLog(@"Unable to init parser");
+        return nil;
+    }
     [parser setDelegate:self];
-    BOOL success = [parser parse]; // return value not used
-        // if not successful, delegate is informed of error
+
+    // Run the parser
+    BOOL success = [parser parse];
+    if (!success) {
+        NSLog(@"Unable to parse data");
+        return nil;
+    }
     
     // Return the result data
     return results;
@@ -74,7 +83,7 @@
     qualifiedName:(NSString *)qName
 {
     if ( [elementName isEqualToString:@"item"] ) {
-        Article * article = [[Article alloc] initWithDictionary:currentArticleAttributes];
+        Article * article = [Article articleFromDictionary:currentArticleAttributes];
         if (article != NULL) {
             [results addObject:article];
             NSLog(@"Found article %@", [article headline]);
@@ -91,7 +100,7 @@
         return;
     }
     
-    if ( inItem && [elementName isEqualToString:@"description"] ) {
+    if ( inItem && [elementName isEqualToString:@"content:encoded"] ) {
         [currentArticleAttributes setObject:currentStringValue forKey:@"body"];
         return;
     }
