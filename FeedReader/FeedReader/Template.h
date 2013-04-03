@@ -9,13 +9,7 @@
 #import <Foundation/Foundation.h>
 
 // An HTML5 template, used to define the presentation of an article.
-@interface Template : NSObject {
-    NSString * name;
-    @private
-    NSString * indexFile;
-    BOOL foundRange;
-    NSRange variableRange;
-}
+@interface Template : NSObject
 
 @property (strong, nonatomic) NSString * name;
 

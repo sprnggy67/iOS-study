@@ -9,19 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "Article.h"
 
-@interface RSSNewsDataFactory : NSObject <NSXMLParserDelegate> {
-    NSMutableArray * results;
-    NSMutableDictionary * currentArticleAttributes;
-    NSString * currentStringValue;
-    BOOL inItem;
-}
+@interface RSSNewsDataFactory : NSObject <NSXMLParserDelegate>
 
--(void)test;
++(void)test;
+
 -(NSArray *)parseString:(NSString*)str;
 -(NSArray *)parseResource:(NSString*)name;
 -(NSArray *)parseData:(NSData*)data;
-
-@property (strong, nonatomic) NSMutableDictionary * currentArticleAttributes;
-@property (strong, nonatomic) NSString * currentStringValue;
 
 @end

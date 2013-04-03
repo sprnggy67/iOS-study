@@ -11,6 +11,8 @@
 
 @interface ContentViewController ()
 
+@property (strong, nonatomic) WebViewDelegate * webViewDelegate;
+
 @end
 
 @implementation ContentViewController
@@ -18,6 +20,7 @@
 @synthesize webView;
 @synthesize article;
 @synthesize templateFactory;
+@synthesize webViewDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,9 +34,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.title = @"Article";
+    
     // Set the web view delegate
-    webViewDelegate = [[WebViewDelegate alloc] initWith:webView];
+    self.webViewDelegate = [[WebViewDelegate alloc] initWith:webView];
     [webView setDelegate:webViewDelegate];
 }
 

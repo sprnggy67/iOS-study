@@ -10,11 +10,14 @@
 #import "NewsDataFactory.h"
 #import "RSSNewsDataFactory.h"
 #import "Downloader.h"
+#import "FeedTableViewController.h"
 
 @interface ViewController ()
 
+@property (strong, nonatomic) NSMutableData * receivedData;
 @property (strong, nonatomic) UIPageViewController * pageController;
 @property (strong, nonatomic) NSArray * articleList;
+@property (strong, nonatomic) TemplateFactory * templateFactory;
 
 @end
 
@@ -24,13 +27,15 @@
 @synthesize articleList;
 @synthesize progressLabel;
 @synthesize receivedData;
+@synthesize templateFactory;
 
 - (void)viewDidLoad
 {
     NSLog(@"ViewController.viewDidLoad entered");
     
     [super viewDidLoad];
-    
+    self.title = @"Articles";
+    [self setupNavigation];
     [self readContent];
 }
 
@@ -40,22 +45,33 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)readContent {
-    // Download the feed
-    NSURL * url = [NSURL URLWithString:@"http://multitouchdesign.wordpress.com/feed/"];
+-(void)setupNavigation {
+    [super viewDidLoad];
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]
+                                  initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
+                                  target:self
+                                  action:@selector(menuButtonPressed)];
     
-    // Create the request.
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:url
+    [[self navigationItem] setRightBarButtonItem:barButton];
+}
+
+-(void)menuButtonPressed{
+    UIViewController *secondView = [[FeedTableViewController alloc]
+                                    initWithStyle:UITableViewStylePlain];
+    [[self navigationController] pushViewController:secondView animated:YES];
+}
+
+-(void)readContent {
+    // Create the download request.
+    NSURL * url = [NSURL URLWithString:@"http://multitouchdesign.wordpress.com/feed/"];
+    NSURLRequest *theRequest = [NSURLRequest requestWithURL:url
                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
                                           timeoutInterval:60.0];
     
-    // create the connection with the request
-    // and start loading the data
-    NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    // Create a connection with the request and start loading the data
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
     if (theConnection) {
-        // Create the NSMutableData to hold the received data.
-        // receivedData is an instance variable declared elsewhere.
-        receivedData = [NSMutableData data];
+        self.receivedData = [NSMutableData data];
         [progressLabel setText:@"Connected"];
     } else {
         [progressLabel setText:@"Unable to connect"];
@@ -74,8 +90,6 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    // Append the new data to receivedData.
-    // receivedData is an instance variable declared elsewhere.
     NSLog(@"connection didReceiveData");
     [receivedData appendData:data];
     [progressLabel setText:[NSString stringWithFormat:@"Received %d bytes of data",[receivedData length]]];
@@ -84,7 +98,6 @@
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error
 {
-    // inform the user
     NSLog(@"connection didFailWithError: %@ %@",
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
@@ -93,8 +106,6 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    // do something with the data
-    // receivedData is declared as a method instance elsewhere
     NSLog(@"connection connectionDidFinishLoading. Received %d bytes of data",[receivedData length]);
     [self createContentPages];
 }
@@ -103,7 +114,7 @@
 {
     // Parse the feed
     RSSNewsDataFactory * factory = [[RSSNewsDataFactory alloc] init];
-    articleList = [factory parseData:receivedData];
+    self.articleList = [factory parseData:receivedData];
     if (articleList == nil) {
         [progressLabel setText:@"Unable to parse feed content"];
         return;
@@ -170,7 +181,7 @@
 
 - (NSUInteger)indexOfViewController:(ContentViewController *)viewController
 {
-    return [self.articleList indexOfObject:[viewController article]];
+    return [articleList indexOfObject:[viewController article]];
 }
 
 // Returns the previous view controller in the pager.
@@ -196,7 +207,7 @@
     }
     
     index++;
-    if (index == [self.articleList count]) {
+    if (index == [articleList count]) {
         return nil;
     }
     return [self viewControllerAtIndex:index];

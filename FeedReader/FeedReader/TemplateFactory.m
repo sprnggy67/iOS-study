@@ -21,7 +21,7 @@
 -(id)init {
     self = [super init];
     if (self) {
-        [self setDictionary:[[NSMutableDictionary alloc] init]];
+        self.dictionary = [[NSMutableDictionary alloc] init];
     }
     return self;
 }

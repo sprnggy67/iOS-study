@@ -11,14 +11,15 @@
 
 @implementation NewsDataFactory
 
--(void)test {
++(void)test {
     NSObject *result = nil;
+    NewsDataFactory * factory = [[NewsDataFactory alloc] init];
     
     NSString * str = @"[{\"id\": \"1\", \"name\":\"Aaa\"}, {\"id\": \"2\", \"name\":\"Bbb\"}]";
-    result = [self parseString:str];
+    result = [factory parseString:str];
     NSLog(@"Result: %@", result);
 
-    result = [self parseResource:@"ArticleList"];
+    result = [factory parseResource:@"ArticleList"];
     NSLog(@"Result: %@", result);
 }
 
@@ -47,7 +48,7 @@
         return nil;
     } else {
         NSMutableArray * results = [[NSMutableArray alloc] initWithCapacity:10];
-        for(NSDictionary *item in jsonArray) {
+        for (NSDictionary *item in jsonArray) {
             Article * article = [Article articleFromDictionary:item];
             if (article != nil) {
                 [results addObject:article];

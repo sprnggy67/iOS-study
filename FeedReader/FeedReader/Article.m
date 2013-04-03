@@ -9,9 +9,6 @@
 #import "Article.h"
 
 @implementation Article
-{
-    
-}
 
 @synthesize templateName;
 @synthesize headline;
@@ -41,9 +38,9 @@
 
 -(NSString *)description {
     return [[NSString alloc] initWithFormat:@"Article %@, templateName %@, dictionary%@",
-            [self headline],
-            [self templateName],
-            [self dictionary]];
+            self.headline,
+            self.templateName,
+            self.dictionary];
 }
 
 

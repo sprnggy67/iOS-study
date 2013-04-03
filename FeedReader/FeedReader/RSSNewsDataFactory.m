@@ -9,15 +9,27 @@
 #import "RSSNewsDataFactory.h"
 #import "Article.h"
 
+@interface RSSNewsDataFactory ()
+{
+    BOOL inItem;
+}
+
+@property (strong, nonatomic) NSMutableArray * results;
+@property (strong, nonatomic) NSMutableDictionary * currentArticleAttributes;
+@property (strong, nonatomic) NSString * currentStringValue;
+
+@end
+
 @implementation RSSNewsDataFactory
 
+@synthesize results;
 @synthesize currentArticleAttributes;
 @synthesize currentStringValue;
 
--(void)test {
++(void)test {
     NSObject *result = nil;
-    
-    result = [self parseResource:@"ArticleList"];
+    RSSNewsDataFactory * factory = [[RSSNewsDataFactory alloc] init];
+    result = [factory parseResource:@"ArticleList"];
     NSLog(@"Result: %@", result);
 }
 
@@ -40,9 +52,9 @@
 
 -(NSArray *)parseData:(NSData*)data {
     // Init the result data.
-    results = [[NSMutableArray alloc] initWithCapacity:10];
-    currentArticleAttributes = nil;
-    currentStringValue = nil;
+    self.results = [[NSMutableArray alloc] initWithCapacity:10];
+    self.currentArticleAttributes = nil;
+    self.currentStringValue = nil;
     inItem = FALSE;
     
     // Initialize the parser
@@ -69,14 +81,14 @@
 {
     if ( [elementName isEqualToString:@"item"]) {
         inItem = TRUE;
-        currentArticleAttributes = [[NSMutableDictionary alloc] init];
+        self.currentArticleAttributes = [[NSMutableDictionary alloc] init];
         [currentArticleAttributes setObject:@"ArticleTemplate" forKey:@"templateName"];
         return;
     }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    currentStringValue = string;
+    self.currentStringValue = string;
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
@@ -90,7 +102,7 @@
         } else {
             NSLog(@"Could not parse article");
         }
-        currentArticleAttributes = nil;
+        self.currentArticleAttributes = nil;
         inItem = FALSE;
         return;
     }
@@ -105,7 +117,7 @@
         return;
     }
 
-    currentStringValue = nil;
+    self.currentStringValue = nil;
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {

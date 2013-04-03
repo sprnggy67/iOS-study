@@ -14,17 +14,12 @@
 #import "Article.h"
 
 // A controller for article content.
-@interface ContentViewController : UIViewController <UIWebViewDelegate> {
-    IBOutlet UIWebView * webView;
-    @private
-    Article * article;
-    WebViewDelegate * webViewDelegate;
-    TemplateFactory * templateFactory;
-}
+@interface ContentViewController : UIViewController <UIWebViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView * webView;
 @property (strong, nonatomic) Article * article;
 @property (strong, nonatomic) TemplateFactory * templateFactory;
+
 
 @end
 

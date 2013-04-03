@@ -23,7 +23,7 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
 -(id)initWith:(UIWebView *)view {
     self = [super init];
     if (self) {
-        [self setWebView:view];
+        self.webView = view;
     }
     return self;
 }
@@ -54,7 +54,7 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
                                   JSONObjectWithData:[urlStr dataUsingEncoding:NSUTF8StringEncoding]
                                   options:kNilOptions
                                   error:&jsonError];
-        if (jsonError != nil)
+        if (callInfo == nil)
         {
             NSLog(@"Error parsing JSON for the url %@",url);
             return NO;
@@ -76,7 +76,6 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
         
         // Do not load this url in the WebView
         return NO;
-        
     }
     
     return YES;
@@ -111,7 +110,6 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
     if (name != nil)
     {
         //call succes handler
-        
         NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
         [resultDict setObject:retValue forKey:@"result"];
         [self callJSFunction:name withArgs:resultDict];
@@ -127,7 +125,6 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
     if (name != nil)
     {
         //call error handler
-        
         NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
         [resultDict setObject:msg forKey:@"error"];
         [self callJSFunction:name withArgs:resultDict];
@@ -145,7 +142,7 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
     
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:args options:0 error:&jsonError];
     
-    if (jsonError != nil)
+    if (jsonData == nil)
     {
         //call error callback function here
         NSLog(@"Error creating JSON from the response  : %@",[jsonError localizedDescription]);

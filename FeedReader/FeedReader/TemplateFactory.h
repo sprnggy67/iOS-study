@@ -10,10 +10,7 @@
 #import "Template.h"
 
 // Creates and manages the set of templates in use.
-@interface TemplateFactory : NSObject {
-    @private
-    NSMutableDictionary * dictionary;
-}
+@interface TemplateFactory : NSObject
 
 -(id)init;
 -(Template *)template:(NSString *)name;

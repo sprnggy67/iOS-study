@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55038AF8170B7D0300C5CE02 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55038AF7170B7D0200C5CE02 /* FeedTableViewController.m */; };
 		551F7D2F16F5AA1F00D7F4B0 /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = 551F7D2E16F5AA1F00D7F4B0 /* Templates */; };
 		55333DDC16FC2B5A00CAD539 /* WebViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55333DDB16FC2B5A00CAD539 /* WebViewDelegate.m */; };
 		55791BDE16E1DD420083AF02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDD16E1DD420083AF02 /* UIKit.framework */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55038AF6170B7D0200C5CE02 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
+		55038AF7170B7D0200C5CE02 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		551F7D2E16F5AA1F00D7F4B0 /* Templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Templates; sourceTree = "<group>"; };
 		55333DDA16FC2B5A00CAD539 /* WebViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewDelegate.h; sourceTree = "<group>"; };
 		55333DDB16FC2B5A00CAD539 /* WebViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewDelegate.m; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				557941E616FDA02600C6E9F4 /* TemplateFactory.m */,
 				55FE9E691702CA6200EDBEA3 /* RSSNewsDataFactory.h */,
 				55FE9E6A1702CA6200EDBEA3 /* RSSNewsDataFactory.m */,
+				55038AF6170B7D0200C5CE02 /* FeedTableViewController.h */,
+				55038AF7170B7D0200C5CE02 /* FeedTableViewController.m */,
 			);
 			path = FeedReader;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 				559534D816FD8D490059FCF4 /* Template.m in Sources */,
 				557941E716FDA02600C6E9F4 /* TemplateFactory.m in Sources */,
 				55FE9E6B1702CA6200EDBEA3 /* RSSNewsDataFactory.m in Sources */,
+				55038AF8170B7D0300C5CE02 /* FeedTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

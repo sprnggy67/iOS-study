@@ -10,12 +10,6 @@
 
 // A story or article, consisting of a headline, template reference and additional JSON data.
 @interface Article : NSObject
-{
-    NSString * templateName;
-    NSString * headline;
-    NSString * jsonData;
-    NSDictionary * dictionary;
-}
 
 @property (nonatomic, strong) NSString * templateName;
 @property (nonatomic, strong) NSString * headline;
