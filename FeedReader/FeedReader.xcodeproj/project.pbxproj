@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		55038AF8170B7D0300C5CE02 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55038AF7170B7D0200C5CE02 /* FeedTableViewController.m */; };
 		551F7D2F16F5AA1F00D7F4B0 /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = 551F7D2E16F5AA1F00D7F4B0 /* Templates */; };
+		552115C5170D4D3A0097BD53 /* NewFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 552115C3170D4D3A0097BD53 /* NewFeedViewController.m */; };
+		552115C6170D4D3A0097BD53 /* NewFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 552115C4170D4D3A0097BD53 /* NewFeedViewController.xib */; };
+		552115C9170D52030097BD53 /* FeedStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 552115C8170D52030097BD53 /* FeedStore.m */; };
+		552115CC170D52860097BD53 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 552115CB170D52860097BD53 /* Feed.m */; };
 		55333DDC16FC2B5A00CAD539 /* WebViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55333DDB16FC2B5A00CAD539 /* WebViewDelegate.m */; };
 		55791BDE16E1DD420083AF02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDD16E1DD420083AF02 /* UIKit.framework */; };
 		55791BE016E1DD420083AF02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDF16E1DD420083AF02 /* Foundation.framework */; };
@@ -52,6 +56,13 @@
 		55038AF6170B7D0200C5CE02 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		55038AF7170B7D0200C5CE02 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		551F7D2E16F5AA1F00D7F4B0 /* Templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Templates; sourceTree = "<group>"; };
+		552115C2170D4D3A0097BD53 /* NewFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeedViewController.h; sourceTree = "<group>"; };
+		552115C3170D4D3A0097BD53 /* NewFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeedViewController.m; sourceTree = "<group>"; };
+		552115C4170D4D3A0097BD53 /* NewFeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewFeedViewController.xib; sourceTree = "<group>"; };
+		552115C7170D52030097BD53 /* FeedStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedStore.h; sourceTree = "<group>"; };
+		552115C8170D52030097BD53 /* FeedStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedStore.m; sourceTree = "<group>"; };
+		552115CA170D52860097BD53 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
+		552115CB170D52860097BD53 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
 		55333DDA16FC2B5A00CAD539 /* WebViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewDelegate.h; sourceTree = "<group>"; };
 		55333DDB16FC2B5A00CAD539 /* WebViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewDelegate.m; sourceTree = "<group>"; };
 		55791BDA16E1DD420083AF02 /* FeedReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +186,13 @@
 				55FE9E6A1702CA6200EDBEA3 /* RSSNewsDataFactory.m */,
 				55038AF6170B7D0200C5CE02 /* FeedTableViewController.h */,
 				55038AF7170B7D0200C5CE02 /* FeedTableViewController.m */,
+				552115C2170D4D3A0097BD53 /* NewFeedViewController.h */,
+				552115C3170D4D3A0097BD53 /* NewFeedViewController.m */,
+				552115C4170D4D3A0097BD53 /* NewFeedViewController.xib */,
+				552115C7170D52030097BD53 /* FeedStore.h */,
+				552115C8170D52030097BD53 /* FeedStore.m */,
+				552115CA170D52860097BD53 /* Feed.h */,
+				552115CB170D52860097BD53 /* Feed.m */,
 			);
 			path = FeedReader;
 			sourceTree = "<group>";
@@ -297,6 +315,7 @@
 				55A69A3216E71FDE00D846EC /* ArticleList.json in Resources */,
 				551F7D2F16F5AA1F00D7F4B0 /* Templates in Resources */,
 				55FE9E681702C9B300EDBEA3 /* ArticleList.rss in Resources */,
+				552115C6170D4D3A0097BD53 /* NewFeedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +361,9 @@
 				557941E716FDA02600C6E9F4 /* TemplateFactory.m in Sources */,
 				55FE9E6B1702CA6200EDBEA3 /* RSSNewsDataFactory.m in Sources */,
 				55038AF8170B7D0300C5CE02 /* FeedTableViewController.m in Sources */,
+				552115C5170D4D3A0097BD53 /* NewFeedViewController.m in Sources */,
+				552115C9170D52030097BD53 /* FeedStore.m in Sources */,
+				552115CC170D52860097BD53 /* Feed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

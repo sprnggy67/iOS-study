@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
+#import "FeedStore.h"
+#import "Feed.h"
 
 @implementation AppDelegate
 
@@ -21,6 +23,12 @@
     ViewController * rootView = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     self.navController = [[UINavigationController alloc] initWithRootViewController:rootView];
     self.window.rootViewController = self.navController;
+    
+    FeedStore * feedStore = [FeedStore singleton];
+    if ([feedStore isEmpty] ) {
+        [feedStore add:[[Feed alloc] initWithName:@"Multitouch Design" url:@"http://multitouchdesign.wordpress.com/feed/"]];
+        [feedStore add:[[Feed alloc] initWithName:@"Herman Miller" url:@"http://www.hermanmiller.com/discover/feed/"]];
+    }
 
     [self.window makeKeyAndVisible];
     return YES;

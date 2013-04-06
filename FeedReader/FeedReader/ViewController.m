@@ -11,23 +11,30 @@
 #import "RSSNewsDataFactory.h"
 #import "Downloader.h"
 #import "FeedTableViewController.h"
+#import "FeedStore.h"
 
 @interface ViewController ()
 
 @property (strong, nonatomic) NSMutableData * receivedData;
+@property (strong, nonatomic) NSMutableArray * feedsToLoad;
+
 @property (strong, nonatomic) UIPageViewController * pageController;
-@property (strong, nonatomic) NSArray * articleList;
+@property (strong, nonatomic) NSMutableArray * articleList;
 @property (strong, nonatomic) TemplateFactory * templateFactory;
 
 @end
 
 @implementation ViewController
 
+@synthesize receivedData;
+@synthesize feedsToLoad;
+
 @synthesize pageController;
 @synthesize articleList;
 @synthesize progressLabel;
-@synthesize receivedData;
 @synthesize templateFactory;
+
+#pragma mark - Init
 
 - (void)viewDidLoad
 {
@@ -62,8 +69,29 @@
 }
 
 -(void)readContent {
+    FeedStore * feedStore = [FeedStore singleton];
+    self.feedsToLoad = [NSMutableArray arrayWithArray:feedStore.feeds];
+    self.articleList = [[NSMutableArray alloc] init];
+    [self readNextContentFeed];
+}
+
+-(void)readNextContentFeed {
+    if ([feedsToLoad count] > 0) {
+        Feed * nextFeed = [feedsToLoad objectAtIndex:0];
+        [feedsToLoad removeObjectAtIndex:0];
+        [self readContentFeed:nextFeed];
+    } else {
+        [self contentDidLoad];
+    }
+}
+
+-(void)readContentFeed:(Feed *)feed {
     // Create the download request.
-    NSURL * url = [NSURL URLWithString:@"http://multitouchdesign.wordpress.com/feed/"];
+    NSURL * url = [NSURL URLWithString:feed.url];
+    if (url == nil) {
+        [progressLabel setText:@"Unable to parse feed"];
+        return;
+    }
     NSURLRequest *theRequest = [NSURLRequest requestWithURL:url
                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
                                           timeoutInterval:60.0];
@@ -107,32 +135,29 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSLog(@"connection connectionDidFinishLoading. Received %d bytes of data",[receivedData length]);
-    [self createContentPages];
-}
 
-- (void) createContentPages
-{
     // Parse the feed
     RSSNewsDataFactory * factory = [[RSSNewsDataFactory alloc] init];
-    self.articleList = [factory parseData:receivedData];
-    if (articleList == nil) {
+    NSArray * newArticleList = [factory parseData:receivedData];
+    if (newArticleList == nil) {
         [progressLabel setText:@"Unable to parse feed content"];
         return;
     }
-    
-    // Create the template factory
-    templateFactory = [[TemplateFactory alloc] init];
-    
-    // Display the feed data
-    [self contentDidLoad];
+
+    [self.articleList addObjectsFromArray:newArticleList];
+
+    // Read the next feed in the list.
+    [self readNextContentFeed];
 }
 
 - (void)contentDidLoad {
+    // Create the template factory
+    templateFactory = [[TemplateFactory alloc] init];
     
+    // Create the page controller
     NSDictionary *options = [NSDictionary dictionaryWithObject:
                              [NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin]
                                                         forKey: UIPageViewControllerOptionSpineLocationKey];
-    
     self.pageController = [[UIPageViewController alloc]
                            initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                            navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
@@ -155,6 +180,8 @@
     
     NSLog(@"ViewController.viewDidLoad done");
 }
+
+#pragma mark - View management
 
 - (ContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
