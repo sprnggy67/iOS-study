@@ -13,7 +13,14 @@
 
 +(void)test;
 
+/*
+ Parses a string to return an array of articles
+ */
 -(NSArray *)parseString:(NSString*)str;
+
+/*
+ Reads a resource file and returns an array of articles.
+ */
 -(NSArray *)parseResource:(NSString*)name;
 
 @end

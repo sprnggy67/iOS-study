@@ -15,14 +15,26 @@
 @synthesize dictionary;
 @synthesize jsonData;
 
-// Initialize the object from a dictionary. The headline and templateName are retrieved from the dictionary.
 +(Article *)articleFromDictionary:(NSDictionary *)dict {
+    NSString * value;
     Article * article = [[Article alloc] init];
     if (article) {
-        [article setDictionary:dict];
-        [article setTemplateName:[dict valueForKey:@"templateName"]];
-        [article setHeadline:[dict valueForKey:@"headline"]];
+        value = [dict valueForKey:@"headline"];
+        if (value == nil) {
+            NSLog(@"Article does not have a headline");
+            return nil;
+        }
+        [article setHeadline:value];
+
+        value = [dict valueForKey:@"templateName"];
+        if (value == nil) {
+            NSLog(@"Article does not have a templateName");
+            return nil;
+        }
+        [article setTemplateName:value];
         
+        [article setDictionary:dict];
+
         // Create a JSON version of the object for rendering time.
         NSError *e;
         NSData * data = [NSJSONSerialization dataWithJSONObject: dict options: NSJSONWritingPrettyPrinted error: &e];

@@ -14,6 +14,9 @@
 
 @property (strong, nonatomic) IBOutlet UILabel * progressLabel;
 
+/*
+ Launches the feed view controller
+ */
 -(void)menuButtonPressed;
 
 @end

@@ -31,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Edit Feed";
     if (feed != nil) {
         [name setText:feed.name];
         [url setText:feed.url];

@@ -16,6 +16,10 @@
 @property (nonatomic, strong) NSString * jsonData;
 @property (nonatomic, strong) NSDictionary * dictionary;
 
+/*
+ Creates an article from a dictionary. 
+ The dictionary must contain key value pairs for the headline, content, and templateName
+ */
 +(Article *)articleFromDictionary:(NSDictionary *)dictionary;
 
 @end

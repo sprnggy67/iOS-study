@@ -11,6 +11,9 @@
 
 @protocol NewFeedViewControllerDelegate <NSObject>
 
+/*
+ Notifies the receiver that the feed has been changed and needs saving.
+ */
 - (void)didSaveFeed:(Feed *)feed;
 
 @end
@@ -26,7 +29,14 @@
 @property (strong, nonatomic) UITextField * url;
 @property (nonatomic, weak) id <NewFeedViewControllerDelegate> delegate;
 
+/*
+ Saves the feed
+ */
 -(IBAction)save:(id)sender;
+
+/*
+ Cancel and close the view controller
+ */
 -(IBAction)cancel:(id)sender;
 
 @end

@@ -33,6 +33,7 @@
 {
     [super viewDidLoad];
 
+    self.title = @"Feeds";
     self.clearsSelectionOnViewWillAppear = NO;
     self.navigationItem.rightBarButtonItem =
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd

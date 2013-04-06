@@ -68,6 +68,12 @@
     [[self navigationController] pushViewController:secondView animated:YES];
 }
 
+/*
+ Loads each feed in the feed store one by one.
+ The iteration is implemented locally, but in the future I'd like to implement a
+ general purpose downloader, which will iterate through a set of requests and encapsulate
+ all of the URLConnection code below.
+ */
 -(void)readContent {
     FeedStore * feedStore = [FeedStore singleton];
     self.feedsToLoad = [NSMutableArray arrayWithArray:feedStore.feeds];
@@ -75,6 +81,10 @@
     [self readNextContentFeed];
 }
 
+/*
+ Loads the next feed from the feedsToLoadList.
+ If there are no more feeds to load it displays the feed content.
+ */
 -(void)readNextContentFeed {
     if ([feedsToLoad count] > 0) {
         Feed * nextFeed = [feedsToLoad objectAtIndex:0];
@@ -85,6 +95,9 @@
     }
 }
 
+/*
+ Loads one feed
+ */
 -(void)readContentFeed:(Feed *)feed {
     // Create the download request.
     NSURL * url = [NSURL URLWithString:feed.url];
@@ -150,6 +163,11 @@
     [self readNextContentFeed];
 }
 
+#pragma mark - View management
+
+/*
+ Displays the feed data
+ */
 - (void)contentDidLoad {
     // Create the template factory
     templateFactory = [[TemplateFactory alloc] init];
@@ -180,8 +198,6 @@
     
     NSLog(@"ViewController.viewDidLoad done");
 }
-
-#pragma mark - View management
 
 - (ContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {

@@ -13,8 +13,20 @@
 
 +(void)test;
 
+/*
+ Parses a string and returns the articles within it
+ */
+
 -(NSArray *)parseString:(NSString*)str;
+
+/*
+ Loads a resource, parses it, and returns the articles within it
+ */
 -(NSArray *)parseResource:(NSString*)name;
+
+/*
+ Parses a data object and returns the articles within it
+ */
 -(NSArray *)parseData:(NSData*)data;
 
 @end

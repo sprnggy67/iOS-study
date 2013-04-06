@@ -18,12 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Init the main window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     ViewController * rootView = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     self.navController = [[UINavigationController alloc] initWithRootViewController:rootView];
     self.window.rootViewController = self.navController;
     
+    // Init the feed store. This is the source of all visible data.
     FeedStore * feedStore = [FeedStore singleton];
     if ([feedStore isEmpty] ) {
         [feedStore add:[[Feed alloc] initWithName:@"Multitouch Design" url:@"http://multitouchdesign.wordpress.com/feed/"]];

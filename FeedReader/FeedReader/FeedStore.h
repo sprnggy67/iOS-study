@@ -11,6 +11,9 @@
 
 @interface FeedStore : NSObject
 
+/*
+ Returns the single feed store. 
+ */
 + (FeedStore *) singleton;
 
 - (NSArray *)feeds;

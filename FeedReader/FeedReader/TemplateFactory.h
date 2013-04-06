@@ -13,6 +13,10 @@
 @interface TemplateFactory : NSObject
 
 -(id)init;
+
+/*
+ Returns a template with the given name, or nil if it cannot be found.
+ */
 -(Template *)template:(NSString *)name;
 
 @end
