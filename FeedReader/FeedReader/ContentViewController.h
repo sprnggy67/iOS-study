@@ -1,6 +1,7 @@
 //
 //  ContentViewController.m
-//  PageViewer
+//
+//  Displays a single article
 //
 //  Created by Dave on 2013-03-02.
 //  Copyright (c) 2013 Dave. All rights reserved.
@@ -13,7 +14,6 @@
 #import "Template.h"
 #import "Article.h"
 
-// A controller for article content.
 @interface ContentViewController : UIViewController <UIWebViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView * webView;

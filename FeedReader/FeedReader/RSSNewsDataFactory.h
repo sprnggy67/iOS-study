@@ -1,6 +1,7 @@
 //
 //  RSSNewsDataFactory.h
-//  FeedReader
+//
+//  Generates a set of news articles from an RSS feed
 //
 //  Created by Dave on 2013-03-27.
 //  Copyright (c) 2013 Dave. All rights reserved.

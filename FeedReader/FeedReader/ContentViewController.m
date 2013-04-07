@@ -22,6 +22,8 @@
 @synthesize templateFactory;
 @synthesize webViewDelegate;
 
+#pragma mark - Init
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

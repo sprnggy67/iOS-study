@@ -26,6 +26,8 @@
 
 static FeedStore * singleton;
 
+#pragma mark - Init
+
 + (FeedStore *) singleton {
     if (singleton == nil) {
         singleton = [[FeedStore alloc] init];
@@ -44,6 +46,8 @@ static FeedStore * singleton;
     }
     return self;
 }
+
+#pragma mark - Getters / Setters
 
 - (NSArray *)feeds {
     return feeds;

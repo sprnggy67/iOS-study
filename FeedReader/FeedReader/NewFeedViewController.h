@@ -1,6 +1,7 @@
 //
 //  NewFeedViewController.h
-//  FeedReader
+//
+//  Creates a new Feed item and allows the user to edit it.
 //
 //  Created by Dave on 2013-04-04.
 //  Copyright (c) 2013 Dave. All rights reserved.
@@ -17,7 +18,6 @@
 - (void)didSaveFeed:(Feed *)feed;
 
 @end
-
 
 @interface NewFeedViewController : UIViewController {
     IBOutlet UITextField * name;

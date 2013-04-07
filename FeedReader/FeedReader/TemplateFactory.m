@@ -18,6 +18,8 @@
 
 @synthesize dictionary;
 
+#pragma mark - Init
+
 -(id)init {
     self = [super init];
     if (self) {
@@ -25,6 +27,8 @@
     }
     return self;
 }
+
+#pragma mark - Getters / Setters
 
 -(Template *)template:(NSString *)name {
     // Look up the template.

@@ -26,12 +26,16 @@
 @synthesize currentArticleAttributes;
 @synthesize currentStringValue;
 
+#pragma mark - Test
+
 +(void)test {
     NSObject *result = nil;
     RSSNewsDataFactory * factory = [[RSSNewsDataFactory alloc] init];
     result = [factory parseResource:@"ArticleList"];
     NSLog(@"Result: %@", result);
 }
+
+#pragma mark - Parsers
 
 // Converts a string into an array of articles.
 -(NSArray *)parseString:(NSString*)str {

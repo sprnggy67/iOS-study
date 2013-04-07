@@ -1,6 +1,7 @@
 //
 //  Article.h
-//  ReadJSON
+//
+//  A story or article, consisting of a headline, template reference and additional JSON data.
 //
 //  Created by Dave on 2013-03-03.
 //  Copyright (c) 2013 Dave. All rights reserved.
@@ -8,7 +9,6 @@
 
 #import <Foundation/Foundation.h>
 
-// A story or article, consisting of a headline, template reference and additional JSON data.
 @interface Article : NSObject
 
 @property (nonatomic, strong) NSString * templateName;

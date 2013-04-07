@@ -1,6 +1,7 @@
 //
 //  NewsDataFactory.h
-//  ReadJSON
+//
+//  Generates a set of news articles from a JSON file
 //
 //  Created by Dave on 2013-03-03.
 //  Copyright (c) 2013 Dave. All rights reserved.

@@ -1,6 +1,7 @@
 //
 //  Feed.h
-//  FeedReader
+//
+//  A single feed.  A feed is used to supply article data.
 //
 //  Created by Dave on 2013-04-04.
 //  Copyright (c) 2013 Dave. All rights reserved.

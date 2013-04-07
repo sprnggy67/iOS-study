@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  PageViewer
 //
 //  Created by Dave on 2013-03-02.
@@ -10,9 +10,11 @@
 #import "ContentViewController.h"
 
 // The top level controller for the application. It contains a page view controller.
-@interface ViewController : UIViewController <UIPageViewControllerDataSource>
+@interface MainViewController : UIViewController <UIPageViewControllerDataSource>
 
-@property (strong, nonatomic) IBOutlet UILabel * progressLabel;
+@property (strong, nonatomic) NSMutableArray * articleList;
+
+-(void)setFirstVisibleIndex:(int)index;
 
 /*
  Launches the feed view controller

@@ -13,6 +13,8 @@
 @synthesize name;
 @synthesize url;
 
+#pragma mark - Init
+
 +(Feed *)feedFromDictionary:(NSDictionary *)dictionary {
     NSString * name = [dictionary objectForKey:@"name"];
     NSString * url = [dictionary objectForKey:@"url"];
@@ -31,6 +33,8 @@
     }
     return self;
 }
+
+#pragma mark - Converters
 
 -(NSDictionary *)toDictionary {
     NSMutableDictionary * result = [[NSMutableDictionary alloc] init];

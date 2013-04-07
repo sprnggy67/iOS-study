@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "LoadViewController.h"
 #import "FeedStore.h"
 #import "Feed.h"
 
@@ -21,11 +21,12 @@
     // Init the main window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    ViewController * rootView = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    // Create the loading view controller
+    LoadViewController * rootView = [[LoadViewController alloc] initWithNibName:@"LoadViewController" bundle:nil];
     self.navController = [[UINavigationController alloc] initWithRootViewController:rootView];
     self.window.rootViewController = self.navController;
     
-    // Init the feed store. This is the source of all visible data.
+    // Initialise the feed store. This is the source of all visible data.
     FeedStore * feedStore = [FeedStore singleton];
     if ([feedStore isEmpty] ) {
         [feedStore add:[[Feed alloc] initWithName:@"Multitouch Design" url:@"http://multitouchdesign.wordpress.com/feed/"]];

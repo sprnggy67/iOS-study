@@ -15,6 +15,8 @@
 @synthesize dictionary;
 @synthesize jsonData;
 
+#pragma mark - Init
+
 +(Article *)articleFromDictionary:(NSDictionary *)dict {
     NSString * value;
     Article * article = [[Article alloc] init];
@@ -47,6 +49,8 @@
     }
     return article;
 }
+
+#pragma mark - Utility
 
 -(NSString *)description {
     return [[NSString alloc] initWithFormat:@"Article %@, templateName %@, dictionary%@",

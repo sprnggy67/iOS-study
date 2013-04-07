@@ -24,6 +24,8 @@
 
 NSString *const TEMPLATE_VARIABLE = @"JSON_DATA_VARIABLE";
 
+#pragma mark - Init
+
 -(id)initWith:(NSString *)nameParam {
     self = [super init];
     if (self) {
