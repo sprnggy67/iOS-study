@@ -11,15 +11,22 @@
 
 @interface Article : NSObject
 
+@property (nonatomic, strong) NSString * source;
 @property (nonatomic, strong) NSString * templateName;
 @property (nonatomic, strong) NSString * headline;
 @property (nonatomic, strong) NSString * jsonData;
 @property (nonatomic, strong) NSDictionary * dictionary;
+@property (nonatomic, strong) NSDate * pubDate;
 
 /*
  Creates an article from a dictionary. 
  The dictionary must contain key value pairs for the headline, content, and templateName
  */
 +(Article *)articleFromDictionary:(NSDictionary *)dictionary;
+
+/*
+ Compares one article to another
+ */
+- (NSComparisonResult)compare:(Article *)otherObject;
 
 @end

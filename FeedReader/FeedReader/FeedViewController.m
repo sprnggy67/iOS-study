@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Dave. All rights reserved.
 //
 
-#import "NewFeedViewController.h"
+#import "FeedViewController.h"
 
-@interface NewFeedViewController ()
+@interface FeedViewController ()
 
 @end
 
-@implementation NewFeedViewController
+@implementation FeedViewController
 
 @synthesize feed;
 @synthesize name;
@@ -50,9 +50,14 @@
 
 -(IBAction)save:(id)sender {
     if (delegate != nil) {
-        feed.name = [name text];
-        feed.url = [url text];
-        [delegate didSaveFeed:feed];
+        if (feed == nil) {
+            feed = [[Feed alloc] initWithName:[name text] url:[url text]];
+            [delegate didCreateFeed:feed];
+        } else {
+            feed.name = [name text];
+            feed.url = [url text];
+            [delegate didModifyFeed:feed];
+        }
     }
     [[self navigationController] popViewControllerAnimated:YES];
 }

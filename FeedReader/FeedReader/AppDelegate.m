@@ -31,6 +31,7 @@
     if ([feedStore isEmpty] ) {
         [feedStore add:[[Feed alloc] initWithName:@"Multitouch Design" url:@"http://multitouchdesign.wordpress.com/feed/"]];
         [feedStore add:[[Feed alloc] initWithName:@"Herman Miller" url:@"http://www.hermanmiller.com/discover/feed/"]];
+        [feedStore add:[[Feed alloc] initWithName:@"Variety" url:@"http://variety.com/feed/"]];
     }
 
     [self.window makeKeyAndVisible];

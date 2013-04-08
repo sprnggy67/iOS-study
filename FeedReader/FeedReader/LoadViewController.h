@@ -13,5 +13,8 @@
 @interface LoadViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel * progressLabel;
+@property (strong, nonatomic) IBOutlet UIButton * reloadButton;
+
+-(IBAction)reload:(id)sender;
 
 @end

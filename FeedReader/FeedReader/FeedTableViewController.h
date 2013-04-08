@@ -8,7 +8,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NewFeedViewController.h"
+#import "FeedViewController.h"
 #import "FeedStore.h"
 
 @protocol FeedTableViewControllerDelegate <NSObject>
@@ -20,7 +20,7 @@
 
 @end
 
-@interface FeedTableViewController : UITableViewController <NewFeedViewControllerDelegate>
+@interface FeedTableViewController : UITableViewController <FeedViewControllerDelegate>
 
 @property (nonatomic, weak) id <FeedTableViewControllerDelegate> delegate;
 

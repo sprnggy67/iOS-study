@@ -10,7 +10,7 @@
 //
 
 #import "FeedTableViewController.h"
-#import "NewFeedViewController.h"
+#import "FeedViewController.h"
 #import "FeedStore.h"
 
 @interface FeedTableViewController () {
@@ -46,11 +46,17 @@
     self.navigationItem.rightBarButtonItem =
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                   target:self
-                                                  action:@selector(addStuff:)];
+                                                  action:@selector(openCreateVC:)];
     self.toolbarItems = [NSArray arrayWithObjects:self.editButtonItem,nil];
     self.navigationController.toolbarHidden = NO;
     
     self.feedStore = [FeedStore singleton];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    if (wasModified) {
+        [delegate didModifyTable:feedStore];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,8 +114,13 @@
 
 #pragma mark - Table view delegate
 
--(void)addStuff:(id)parameter {
-    NewFeedViewController *secondView = [[NewFeedViewController alloc] initWithNibName:@"NewFeedViewController" bundle:nil];
+-(void)openCreateVC:(id)parameter {
+    [self openFeedVC:NULL];
+}
+
+-(void)openFeedVC:(Feed *)feed {
+    FeedViewController *secondView = [[FeedViewController alloc] initWithNibName:@"FeedViewController" bundle:nil];
+    [secondView setFeed:feed];
     [secondView setDelegate:self];
     [[self navigationController] pushViewController:secondView animated:YES];
 }
@@ -121,17 +132,20 @@
     Feed * feed = [[feedStore feeds] objectAtIndex:index];
 
     // Open the child view controller
-    NewFeedViewController *secondView = [[NewFeedViewController alloc] initWithNibName:@"NewFeedViewController" bundle:nil];
-    [secondView setFeed:feed];
-    [secondView setDelegate:self];
-    [[self navigationController] pushViewController:secondView animated:YES];
+    [self openFeedVC:feed];
 }
 
 #pragma mark - New feed view delegate
 
-- (void)didSaveFeed:(Feed *)feed {
+- (void)didCreateFeed:(Feed *)feed {
+    [feedStore add:feed];
     [[self tableView] reloadData];
+    wasModified = YES;
+}
+
+- (void)didModifyFeed:(Feed *)feed {
     [feedStore write];
+    [[self tableView] reloadData];
     wasModified = YES;
 }
 

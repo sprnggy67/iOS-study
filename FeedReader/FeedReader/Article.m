@@ -10,10 +10,12 @@
 
 @implementation Article
 
+@synthesize source;
 @synthesize templateName;
 @synthesize headline;
 @synthesize dictionary;
 @synthesize jsonData;
+@synthesize pubDate;
 
 #pragma mark - Init
 
@@ -34,7 +36,15 @@
             return nil;
         }
         [article setTemplateName:value];
-        
+
+        value = [dict valueForKey:@"pubDate"];
+        if (value != nil) {
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss ZZ"];
+            NSDate *date = [dateFormatter dateFromString:value];
+            [article setPubDate:date];
+        }
+
         [article setDictionary:dict];
 
         // Create a JSON version of the object for rendering time.
@@ -51,6 +61,13 @@
 }
 
 #pragma mark - Utility
+
+- (NSComparisonResult)compare:(Article *)otherObject {
+    if (self.pubDate != nil && otherObject.pubDate != nil)
+        return [self.pubDate compare:otherObject.pubDate];
+    else
+        return [self.headline compare:otherObject.headline];
+}
 
 -(NSString *)description {
     return [[NSString alloc] initWithFormat:@"Article %@, templateName %@, dictionary%@",

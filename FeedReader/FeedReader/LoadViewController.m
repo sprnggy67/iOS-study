@@ -15,17 +15,25 @@
 @interface LoadViewController ()
 
 @property (strong, nonatomic) NSMutableArray * feedsToLoad;
+@property (strong, nonatomic) Feed * currentFeed;
 @property (strong, nonatomic) NSMutableData * receivedData;
 @property (strong, nonatomic) NSMutableArray * articleList;
+@property (strong, nonatomic) NSMutableString * progressText;
+
+-(void)appendProgressString:(NSString *)str;
+-(void)appendProgressFormat:(NSString *)format arg:(NSString *)arg;
 
 @end
 
 @implementation LoadViewController
 
 @synthesize progressLabel;
+@synthesize reloadButton;
 @synthesize feedsToLoad;
+@synthesize currentFeed;
 @synthesize receivedData;
 @synthesize articleList;
+@synthesize progressText;
 
 #pragma mark - Init
 
@@ -37,10 +45,27 @@
     [self readContentFeeds];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [self.navigationController setToolbarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)reload:(id)sender {
+    [self readContentFeeds];
 }
 
 /*
@@ -50,6 +75,10 @@
  all of the URLConnection code below.
  */
 -(void)readContentFeeds {
+    reloadButton.hidden = YES;
+    progressText = [[NSMutableString alloc] init];
+    progressLabel.text = progressText;
+    
     FeedStore * feedStore = [FeedStore singleton];
     self.feedsToLoad = [NSMutableArray arrayWithArray:feedStore.feeds];
     self.articleList = [[NSMutableArray alloc] init];
@@ -62,10 +91,11 @@
  */
 -(void)readNextContentFeed {
     if ([feedsToLoad count] > 0) {
-        Feed * nextFeed = [feedsToLoad objectAtIndex:0];
+        self.currentFeed = [feedsToLoad objectAtIndex:0];
         [feedsToLoad removeObjectAtIndex:0];
-        [self readContentFeed:nextFeed];
+        [self readContentFeed:currentFeed];
     } else {
+        self.currentFeed = nil;
         [self displayContent];
     }
 }
@@ -74,10 +104,14 @@
  Loads one feed
  */
 -(void)readContentFeed:(Feed *)feed {
+    // Update UI
+    [self appendProgressString:feed.name];
+    
     // Create the download request.
     NSURL * url = [NSURL URLWithString:feed.url];
     if (url == nil) {
-        [progressLabel setText:@"Unable to parse feed"];
+        [self appendProgressString:@"Unable to parse feed"];
+        [self readNextContentFeed];
         return;
     }
     NSURLRequest *theRequest = [NSURLRequest requestWithURL:url
@@ -88,9 +122,10 @@
     NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
     if (theConnection) {
         self.receivedData = [NSMutableData data];
-        [progressLabel setText:@"Connected"];
     } else {
-        [progressLabel setText:@"Unable to connect"];
+        [self appendProgressString:@"Unable to connect"];
+        [self readNextContentFeed];
+        return;
     }
 }
 
@@ -108,7 +143,6 @@
 {
     NSLog(@"connection didReceiveData");
     [receivedData appendData:data];
-    [progressLabel setText:[NSString stringWithFormat:@"Received %d bytes of data",[receivedData length]]];
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -117,7 +151,10 @@
     NSLog(@"connection didFailWithError: %@ %@",
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-    [progressLabel setText:[error localizedDescription]];
+    [self appendProgressString:@"Failed"];
+    
+    // Read the next feed in the list.
+    [self readNextContentFeed];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -128,20 +165,47 @@
     RSSNewsDataFactory * factory = [[RSSNewsDataFactory alloc] init];
     NSArray * newArticleList = [factory parseData:receivedData];
     if (newArticleList == nil) {
-        [progressLabel setText:@"Unable to parse feed content"];
+        [self appendProgressString:@"Unable to parse data"];
+        [self readNextContentFeed];
         return;
     }
 
+    // Set the source for each item.
+    for (Article * article in newArticleList) {
+        article.source = currentFeed.name;
+    }
+    
+    // Add the articles to our running list.
     [self.articleList addObjectsFromArray:newArticleList];
 
     // Read the next feed in the list.
     [self readNextContentFeed];
 }
 
+-(void)appendProgressString:(NSString *)str {
+    [progressText appendString:str];
+    [progressText appendString:@"\n"];
+    progressLabel.text = progressText;
+}
+
+-(void)appendProgressFormat:(NSString *)format arg:(NSString *)arg {
+    [progressText appendFormat:format, arg];
+    [progressText appendString:@"\n"];
+    progressLabel.text = progressText;
+}
+
 - (void)displayContent {
     ArticleTableViewController * secondView = [[ArticleTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [articleList sortUsingSelector:@selector(compare:)];
+    [articleList sortUsingComparator:^NSComparisonResult(id a, id b) {
+        Article * articleA = (Article*)a;
+        Article * articleB = (Article*)b;
+        return [articleB compare:articleA];
+    }];
     secondView.articleList = articleList;
     [[self navigationController] pushViewController:secondView animated:YES];
+
+    reloadButton.hidden = NO;
 }
 
 @end

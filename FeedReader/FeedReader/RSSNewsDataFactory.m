@@ -116,11 +116,21 @@
         return;
     }
     
+    if ( inItem && [elementName isEqualToString:@"pubDate"] ) {
+        [currentArticleAttributes setObject:currentStringValue forKey:@"pubDate"];
+        return;
+    }
+    
     if ( inItem && [elementName isEqualToString:@"content:encoded"] ) {
         [currentArticleAttributes setObject:currentStringValue forKey:@"body"];
         return;
     }
 
+    if ( inItem && [elementName isEqualToString:@"description"] ) {
+        [currentArticleAttributes setObject:currentStringValue forKey:@"description"];
+        return;
+    }
+    
     self.currentStringValue = nil;
 }
 

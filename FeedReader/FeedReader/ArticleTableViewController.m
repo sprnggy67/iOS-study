@@ -41,6 +41,12 @@
                                                   action:@selector(menuButtonPressed:)];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -74,6 +80,7 @@
     int index = [indexPath indexAtPosition:1];
     Article * article = [articleList objectAtIndex:index];
     cell.textLabel.text = article.headline;
+    cell.detailTextLabel.text = article.source;
     
     return cell;
 }

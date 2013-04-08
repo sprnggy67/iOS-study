@@ -12,8 +12,14 @@ function onLoad()
 {
 	if (inputData) {
 		document.getElementById("headline").innerHTML=inputData.headline;
-		document.getElementById("standFirst").innerHTML=inputData.standFirst;
-		document.getElementById("body").innerHTML=inputData.body;
+        if (inputData.standFirst)
+            document.getElementById("standFirst").innerHTML=inputData.standFirst;
+        else
+            document.getElementById("standFirst").innerHTML="";
+        if (inputData.body)
+            document.getElementById("body").innerHTML=inputData.body;
+        else if (inputData.description)
+            document.getElementById("body").innerHTML=inputData.description;
 	}
 	console.timeEnd("init");
 }
@@ -24,6 +30,7 @@ function onLoad()
     h1 {font-family:"Arial", Times, sans-serif; color:blue;}
     h2 {font-family:"Arial", Times, serif;}
     p {font-family:"Times New Roman", Times, serif;}
+    img {width:100%;}
 </style>
     
 </head>
