@@ -12,8 +12,6 @@
 
 @interface RSSNewsDataFactory : NSObject <NSXMLParserDelegate>
 
-+(void)test;
-
 /*
  Parses a string and returns the articles within it
  */

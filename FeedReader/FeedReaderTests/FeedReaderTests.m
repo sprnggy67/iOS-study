@@ -24,9 +24,9 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testThis
 {
-    STFail(@"Unit tests are not implemented yet in FeedReaderTests");
+    NSLog(@"In testThis");
 }
 
 @end

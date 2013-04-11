@@ -11,20 +11,6 @@
 
 @implementation NewsDataFactory
 
-#pragma mark - Test
-
-+(void)test {
-    NSObject *result = nil;
-    NewsDataFactory * factory = [[NewsDataFactory alloc] init];
-    
-    NSString * str = @"[{\"id\": \"1\", \"name\":\"Aaa\"}, {\"id\": \"2\", \"name\":\"Bbb\"}]";
-    result = [factory parseString:str];
-    NSLog(@"Result: %@", result);
-
-    result = [factory parseResource:@"ArticleList"];
-    NSLog(@"Result: %@", result);
-}
-
 #pragma mark - Parsers
 
 // Converts a string into an array of articles.

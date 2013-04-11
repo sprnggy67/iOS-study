@@ -12,8 +12,6 @@
 // Generates an array of articles from a resource file
 @interface NewsDataFactory : NSObject
 
-+(void)test;
-
 /*
  Parses a string to return an array of articles
  */

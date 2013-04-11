@@ -7,7 +7,17 @@
 //
 
 #import "RSSNewsDataFactoryTests.h"
+#import "RSSNewsDataFactory.h"
 
 @implementation RSSNewsDataFactoryTests
+
+- (void)testParseResource {
+    NSObject *result = nil;
+    RSSNewsDataFactory * factory = [[RSSNewsDataFactory alloc] init];
+    result = [factory parseResource:@"ArticleList"];
+//    result = [factory parseResource:@"RSSNewsDataFactoryTestData"];
+    STAssertNotNil(result, @"parseResource result is nil");
+}
+
 
 @end
