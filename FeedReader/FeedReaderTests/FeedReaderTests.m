@@ -1,14 +1,14 @@
 //
-//  PageViewerTests.m
-//  PageViewerTests
+//  FeedReaderTests.m
+//  FeedReaderTests
 //
-//  Created by Dave on 2013-03-02.
+//  Created by Dave on 2013-04-11.
 //  Copyright (c) 2013 Dave. All rights reserved.
 //
 
-#import "PageViewerTests.h"
+#import "FeedReaderTests.h"
 
-@implementation PageViewerTests
+@implementation FeedReaderTests
 
 - (void)setUp
 {
@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in PageViewerTests");
+    STFail(@"Unit tests are not implemented yet in FeedReaderTests");
 }
 
 @end
