@@ -14,8 +14,7 @@
 - (void)testParseResource {
     NSObject *result = nil;
     RSSNewsDataFactory * factory = [[RSSNewsDataFactory alloc] init];
-    result = [factory parseResource:@"ArticleList"];
-//    result = [factory parseResource:@"RSSNewsDataFactoryTestData"];
+    result = [factory parseResource:@"RSSNewsDataFactoryTestData" fromBundle: [NSBundle bundleForClass:[self class]]];
     STAssertNotNil(result, @"parseResource result is nil");
 }
 

@@ -36,7 +36,13 @@
 
 // Reads a set of articles from a resource.
 -(NSArray *)parseResource:(NSString*)name {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:name ofType:@"rss"];
+    return [self parseResource:name fromBundle:[NSBundle mainBundle]];
+}
+
+
+// Reads a set of articles from a resource.
+-(NSArray *)parseResource:(NSString*)name fromBundle:(NSBundle *) bundle {
+    NSString *filePath = [bundle pathForResource:name ofType:@"rss"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     if (data == nil) {
         NSLog(@"Unable to read file: %@", filePath);
@@ -44,6 +50,7 @@
     }
     return [self parseData:data];
 }
+
 
 -(NSArray *)parseData:(NSData*)data {
     // Init the result data.
