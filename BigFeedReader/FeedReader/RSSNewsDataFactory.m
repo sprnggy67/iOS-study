@@ -12,11 +12,12 @@
 @interface RSSNewsDataFactory ()
 {
     BOOL inItem;
+    BOOL debug;
 }
 
 @property (strong, nonatomic) NSMutableArray * results;
 @property (strong, nonatomic) NSMutableDictionary * currentArticleAttributes;
-@property (strong, nonatomic) NSString * currentStringValue;
+@property (strong, nonatomic) NSMutableString * currentStringValue;
 
 @end
 
@@ -81,28 +82,43 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
     qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
+    if (debug)
+        NSLog(@"didStartElement: %@", elementName);
+
     if ( [elementName isEqualToString:@"item"]) {
         inItem = TRUE;
         self.currentArticleAttributes = [[NSMutableDictionary alloc] init];
         [currentArticleAttributes setObject:@"ArticleTemplate" forKey:@"templateName"];
         return;
     }
+    
+    self.currentStringValue = [[NSMutableString alloc] init];
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    self.currentStringValue = string;
+    if (debug)
+        NSLog(@"foundCharacters: %@", string);
+
+    [self.currentStringValue appendString:string];
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
     qualifiedName:(NSString *)qName
 {
+    if (debug) {
+        NSLog(@"didEndElement: %@", elementName);
+        NSLog(@"The currentStringValue is: %@", self.currentStringValue);
+    }
+    
     if ( [elementName isEqualToString:@"item"] ) {
         Article * article = [Article articleFromDictionary:currentArticleAttributes];
         if (article != NULL) {
             [results addObject:article];
-            NSLog(@"Found article %@", [article headline]);
+            if (debug) {
+                NSLog(@"Found article %@", [article headline]);
+            }
         } else {
-            NSLog(@"Could not parse article");
+            NSLog(@"Could not parse article %@", currentArticleAttributes);
         }
         self.currentArticleAttributes = nil;
         inItem = FALSE;
@@ -128,8 +144,8 @@
         [currentArticleAttributes setObject:currentStringValue forKey:@"description"];
         return;
     }
-    
-    self.currentStringValue = nil;
+      
+    self.currentStringValue = [[NSMutableString alloc] init];
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {

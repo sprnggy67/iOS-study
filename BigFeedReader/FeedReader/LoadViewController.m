@@ -39,8 +39,6 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"LoadViewController.viewDidLoad entered");
-    
     [super viewDidLoad];
     
     // Change these lines to get a d
@@ -48,6 +46,7 @@
     if (proceedNormally) {
         [self readContentFeeds];
     } else {
+        NSLog(@"LoadViewController stopped in viewDidLoad");
         progressLabel.text = @"";
         [reloadButton setHidden:TRUE];
     }
@@ -114,6 +113,7 @@
 -(void)readContentFeed:(Feed *)feed {
     // Update UI
     [self appendProgressString:feed.name];
+    NSLog(@"readContentFeed %@ %@", feed.name, feed.url);
     
     // Create the download request.
     NSURL * url = [NSURL URLWithString:feed.url];
@@ -143,13 +143,11 @@
     // has enough information to create the NSURLResponse.
     // It can be called multiple times, for example in the case of a
     // redirect, so each time we reset the data.
-    NSLog(@"connection didReceiveResponse");
     [receivedData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    NSLog(@"connection didReceiveData");
     [receivedData appendData:data];
 }
 
@@ -167,8 +165,6 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSLog(@"connection connectionDidFinishLoading. Received %d bytes of data",[receivedData length]);
-
     // Parse the feed
     RSSNewsDataFactory * factory = [[RSSNewsDataFactory alloc] init];
     NSArray * newArticleList = [factory parseData:receivedData];

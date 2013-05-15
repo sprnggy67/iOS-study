@@ -41,8 +41,13 @@
         if (value != nil) {
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss ZZ"];
-            NSDate *date = [dateFormatter dateFromString:value];
-            [article setPubDate:date];
+            NSDate *date;
+            NSError *error;
+            if ([dateFormatter getObjectValue:&date forString:value range:nil error:&error]) {
+                [article setPubDate:date];
+            } else {
+                NSLog(@"Date '%@' could not be parsed: %@", value, error);
+            }
         }
 
         [article setDictionary:dict];
