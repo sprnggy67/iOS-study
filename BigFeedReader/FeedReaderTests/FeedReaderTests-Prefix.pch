@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'FeedReaderTests' target in the 'FeedReaderTests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
