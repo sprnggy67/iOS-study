@@ -56,6 +56,8 @@
         [webView loadHTMLString:@"Could not load template"
                         baseURL:[NSURL URLWithString:@""]];
         return;
+    } else {
+        NSLog(@"Loaded template: %@", templateName);
     }
 
     // Inject the article data into the template and display it.

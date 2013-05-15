@@ -38,7 +38,6 @@
 		555F55071743721100124DA1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDD16E1DD420083AF02 /* UIKit.framework */; };
 		555F55081743721100124DA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDF16E1DD420083AF02 /* Foundation.framework */; };
 		555F55091743721100124DA1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BE116E1DD420083AF02 /* CoreGraphics.framework */; };
-		555F550B1743721100124DA1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55791BE616E1DD420083AF02 /* InfoPlist.strings */; };
 		555F550F1743721100124DA1 /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 55791C1D16E1E6DD0083AF02 /* Notes */; };
 		555F55101743721100124DA1 /* ArticleList.json in Resources */ = {isa = PBXBuildFile; fileRef = 55A69A3116E71FDE00D846EC /* ArticleList.json */; };
 		555F55111743721100124DA1 /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = 551F7D2E16F5AA1F00D7F4B0 /* Templates */; };
@@ -58,10 +57,10 @@
 		555F555E17438B8900124DA1 /* LoadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555F5553174386B400124DA1 /* LoadViewController.xib */; };
 		555F556017438EC500124DA1 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 555F555F17438EC500124DA1 /* Default-Portrait@2x~ipad.png */; };
 		555F556217438ECC00124DA1 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 555F556117438ECC00124DA1 /* Default-Portrait~ipad.png */; };
+		555F5564174390BA00124DA1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 555F5563174390BA00124DA1 /* InfoPlist.strings */; };
 		55791BDE16E1DD420083AF02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDD16E1DD420083AF02 /* UIKit.framework */; };
 		55791BE016E1DD420083AF02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDF16E1DD420083AF02 /* Foundation.framework */; };
 		55791BE216E1DD420083AF02 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BE116E1DD420083AF02 /* CoreGraphics.framework */; };
-		55791BE816E1DD420083AF02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55791BE616E1DD420083AF02 /* InfoPlist.strings */; };
 		55791BEA16E1DD420083AF02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55791BE916E1DD420083AF02 /* main.m */; };
 		55791BEE16E1DD420083AF02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55791BED16E1DD420083AF02 /* AppDelegate.m */; };
 		55791BF716E1DD420083AF02 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55791BF616E1DD420083AF02 /* MainViewController.m */; };
@@ -119,14 +118,13 @@
 		555F5559174388C900124DA1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		555F555F17438EC500124DA1 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		555F556117438ECC00124DA1 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		555F5563174390BA00124DA1 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		55791BDA16E1DD420083AF02 /* FeedReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55791BDD16E1DD420083AF02 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		55791BDF16E1DD420083AF02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55791BE116E1DD420083AF02 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		55791BE516E1DD420083AF02 /* FeedReader-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FeedReader-Info.plist"; sourceTree = "<group>"; };
-		55791BE716E1DD420083AF02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55791BE916E1DD420083AF02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		55791BEB16E1DD420083AF02 /* FeedReader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedReader-Prefix.pch"; sourceTree = "<group>"; };
 		55791BEC16E1DD420083AF02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		55791BED16E1DD420083AF02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		55791BF516E1DD420083AF02 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -302,16 +300,15 @@
 		55791BE416E1DD420083AF02 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				555F5563174390BA00124DA1 /* InfoPlist.strings */,
 				555570761712BB7000FED58C /* background.png */,
 				555570741712BB6900FED58C /* wildfire_logo_transparent.png */,
 				551F7D2E16F5AA1F00D7F4B0 /* Templates */,
 				55A69A3116E71FDE00D846EC /* ArticleList.json */,
 				55791BE516E1DD420083AF02 /* FeedReader-Info.plist */,
-				55791BE616E1DD420083AF02 /* InfoPlist.strings */,
 				55791BE916E1DD420083AF02 /* main.m */,
-				55791BEB16E1DD420083AF02 /* FeedReader-Prefix.pch */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		55C377C817168C66002E5B56 /* FeedReaderTests */ = {
@@ -427,7 +424,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				555F550B1743721100124DA1 /* InfoPlist.strings in Resources */,
 				555F550F1743721100124DA1 /* Notes in Resources */,
 				555F55101743721100124DA1 /* ArticleList.json in Resources */,
 				555F55111743721100124DA1 /* Templates in Resources */,
@@ -449,7 +445,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55791BE816E1DD420083AF02 /* InfoPlist.strings in Resources */,
 				55791BFA16E1DD420083AF02 /* MainViewController.xib in Resources */,
 				55791C1C16E1DDB00083AF02 /* ContentViewController.xib in Resources */,
 				55791C1E16E1E6DD0083AF02 /* Notes in Resources */,
@@ -465,6 +460,7 @@
 				555F554C1743801F00124DA1 /* icon.png in Resources */,
 				555F554E1743802700124DA1 /* icon_114.png in Resources */,
 				555F555A174388C900124DA1 /* Default-568h@2x.png in Resources */,
+				555F5564174390BA00124DA1 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,14 +575,6 @@
 			name = MainViewController.xib;
 			sourceTree = "<group>";
 		};
-		55791BE616E1DD420083AF02 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55791BE716E1DD420083AF02 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		55791BF816E1DD420083AF02 /* MainViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -611,7 +599,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/FeedReader-iPad-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/Resources-iPad/FeedReader-iPad-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "FeedReader-iPad";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -624,7 +612,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/FeedReader-iPad-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/Resources-iPad/FeedReader-iPad-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "FeedReader-iPad";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -693,7 +681,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/FeedReader-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/Resources-iPhone/FeedReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = FeedReader;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -706,7 +694,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/FeedReader-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/Resources-iPhone/FeedReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = FeedReader;
 				TARGETED_DEVICE_FAMILY = 1;
