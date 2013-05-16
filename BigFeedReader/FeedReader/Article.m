@@ -13,7 +13,6 @@
 @synthesize source;
 @synthesize templateName;
 @synthesize headline;
-@synthesize dictionary;
 @synthesize jsonData;
 @synthesize pubDate;
 
@@ -31,11 +30,9 @@
         [article setHeadline:value];
 
         value = [dict valueForKey:@"templateName"];
-        if (value == nil) {
-            NSLog(@"Article does not have a templateName");
-            return nil;
+        if (value != nil) {
+            [article setTemplateName:value];
         }
-        [article setTemplateName:value];
 
         value = [dict valueForKey:@"pubDate"];
         if (value != nil) {
@@ -50,12 +47,11 @@
             }
         }
 
-        [article setDictionary:dict];
-
         // Create a JSON version of the object for rendering time.
         NSError *e;
         NSData * data = [NSJSONSerialization dataWithJSONObject: dict options: NSJSONWritingPrettyPrinted error: &e];
         if (data == nil) {
+            NSLog(@"Could not serialize json.  Error: %@", e);
             return nil;
         } else {
             [article setJsonData:[[NSString alloc] initWithData:data
@@ -64,6 +60,35 @@
     }
     return article;
 }
+
+/*
+ Creates an navigation article from a set of child articles.
+ */
++(Article *)articleWithHeadline:(NSString *)headline template:(NSString *)templateName withChildren:(NSArray *)children {
+    Article * article = [[Article alloc] init];
+    if (article) {
+        // Store the key properties
+        [article setHeadline:headline];
+        [article setTemplateName:templateName];
+        [article setPubDate:[NSDate date]];
+        
+        // Generate the json data.
+        NSMutableString * jsonData = [[NSMutableString alloc] init];
+        [jsonData appendString:@"{"];
+        [jsonData appendFormat:@"\"headline\":\'%@\',", headline];
+        [jsonData appendFormat:@"\"children\":["];
+        for (Article * child in children) {
+            NSString * json = child.jsonData;
+            [jsonData appendString:json];
+            [jsonData appendFormat:@","];
+        }
+        [jsonData appendFormat:@"]"];
+        [jsonData appendFormat:@"}"];
+        [article setJsonData:jsonData];
+    }
+    return article;
+}
+
 
 #pragma mark - Utility
 
@@ -75,10 +100,9 @@
 }
 
 -(NSString *)description {
-    return [[NSString alloc] initWithFormat:@"Article %@, templateName %@, dictionary%@",
+    return [[NSString alloc] initWithFormat:@"Article %@, templateName %@",
             self.headline,
-            self.templateName,
-            self.dictionary];
+            self.templateName];
 }
 
 

@@ -11,17 +11,22 @@
 #import "RSSNewsDataFactory.h"
 #import "Downloader.h"
 #import "ArticleTableViewController.h"
+#import "Section.h"
 
 @interface LoadViewController ()
 
 @property (strong, nonatomic) NSMutableArray * feedsToLoad;
 @property (strong, nonatomic) Feed * currentFeed;
 @property (strong, nonatomic) NSMutableData * receivedData;
+@property (strong, nonatomic) NSMutableArray * sectionList;
 @property (strong, nonatomic) NSMutableArray * articleList;
 @property (strong, nonatomic) NSMutableString * progressText;
 
 -(void)appendProgressString:(NSString *)str;
 -(void)appendProgressFormat:(NSString *)format arg:(NSString *)arg;
+-(void)displayContent;
+-(void)sortContentByPubDate;
+-(void)insertNavigationPages;
 
 @end
 
@@ -88,6 +93,7 @@
     
     FeedStore * feedStore = [FeedStore singleton];
     self.feedsToLoad = [NSMutableArray arrayWithArray:feedStore.feeds];
+    self.sectionList = [[NSMutableArray alloc] init];
     self.articleList = [[NSMutableArray alloc] init];
     [self readNextContentFeed];
 }
@@ -174,7 +180,11 @@
         return;
     }
 
-    // Set the source for each item.
+    // Create a section.
+    Section * section = [[Section alloc] init:currentFeed.name start:[self.articleList count] length:[newArticleList count]];
+    [self.sectionList addObject:section];
+    
+    // Set the source for each article.
     for (Article * article in newArticleList) {
         article.source = currentFeed.name;
     }
@@ -199,17 +209,44 @@
 }
 
 - (void)displayContent {
+    // Prepare the content
+    // [self sortContentByPubDate];
+    [self insertNavigationPages];
+    
+    // Load it into the article table view.
     ArticleTableViewController * secondView = [[ArticleTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    [articleList sortUsingSelector:@selector(compare:)];
-    [articleList sortUsingComparator:^NSComparisonResult(id a, id b) {
-        Article * articleA = (Article*)a;
-        Article * articleB = (Article*)b;
-        return [articleB compare:articleA];
-    }];
     secondView.articleList = articleList;
     [[self navigationController] pushViewController:secondView animated:YES];
 
     reloadButton.hidden = NO;
 }
+
+-(void)sortContentByPubDate {
+    [articleList sortUsingComparator:^NSComparisonResult(id a, id b) {
+        Article * articleA = (Article*)a;
+        Article * articleB = (Article*)b;
+        return [articleB compare:articleA];
+    }];
+}
+
+-(void)insertNavigationPages {
+    int sectionCount = [self.sectionList count];
+    int offset = 0;
+    
+    // Create a front page.
+    if (sectionCount > 0) {
+        NSMutableArray * children = [NSMutableArray arrayWithCapacity:sectionCount];
+        for (Section * section in self.sectionList) {
+            Article * article = [self.articleList objectAtIndex:section.start];
+            [children addObject:article];
+        }
+        Article * frontPage = [Article articleWithHeadline:@"Front" template:@"dynamicTemplate" withChildren:children];
+        [self.articleList insertObject:frontPage atIndex:0];
+        offset ++;
+    }
+    
+    // Create a front page for every section.
+}
+
 
 @end

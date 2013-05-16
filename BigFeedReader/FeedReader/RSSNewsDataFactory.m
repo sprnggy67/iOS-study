@@ -141,10 +141,20 @@
     }
 
     if ( inItem && [elementName isEqualToString:@"description"] ) {
-        [currentArticleAttributes setObject:currentStringValue forKey:@"description"];
+        [currentArticleAttributes setObject:currentStringValue forKey:@"standFirst"];
         return;
     }
       
+    if ( inItem && [elementName isEqualToString:@"author"] ) {
+        [currentArticleAttributes setObject:currentStringValue forKey:@"byline"];
+        return;
+    }
+    
+    if ( inItem && [elementName isEqualToString:@"dc:creator"] ) {
+        [currentArticleAttributes setObject:currentStringValue forKey:@"byline"];
+        return;
+    }
+    
     self.currentStringValue = [[NSMutableString alloc] init];
 }
 

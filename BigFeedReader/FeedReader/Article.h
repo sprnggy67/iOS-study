@@ -15,7 +15,6 @@
 @property (nonatomic, strong) NSString * templateName;
 @property (nonatomic, strong) NSString * headline;
 @property (nonatomic, strong) NSString * jsonData;
-@property (nonatomic, strong) NSDictionary * dictionary;
 @property (nonatomic, strong) NSDate * pubDate;
 
 /*
@@ -23,6 +22,11 @@
  The dictionary must contain key value pairs for the headline, content, and templateName
  */
 +(Article *)articleFromDictionary:(NSDictionary *)dictionary;
+
+/*
+ Creates an navigation article from a set of child articles.
+ */
++(Article *)articleWithHeadline:(NSString *)headline template:(NSString *)templateName withChildren:(NSArray *)children;
 
 /*
  Compares one article to another
