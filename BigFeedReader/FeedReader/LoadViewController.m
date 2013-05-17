@@ -242,10 +242,24 @@
         }
         Article * frontPage = [Article articleWithHeadline:@"Front" template:@"dynamicTemplate" withChildren:children];
         [self.articleList insertObject:frontPage atIndex:0];
+        
         offset ++;
     }
     
     // Create a front page for every section.
+    for (Section * section in self.sectionList) {
+        NSMutableArray * children = [NSMutableArray arrayWithCapacity:3];
+        int articleIndex = section.start + offset;
+        int count = (section.length < 3) ? section.length : 3;
+        for (int x = 0; x < count; x++) {
+            Article * article = [self.articleList objectAtIndex:(articleIndex + x)];
+            [children addObject:article];
+        }
+        Article * frontPage = [Article articleWithHeadline:section.name template:@"dynamicTemplate" withChildren:children];
+        [self.articleList insertObject:frontPage atIndex:(section.start + offset)];
+        
+        offset ++;
+    }
 }
 
 

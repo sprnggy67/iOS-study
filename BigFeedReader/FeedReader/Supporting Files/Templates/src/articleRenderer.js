@@ -44,10 +44,25 @@ ds.ArticleRenderer.initialised = false;
 
  This method clones the template and then injects the article data into the template.
  This combined set of data is then used to render the HTML.
+
+ Options can contain the following:
+ {
+	orientation: portrait or landscape
+	width: in pixels
+	height: in pixels
+ }
  */
-ds.ArticleRenderer.prototype.renderPage = function(template, article, context) {
+ds.ArticleRenderer.prototype.renderPage = function(template, article, options) {
 	// Get the active layout.
-	var layout = ds.template.getActiveLayout(template, context);
+	var layout = ds.template.getActiveLayout(template, options);
+
+	// Transfer the options
+	if (options) {
+		if (options.width)
+			layout.width = options.width;
+		if (options.height)
+			layout.height = options.height;
+	}
 
 	// Clone the template and add article data to it.
 	// This gives us a single model which can be passed to the jsRender renderer.
@@ -68,10 +83,17 @@ ds.ArticleRenderer.prototype.renderPage = function(template, article, context) {
 
  This method clones the template and then injects the article data into the template.
  This combined set of data is then used to render the HTML.
+
+ Options can contain the following:
+ {
+	orientation: portrait or landscape
+	width: in pixels
+	height: in pixels
+ }
  */
-ds.ArticleRenderer.prototype.renderBody = function(template, article, context) {
-	var layout = ds.template.getActiveLayout(template, context);
-	return this.renderComponent(layout, article);
+ds.ArticleRenderer.prototype.renderBody = function(template, article, options) {
+	var layout = ds.template.getActiveLayout(template, options);
+	return this.renderComponent(layout, article, options);
 };
 
 /**
@@ -81,8 +103,23 @@ ds.ArticleRenderer.prototype.renderBody = function(template, article, context) {
 
  This method clones the template and then injects the article data into the template.
  This combined set of data is then used to render the HTML.
+ 
+ Options can contain the following:
+ {
+	orientation: portrait or landscape
+	width: in pixels
+	height: in pixels
+ }
  */
-ds.ArticleRenderer.prototype.renderComponent = function(component, article) {
+ds.ArticleRenderer.prototype.renderComponent = function(component, article, options) {
+	// Transfer the options
+	if (options) {
+		if (options.width)
+			component.width = options.width;
+		if (options.height)
+			component.height = options.height;
+	}
+	
 	// Clone the component and add article data to it.
 	// This gives us a single model which can be passed to the jsRender renderer.
 	var inputData = JSON.parse(JSON.stringify(component));
