@@ -39,7 +39,6 @@
 		555F55081743721100124DA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDF16E1DD420083AF02 /* Foundation.framework */; };
 		555F55091743721100124DA1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BE116E1DD420083AF02 /* CoreGraphics.framework */; };
 		555F550F1743721100124DA1 /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 55791C1D16E1E6DD0083AF02 /* Notes */; };
-		555F55101743721100124DA1 /* ArticleList.json in Resources */ = {isa = PBXBuildFile; fileRef = 55A69A3116E71FDE00D846EC /* ArticleList.json */; };
 		555F55111743721100124DA1 /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = 551F7D2E16F5AA1F00D7F4B0 /* Templates */; };
 		555F55141743721100124DA1 /* ArticleTableViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 55D0F5931711585900AF68FD /* ArticleTableViewController.h */; };
 		555F55161743721100124DA1 /* wildfire_logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 555570741712BB6900FED58C /* wildfire_logo_transparent.png */; };
@@ -72,7 +71,6 @@
 		559534D816FD8D490059FCF4 /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = 559534D716FD8D490059FCF4 /* Template.m */; };
 		55A69A2F16E71FB300D846EC /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A69A2C16E71FB300D846EC /* Article.m */; };
 		55A69A3016E71FB300D846EC /* NewsDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A69A2E16E71FB300D846EC /* NewsDataFactory.m */; };
-		55A69A3216E71FDE00D846EC /* ArticleList.json in Resources */ = {isa = PBXBuildFile; fileRef = 55A69A3116E71FDE00D846EC /* ArticleList.json */; };
 		55B944701744D71C001BFCA5 /* ArticleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B9446F1744D71C001BFCA5 /* ArticleTests.m */; };
 		55C377C517168C66002E5B56 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791C0116E1DD420083AF02 /* SenTestingKit.framework */; };
 		55C377C617168C66002E5B56 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDD16E1DD420083AF02 /* UIKit.framework */; };
@@ -146,7 +144,6 @@
 		55A69A2C16E71FB300D846EC /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		55A69A2D16E71FB300D846EC /* NewsDataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDataFactory.h; sourceTree = "<group>"; };
 		55A69A2E16E71FB300D846EC /* NewsDataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDataFactory.m; sourceTree = "<group>"; };
-		55A69A3116E71FDE00D846EC /* ArticleList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ArticleList.json; sourceTree = "<group>"; };
 		55B9446E1744D71B001BFCA5 /* ArticleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleTests.h; sourceTree = "<group>"; };
 		55B9446F1744D71C001BFCA5 /* ArticleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTests.m; sourceTree = "<group>"; };
 		55C377C417168C66002E5B56 /* FeedReaderTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedReaderTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,7 +310,6 @@
 				555570761712BB7000FED58C /* background.png */,
 				555570741712BB6900FED58C /* wildfire_logo_transparent.png */,
 				551F7D2E16F5AA1F00D7F4B0 /* Templates */,
-				55A69A3116E71FDE00D846EC /* ArticleList.json */,
 				55791BE516E1DD420083AF02 /* FeedReader-Info.plist */,
 				55791BE916E1DD420083AF02 /* main.m */,
 			);
@@ -436,7 +432,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				555F550F1743721100124DA1 /* Notes in Resources */,
-				555F55101743721100124DA1 /* ArticleList.json in Resources */,
 				555F55111743721100124DA1 /* Templates in Resources */,
 				555F55141743721100124DA1 /* ArticleTableViewController.h in Resources */,
 				555F55161743721100124DA1 /* wildfire_logo_transparent.png in Resources */,
@@ -459,7 +454,6 @@
 				55791BFA16E1DD420083AF02 /* MainViewController.xib in Resources */,
 				55791C1C16E1DDB00083AF02 /* ContentViewController.xib in Resources */,
 				55791C1E16E1E6DD0083AF02 /* Notes in Resources */,
-				55A69A3216E71FDE00D846EC /* ArticleList.json in Resources */,
 				551F7D2F16F5AA1F00D7F4B0 /* Templates in Resources */,
 				552115C6170D4D3A0097BD53 /* FeedViewController.xib in Resources */,
 				55D0F5941711585900AF68FD /* ArticleTableViewController.h in Resources */,

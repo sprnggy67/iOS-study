@@ -88,7 +88,8 @@
     if ( [elementName isEqualToString:@"item"]) {
         inItem = TRUE;
         self.currentArticleAttributes = [[NSMutableDictionary alloc] init];
-        [currentArticleAttributes setObject:@"ArticleTemplate" forKey:@"templateName"];
+        [currentArticleAttributes setObject:@"dynamicTemplate" forKey:@"templateName"];
+        [currentArticleAttributes setObject:@"standardArticle" forKey:@"subTemplateName"];
         return;
     }
     

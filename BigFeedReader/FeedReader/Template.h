@@ -24,4 +24,9 @@
  */
 -(NSString *)load:(NSString *)contents;
 
+/*
+ Injects an article and a subtemplate into a template and returns the final HTML
+ */
+-(NSString *)load:(NSString *)contents subTemplate:(NSString *)subTemplateName;
+
 @end

@@ -63,13 +63,15 @@
 
     // Create the article.
     Article * result = [Article articleWithHeadline:@"best of times"
-                                           template:@"t2"
+                                           template:@"dynamicTemplate"
+                                        subTemplate:@"bestOfTimes"
                                        withChildren:children];
 
     // Test the article.
     STAssertNotNil(result, @"articleWithHeadline returned nil");
     STAssertEqualObjects(result.headline, @"best of times", @"headline is incorrect");
-    STAssertEqualObjects(result.templateName, @"t2", @"template is incorrect");
+    STAssertEqualObjects(result.templateName, @"dynamicTemplate", @"template is incorrect");
+    STAssertEqualObjects(result.subTemplateName, @"bestOfTimes", @"template is incorrect");
     STAssertNotNil(result.jsonData, @"jsonData is nil");
 }
 

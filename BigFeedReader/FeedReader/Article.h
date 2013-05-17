@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSString * source;
 @property (nonatomic, strong) NSString * templateName;
+@property (nonatomic, strong) NSString * subTemplateName;
 @property (nonatomic, strong) NSString * headline;
 @property (nonatomic, strong) NSString * jsonData;
 @property (nonatomic, strong) NSDate * pubDate;
@@ -26,7 +27,8 @@
 /*
  Creates an navigation article from a set of child articles.
  */
-+(Article *)articleWithHeadline:(NSString *)headline template:(NSString *)templateName withChildren:(NSArray *)children;
++(Article *)articleWithHeadline:(NSString *)headline template:(NSString *)templateName
+    subTemplate:(NSString *)subTemplateName withChildren:(NSArray *)children;
 
 /*
  Compares one article to another

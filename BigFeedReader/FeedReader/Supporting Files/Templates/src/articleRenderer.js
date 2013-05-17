@@ -366,6 +366,9 @@ ds.ArticleRenderer.prototype._linkRealData = function(component, article) {
 };
 
 ds.ArticleRenderer.prototype._findData = function(obj, path) {
+	if (path == "#root")
+		return obj;
+	
 	var paths = path.split('.');
 	var current = obj;
 	var i;

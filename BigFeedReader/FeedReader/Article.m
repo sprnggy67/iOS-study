@@ -12,6 +12,7 @@
 
 @synthesize source;
 @synthesize templateName;
+@synthesize subTemplateName;
 @synthesize headline;
 @synthesize jsonData;
 @synthesize pubDate;
@@ -34,6 +35,11 @@
             [article setTemplateName:value];
         }
 
+        value = [dict valueForKey:@"subTemplateName"];
+        if (value != nil) {
+            [article setSubTemplateName:value];
+        }
+        
         value = [dict valueForKey:@"pubDate"];
         if (value != nil) {
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -64,13 +70,15 @@
 /*
  Creates an navigation article from a set of child articles.
  */
-+(Article *)articleWithHeadline:(NSString *)headline template:(NSString *)templateName withChildren:(NSArray *)children {
++(Article *)articleWithHeadline:(NSString *)headline template:(NSString *)templateName
+                    subTemplate:(NSString *)subTemplateName withChildren:(NSArray *)children {
     Article * article = [[Article alloc] init];
     if (article) {
         // Store the key properties
         [article setHeadline:headline];
         [article setTemplateName:templateName];
         [article setPubDate:[NSDate date]];
+        [article setSubTemplateName:subTemplateName];
         
         // Generate the json data.
         NSMutableString * jsonData = [[NSMutableString alloc] init];

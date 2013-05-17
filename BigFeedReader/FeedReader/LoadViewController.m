@@ -240,7 +240,10 @@
             Article * article = [self.articleList objectAtIndex:section.start];
             [children addObject:article];
         }
-        Article * frontPage = [Article articleWithHeadline:@"Front" template:@"dynamicTemplate" withChildren:children];
+        Article * frontPage = [Article articleWithHeadline:@"Front"
+                                                  template:@"dynamicTemplate"
+                                               subTemplate:@"front3"
+                                              withChildren:children];
         [self.articleList insertObject:frontPage atIndex:0];
         
         offset ++;
@@ -255,7 +258,10 @@
             Article * article = [self.articleList objectAtIndex:(articleIndex + x)];
             [children addObject:article];
         }
-        Article * frontPage = [Article articleWithHeadline:section.name template:@"dynamicTemplate" withChildren:children];
+        Article * frontPage = [Article articleWithHeadline:section.name
+                                                  template:@"dynamicTemplate"
+                                               subTemplate:@"front3"
+                                              withChildren:children];
         [self.articleList insertObject:frontPage atIndex:(section.start + offset)];
         
         offset ++;

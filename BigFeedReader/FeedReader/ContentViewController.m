@@ -50,6 +50,7 @@
     
     // Get the article template
     NSString * templateName = [article templateName];
+    NSString * subTemplateName = [article subTemplateName];
     Template * template = [templateFactory template:templateName];
     if (template == nil) {
         NSLog(@"Could not load template: %@", templateName);
@@ -61,7 +62,7 @@
     }
 
     // Inject the article data into the template and display it.
-    NSString * contents = [template load:[article jsonData]];
+    NSString * contents = [template load:[article jsonData] subTemplate:subTemplateName];
     NSString * path = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/Templates"];
     NSURL * pathURL = [NSURL fileURLWithPath:path];
     [webView loadHTMLString:contents

@@ -1,57 +1,5 @@
 var defaultTemplates = {
 
-	"empty" : {
-		targets: [
-			{
-				name:"default",
-				layout: {
-					uniqueID:"defaultRoot",
-					componentType:"grid",
-					width:600, 
-					height:800,
-					rows:4, 
-					columns:3,
-					rowGutter:10,
-					columnGutter:10,
-					children: [
-					]
-				},
-			}
-		]
-	},
-
-	"emptyResponsive" : {
-		targets: [
-			{
-				name:"default",
-				portraitLayout: {
-					uniqueID:"portraitRoot",
-					componentType:"grid",
-					width:600, 
-					height:800,
-					rows:4, 
-					columns:3,
-					rowGutter:10,
-					columnGutter:10,
-					children: [
-					]
-				},
-				landscapeLayout: {
-					uniqueID:"landscapeRoot",
-					componentType:"grid",
-					width:800, 
-					height:600,
-					rows:3, 
-					columns:4,
-					rowGutter:10,
-					columnGutter:10,
-					children: [
-					]
-				},
-			}
-		]
-	},
-
 	"front3": {
 		targets: [ {
 			name:"default",
