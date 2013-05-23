@@ -58,18 +58,20 @@ function require(file, callback) {
 	script.parentNode.insertBefore(newjs, script);
 }
 
+var MARGIN = 10;
+
 function renderArticle() {
 	console.time("renderPage");
 	var renderer = new ds.ArticleRenderer();
 	var rendererOutput = renderer.renderBody(templateData, articleData, { 
 		"orientation":"portrait",
-		"width":$(window).width(),
-		"height":$(window).height()
+		"width":$(window).width() - MARGIN * 2,
+		"height":$(window).height() - MARGIN * 2
 	});
 	console.timeEnd("renderPage");
 
 	console.time("displayPage");
-	$("body").html(rendererOutput);
+	$("#contents").html(rendererOutput);
 	console.timeEnd("displayPage");
 
 }
@@ -77,12 +79,13 @@ function renderArticle() {
 </script>
 
 <link rel="stylesheet" type="text/css" href="src/renderRuntime.css">
-<!-- <script type="text/javascript" src="src/renderRuntime.js"></script> -->
+<!--script type="text/javascript" src="src/renderRuntime.js"></script-->
 
 </head>
-<body>
+<body style="margin:0px; padding:10px;">
+<div id="contents" style="position:relative;">
 
 Loading ...
 
-</body>
+</div>
 </html>
