@@ -13,6 +13,7 @@
 {
     BOOL inItem;
     BOOL debug;
+    int count;
 }
 
 @property (strong, nonatomic) NSMutableArray * results;
@@ -59,6 +60,7 @@
     self.currentArticleAttributes = nil;
     self.currentStringValue = nil;
     inItem = FALSE;
+    count = 0;
     
     // Initialize the parser
     NSXMLParser * parser = [[NSXMLParser alloc] initWithData:data];
@@ -89,7 +91,12 @@
         inItem = TRUE;
         self.currentArticleAttributes = [[NSMutableDictionary alloc] init];
         [currentArticleAttributes setObject:@"dynamicTemplate" forKey:@"templateName"];
-        [currentArticleAttributes setObject:@"standardArticle" forKey:@"subTemplateName"];
+        if (count == 0) {
+            [currentArticleAttributes setObject:@"featureArticle" forKey:@"subTemplateName"];
+        } else {
+            [currentArticleAttributes setObject:@"standardArticle" forKey:@"subTemplateName"];
+        }
+        count ++;
         return;
     }
     
