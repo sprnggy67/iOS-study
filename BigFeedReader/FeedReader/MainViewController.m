@@ -34,11 +34,13 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"ViewController.viewDidLoad entered");
+    NSLog(@"MainViewController.viewDidLoad called");
     
     [super viewDidLoad];
     self.title = @"In Detail";
     [self displayContent];
+   
+    NSLog(@"MainViewController.viewDidLoad done");
 }
 
 -(void)setFirstVisibleIndex:(int)index {
@@ -85,13 +87,11 @@
     [self addChildViewController:pageController];
     [[self view] addSubview:[pageController view]];
     [pageController didMoveToParentViewController:self];
-    
-    NSLog(@"ViewController.viewDidLoad done");
 }
 
 - (ContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    NSLog(@"ViewController.viewControllerAtIndex:%d entered", index);
+    NSLog(@"MainViewController.viewControllerAtIndex:%d called", index);
     
     // If index is out of bounds, return nil.
     int articleCount = [self.articleList count];
@@ -100,6 +100,7 @@
     }
     
     // Create a new view controller and pass suitable data.
+    NSLog(@"MainViewController.viewControllerAtIndex: creating ContentViewController");
     Article * article = [articleList objectAtIndex:index];
     ContentViewController *dataViewController = [[ContentViewController alloc]
                                                  initWithNibName:@"ContentViewController"
@@ -108,7 +109,7 @@
     [dataViewController setTemplateFactory:templateFactory];
     [dataViewController setNavigationDelegate:self];
      
-    NSLog(@"ViewController.viewControllerAtIndex:%d done", index);
+    NSLog(@"MainViewController.viewControllerAtIndex: done");
 
     return dataViewController;
 }
@@ -172,7 +173,7 @@
 
     // Error check.
     if (articleIndex == -1) {
-        NSLog(@"Unable to find destId %@ in navigateTo", destId);
+        NSLog(@"MainViewController: Unable to find destId %@ in navigateTo", destId);
         return;
     }
     

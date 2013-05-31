@@ -22,6 +22,7 @@
 @synthesize templateFactory;
 @synthesize webViewDelegate;
 @synthesize navigationDelegate;
+@synthesize loaded;
 
 #pragma mark - Init
 
@@ -36,6 +37,8 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"ContentViewController.viewDidLoad called");
+    
     [super viewDidLoad];
     self.title = @"Article";
     
@@ -48,10 +51,17 @@
 // Loads the article into the webView.
 - (void)viewWillAppear:(BOOL)animated
 {
+    NSLog(@"ContentViewController.viewWillAppear: called");
     [super viewWillAppear:animated];
+    
+    // Short circuit.
+    if (self.loaded)
+        return;
+    self.loaded = true;
     
     // Get the article template
     NSString * templateName = [article templateName];
+    NSLog(@"ContentViewController.viewWillAppear: Loading template: %@", templateName);
     NSString * subTemplateName = [article subTemplateName];
     Template * template = [templateFactory template:templateName];
     if (template == nil) {
@@ -59,14 +69,16 @@
         [webView loadHTMLString:@"Could not load template"
                         baseURL:[NSURL URLWithString:@""]];
         return;
-    } else {
-        NSLog(@"Loaded template: %@", templateName);
     }
 
-    // Inject the article data into the template and display it.
+    // Inject the article data into the template
+    NSLog(@"ContentViewController.viewWillAppear: Injecting content into template");
     NSString * contents = [template load:[article jsonData] subTemplate:subTemplateName];
     NSString * path = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/Templates"];
     NSURL * pathURL = [NSURL fileURLWithPath:path];
+    
+    // Display the content.
+    NSLog(@"ContentViewController.viewWillAppear: Loading content into webView");
     [webView loadHTMLString:contents
                     baseURL:pathURL];
 }

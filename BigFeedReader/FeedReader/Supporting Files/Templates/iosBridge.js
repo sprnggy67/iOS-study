@@ -69,10 +69,12 @@ console.error = function(log) {
 
 console.time = function(label) {
     oldConsole.time(label);
-    calliOSFunction("log", "time:" + label);
+    calliOSFunction("time", label);
 }
 
 console.timeEnd = function(label) {
     oldConsole.timeEnd(label);
-    calliOSFunction("log", "timeEnd:" + label);
+    calliOSFunction("timeEnd", label);
 }
+
+console.log("Started iOS logger");

@@ -1,7 +1,5 @@
 (function() {
 
-console.info("Loaded renderRuntime.js");
-
 function loaded() {
 	$(".link").click(tapToNavigate);
     $(".scroll").each(function() {
