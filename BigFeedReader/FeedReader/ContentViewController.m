@@ -21,6 +21,7 @@
 @synthesize article;
 @synthesize templateFactory;
 @synthesize webViewDelegate;
+@synthesize navigationDelegate;
 
 #pragma mark - Init
 
@@ -40,6 +41,7 @@
     
     // Set the web view delegate
     self.webViewDelegate = [[WebViewDelegate alloc] initWith:webView];
+    [webViewDelegate setNavigationDelegate:navigationDelegate];
     [webView setDelegate:webViewDelegate];
 }
 

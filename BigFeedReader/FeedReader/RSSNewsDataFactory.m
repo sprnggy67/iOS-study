@@ -9,6 +9,8 @@
 #import "RSSNewsDataFactory.h"
 #import "Article.h"
 
+static int articleCount = 0;
+
 @interface RSSNewsDataFactory ()
 {
     BOOL inItem;
@@ -89,7 +91,9 @@
 
     if ( [elementName isEqualToString:@"item"]) {
         inItem = TRUE;
+        ++ articleCount;
         self.currentArticleAttributes = [[NSMutableDictionary alloc] init];
+        [currentArticleAttributes setObject:[NSString stringWithFormat:@"Article %i", articleCount] forKey:@"id"];
         [currentArticleAttributes setObject:@"dynamicTemplate" forKey:@"templateName"];
         if (count == 0) {
             [currentArticleAttributes setObject:@"featureArticle" forKey:@"subTemplateName"];

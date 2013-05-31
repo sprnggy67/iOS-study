@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ContentViewController.h"
+#import "NavigationDelegate.h"
 
 // The top level controller for the application. It contains a page view controller.
-@interface MainViewController : UIViewController <UIPageViewControllerDataSource>
+@interface MainViewController : UIViewController <UIPageViewControllerDataSource, NavigationDelegate>
 
 @property (strong, nonatomic) NSMutableArray * articleList;
 

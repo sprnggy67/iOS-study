@@ -10,6 +10,7 @@
 
 @implementation Article
 
+@synthesize uniqueId;
 @synthesize source;
 @synthesize templateName;
 @synthesize subTemplateName;
@@ -23,6 +24,13 @@
     NSString * value;
     Article * article = [[Article alloc] init];
     if (article) {
+        value = [dict valueForKey:@"id"];
+        if (value == nil) {
+            NSLog(@"Article does not have an id");
+            return nil;
+        }
+        [article setUniqueId:value];
+        
         value = [dict valueForKey:@"headline"];
         if (value == nil) {
             NSLog(@"Article does not have a headline");
@@ -70,11 +78,13 @@
 /*
  Creates an navigation article from a set of child articles.
  */
-+(Article *)articleWithHeadline:(NSString *)headline template:(NSString *)templateName
++(Article *)articleWithId:(NSString *)uniqueID
+                    headline:(NSString *)headline template:(NSString *)templateName
                     subTemplate:(NSString *)subTemplateName withChildren:(NSArray *)children {
     Article * article = [[Article alloc] init];
     if (article) {
         // Store the key properties
+        [article setUniqueId:uniqueID];
         [article setHeadline:headline];
         [article setTemplateName:templateName];
         [article setPubDate:[NSDate date]];
@@ -108,7 +118,8 @@
 }
 
 -(NSString *)description {
-    return [[NSString alloc] initWithFormat:@"Article %@, templateName %@",
+    return [[NSString alloc] initWithFormat:@"Article id %@, headline %@, templateName %@",
+            self.uniqueId,
             self.headline,
             self.templateName];
 }

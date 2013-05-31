@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIWebView.h>
+#import "NavigationDelegate.h"
 
 // A bridge between the web and native layers, supporting communication in both directions
 @interface WebViewDelegate : NSObject <UIWebViewDelegate>
 
+@property (nonatomic, weak) id <NavigationDelegate> navigationDelegate;
+
 -(id)initWith:(UIWebView *)webView;
+
 
 @end

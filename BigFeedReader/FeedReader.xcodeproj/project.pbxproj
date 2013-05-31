@@ -89,6 +89,7 @@
 /* Begin PBXFileReference section */
 		55038AF6170B7D0200C5CE02 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		55038AF7170B7D0200C5CE02 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
+		55131D0517589DE900FA8655 /* NavigationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationDelegate.h; sourceTree = "<group>"; };
 		551F7D2E16F5AA1F00D7F4B0 /* Templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Templates; sourceTree = "<group>"; };
 		552115C2170D4D3A0097BD53 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		552115C3170D4D3A0097BD53 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
@@ -296,6 +297,7 @@
 				552115CB170D52860097BD53 /* Feed.m */,
 				55EB20141744E42A00C53D9F /* Section.h */,
 				55EB20151744E42A00C53D9F /* Section.m */,
+				55131D0517589DE900FA8655 /* NavigationDelegate.h */,
 				555F55391743797E00124DA1 /* Resources-iPhone */,
 				555F55281743721100124DA1 /* Resources-iPad */,
 				55791BE416E1DD420083AF02 /* Supporting Files */,

@@ -17,6 +17,7 @@
 @implementation WebViewDelegate
 
 @synthesize webView;
+@synthesize navigationDelegate;
 
 NSString *const PROTOCOL_PREFIX = @"js2ios://";
 
@@ -70,9 +71,9 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
         
         NSString *successCallback = [callInfo objectForKey:@"success"];
         NSString *errorCallback = [callInfo objectForKey:@"error"];
-        NSArray *argsArray = [callInfo objectForKey:@"args"];
+        NSObject * args = [callInfo objectForKey:@"args"];
         
-        [self callNativeFunction:functionName withArgs:argsArray onSuccess:successCallback onError:errorCallback];
+        [self callNativeFunction:functionName withArgs:args onSuccess:successCallback onError:errorCallback];
         
         // Do not load this url in the WebView
         return NO;
@@ -81,23 +82,27 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
     return YES;
 }
 
-- (void) callNativeFunction:(NSString *) name withArgs:(NSArray *) args onSuccess:(NSString *) successCallback onError:(NSString *) errorCallback
+- (void) callNativeFunction:(NSString *) name withArgs:(NSObject *) args onSuccess:(NSString *) successCallback onError:(NSString *) errorCallback
 {
-    if ([name compare:@"log" options:NSCaseInsensitiveSearch] == NSOrderedSame)
-    {
-        if (args != nil)
-        {
+    if ([name compare:@"log" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
+        if (args != nil) {
             NSLog(@"UIWebView.log: %@", args);
-        }
-        else
-        {
+        }  else {
             NSString *resultStr = [NSString stringWithFormat:@"Error calling function %@. Error : Missing argument", name];
             [self callErrorCallback:errorCallback withMessage:resultStr];
             NSLog(@"UIWebView.log: %@", resultStr);
         }
-    }
-    else
-    {
+    } else if ([name compare:@"navigateTo" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
+        if (args != nil) {
+            if (navigationDelegate != nil) {
+                [navigationDelegate navigateTo:(NSString *)args];
+            }
+        } else {
+            NSString *resultStr = [NSString stringWithFormat:@"Error calling function %@. Error : Missing argument", name];
+            [self callErrorCallback:errorCallback withMessage:resultStr];
+            NSLog(@"UIWebView.log: %@", resultStr);
+        }
+    } else {
         //Unknown function called from JavaScript
         NSString *resultStr = [NSString stringWithFormat:@"Cannot process function %@. Function not found", name];
         [self callErrorCallback:errorCallback withMessage:resultStr];

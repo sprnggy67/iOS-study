@@ -18,6 +18,7 @@
 							dataPath:"children",
 							dataIndex:0,
 							style:"font-size:20px; margin-top:0px",
+                            link:true
 						},
 						{
 							componentType:"standfirst",
@@ -25,12 +26,14 @@
 							dataPath:"children",
 							dataIndex:0,
 							style:"font-size:18px",
+                            link:true
 						},
 						{
 							componentType:"body",
 							dataPath:"children",
 							dataIndex:0,
 							style:"font-size:16px",
+                            link:true
 						}
 					],
 					position: { left:0, top:0, width:3, height:2 }
@@ -43,18 +46,21 @@
 							dataPath:"children",
 							dataIndex:1,
 							style:"font-size:20px; margin-top:0px",
+                            link:true
 						},
 						{
 							componentType:"standfirst",
 							dataPath:"children",
 							dataIndex:1,
 							style:"font-size:16px;",
+                            link:true
 						},
                         {
                            componentType:"body",
                            dataPath:"children",
                            dataIndex:1,
                            style:"font-size:14px",
+                           link:true
                         }
 					],
 					position: { left:0, top:2, width:1.5, height:2 }
@@ -67,18 +73,21 @@
 							dataPath:"children",
 							dataIndex:2,
 							style:"font-size:20px; margin-top:0px",
+                            link:true
 						},
 						{
 							componentType:"standfirst",
 							dataPath:"children",
 							dataIndex:2,
 							style:"font-size:16px;",
+                            link:true
 						},
                         {
                            componentType:"body",
                            dataPath:"children",
                            dataIndex:2,
                            style:"font-size:14px",
+                           link:true
                         }
 					],
 					position: { left:1.5, top:2, width:1.5, height:2 }

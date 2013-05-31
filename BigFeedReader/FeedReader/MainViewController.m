@@ -106,6 +106,7 @@
                                                  bundle:nil];
     [dataViewController setArticle:article];
     [dataViewController setTemplateFactory:templateFactory];
+    [dataViewController setNavigationDelegate:self];
      
     NSLog(@"ViewController.viewControllerAtIndex:%d done", index);
 
@@ -146,11 +147,53 @@
     return [self viewControllerAtIndex:index];
 }
 
+#pragma mark - Navigation
+
 -(void)menuButtonPressed{
     UIViewController *secondView = [[FeedTableViewController alloc]
                                     initWithStyle:UITableViewStylePlain];
     [[self navigationController] pushViewController:secondView animated:YES];
 }
+
+/*
+ Asks the receiver to navigate to a specific article.
+ */
+- (void)navigateTo:(NSString *)destId {
+    // Find the article
+    int articleIndex = -1;
+    int count = [self.articleList count];
+    for (int index = 0; index < count; index ++) {
+        Article * article = [self.articleList objectAtIndex:index];
+        if ([destId isEqualToString:article.uniqueId]) {
+            articleIndex = index;
+            break;
+        }
+    }
+
+    // Error check.
+    if (articleIndex == -1) {
+        NSLog(@"Unable to find destId %@ in navigateTo", destId);
+        return;
+    }
+    
+    // Create the new page
+    ContentViewController *initialViewController = [self viewControllerAtIndex:articleIndex];
+    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+    
+    // Animate to the new page
+    __block MainViewController * blocksafeSelf = self;
+    [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished){
+            if(finished) {
+                // Clear the original page by calling this again.
+                // See http://stackoverflow.com/questions/12939280/uipageviewcontroller-navigates-to-wrong-page-with-scroll-transition-style
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [blocksafeSelf.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
+                });
+            }
+        }];
+}
+
+
 
 
 @end

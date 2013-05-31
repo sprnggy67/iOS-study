@@ -11,6 +11,7 @@
 
 @interface Article : NSObject
 
+@property (nonatomic, strong) NSString * uniqueId;
 @property (nonatomic, strong) NSString * source;
 @property (nonatomic, strong) NSString * templateName;
 @property (nonatomic, strong) NSString * subTemplateName;
@@ -27,8 +28,9 @@
 /*
  Creates an navigation article from a set of child articles.
  */
-+(Article *)articleWithHeadline:(NSString *)headline template:(NSString *)templateName
-    subTemplate:(NSString *)subTemplateName withChildren:(NSArray *)children;
++(Article *)articleWithId:(NSString *) uniqueID
+                 headline:(NSString *)headline template:(NSString *)templateName
+                subTemplate:(NSString *)subTemplateName withChildren:(NSArray *)children;
 
 /*
  Compares one article to another

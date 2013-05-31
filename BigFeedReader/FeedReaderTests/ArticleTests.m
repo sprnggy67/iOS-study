@@ -13,6 +13,7 @@
 
 + (NSMutableDictionary *) createArticleDict:(NSString *)headline template:(NSString *)template standFirst:(NSString *)sf body:(NSString *) body {
     NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:10];
+    [dict setValue:headline forKey:@"id"];
     [dict setValue:headline forKey:@"headline"];
     [dict setValue:template forKey:@"templateName"];
     [dict setValue:sf forKey:@"standFirst"];
@@ -62,10 +63,11 @@
     NSArray * children = [NSArray arrayWithObjects:child1, child2, nil];
 
     // Create the article.
-    Article * result = [Article articleWithHeadline:@"best of times"
-                                           template:@"dynamicTemplate"
-                                        subTemplate:@"bestOfTimes"
-                                       withChildren:children];
+    Article * result = [Article articleWithId:@"id"
+                                     headline:@"best of times"
+                                     template:@"dynamicTemplate"
+                                  subTemplate:@"bestOfTimes"
+                                 withChildren:children];
 
     // Test the article.
     STAssertNotNil(result, @"articleWithHeadline returned nil");
