@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) WebViewDelegate * webViewDelegate;
 
+- (void)loadContent;
+
 @end
 
 @implementation ContentViewController
@@ -48,13 +50,19 @@
     [webView setDelegate:webViewDelegate];
 }
 
-// Loads the article into the webView.
 - (void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"ContentViewController.viewWillAppear: called");
+
     [super viewWillAppear:animated];
     
-    // Short circuit.
+    [self loadContent];
+}
+
+// Loads the article into the webView.
+- (void)loadContent
+{
+   // Short circuit.
     if (self.loaded)
         return;
     self.loaded = true;

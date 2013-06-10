@@ -81,6 +81,8 @@
 		55C377E7171696A4002E5B56 /* RSSNewsDataFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C377E6171696A4002E5B56 /* RSSNewsDataFactoryTests.m */; };
 		55C377E917169795002E5B56 /* RSSNewsDataFactoryTestData.rss in Resources */ = {isa = PBXBuildFile; fileRef = 55C377E817169795002E5B56 /* RSSNewsDataFactoryTestData.rss */; };
 		55D0F5941711585900AF68FD /* ArticleTableViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 55D0F5931711585900AF68FD /* ArticleTableViewController.h */; };
+		55E9C54E17662CC700FFF5A2 /* FeedReader-iPad-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55E9C54D17662CC700FFF5A2 /* FeedReader-iPad-Info.plist */; };
+		55E9C55017662CD200FFF5A2 /* FeedReader-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55E9C54F17662CD200FFF5A2 /* FeedReader-Info.plist */; };
 		55EB20161744E42A00C53D9F /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EB20151744E42A00C53D9F /* Section.m */; };
 		55EB20171744F40B00C53D9F /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EB20151744E42A00C53D9F /* Section.m */; };
 		55FE9E6B1702CA6200EDBEA3 /* RSSNewsDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FE9E6A1702CA6200EDBEA3 /* RSSNewsDataFactory.m */; };
@@ -125,7 +127,6 @@
 		55791BDD16E1DD420083AF02 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		55791BDF16E1DD420083AF02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55791BE116E1DD420083AF02 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		55791BE516E1DD420083AF02 /* FeedReader-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FeedReader-Info.plist"; sourceTree = "<group>"; };
 		55791BE916E1DD420083AF02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		55791BEC16E1DD420083AF02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		55791BED16E1DD420083AF02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -159,6 +160,8 @@
 		55C377E6171696A4002E5B56 /* RSSNewsDataFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNewsDataFactoryTests.m; sourceTree = "<group>"; };
 		55C377E817169795002E5B56 /* RSSNewsDataFactoryTestData.rss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RSSNewsDataFactoryTestData.rss; sourceTree = "<group>"; };
 		55D0F5931711585900AF68FD /* ArticleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleTableViewController.h; sourceTree = "<group>"; };
+		55E9C54D17662CC700FFF5A2 /* FeedReader-iPad-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FeedReader-iPad-Info.plist"; sourceTree = "<group>"; };
+		55E9C54F17662CD200FFF5A2 /* FeedReader-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FeedReader-Info.plist"; sourceTree = "<group>"; };
 		55EB20141744E42A00C53D9F /* Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Section.h; sourceTree = "<group>"; };
 		55EB20151744E42A00C53D9F /* Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Section.m; sourceTree = "<group>"; };
 		55FE9E691702CA6200EDBEA3 /* RSSNewsDataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNewsDataFactory.h; sourceTree = "<group>"; };
@@ -202,6 +205,7 @@
 		555F55281743721100124DA1 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				55E9C54D17662CC700FFF5A2 /* FeedReader-iPad-Info.plist */,
 				555F5556174386BC00124DA1 /* MainViewController.xib */,
 				555F5553174386B400124DA1 /* LoadViewController.xib */,
 				555F552C1743721300124DA1 /* ContentViewController.xib */,
@@ -213,6 +217,7 @@
 		555F55391743797E00124DA1 /* Resources-iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				55E9C54F17662CD200FFF5A2 /* FeedReader-Info.plist */,
 				5524D5A6171160ED00BB0720 /* LoadViewController.xib */,
 				55791BF816E1DD420083AF02 /* MainViewController.xib */,
 				55791C1A16E1DDB00083AF02 /* ContentViewController.xib */,
@@ -312,7 +317,6 @@
 				555570761712BB7000FED58C /* background.png */,
 				555570741712BB6900FED58C /* wildfire_logo_transparent.png */,
 				551F7D2E16F5AA1F00D7F4B0 /* Templates */,
-				55791BE516E1DD420083AF02 /* FeedReader-Info.plist */,
 				55791BE916E1DD420083AF02 /* main.m */,
 			);
 			path = "Supporting Files";
@@ -468,6 +472,8 @@
 				555F554E1743802700124DA1 /* icon_114.png in Resources */,
 				555F555A174388C900124DA1 /* Default-568h@2x.png in Resources */,
 				555F5564174390BA00124DA1 /* InfoPlist.strings in Resources */,
+				55E9C54E17662CC700FFF5A2 /* FeedReader-iPad-Info.plist in Resources */,
+				55E9C55017662CD200FFF5A2 /* FeedReader-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,11 +613,13 @@
 		555F55201743721100124DA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Springgay (4DK2DFXNMJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/Resources-iPad/FeedReader-iPad-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "FeedReader-iPad";
+				PROVISIONING_PROFILE = "A764E024-61B1-4A69-BE05-F091963113E8";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -620,11 +628,13 @@
 		555F55211743721100124DA1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Springgay (4DK2DFXNMJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/Resources-iPad/FeedReader-iPad-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "FeedReader-iPad";
+				PROVISIONING_PROFILE = "A764E024-61B1-4A69-BE05-F091963113E8";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -642,6 +652,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Springgay (4DK2DFXNMJ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -657,6 +668,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -673,6 +685,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Springgay (4DK2DFXNMJ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -681,6 +694,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -689,11 +703,13 @@
 		55791C1316E1DD420083AF02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/Resources-iPhone/FeedReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = FeedReader;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -702,11 +718,13 @@
 		55791C1416E1DD420083AF02 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReader/FeedReader-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/FeedReader/Resources-iPhone/FeedReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = FeedReader;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -716,6 +734,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FeedReader.app/FeedReader";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -725,6 +744,7 @@
 				INFOPLIST_FILE = "FeedReaderTests/FeedReaderTests-Info.plist";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeedReader.app/FeedReader";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -734,6 +754,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FeedReader.app/Contents/MacOS/FeedReader";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -742,6 +763,7 @@
 				GCC_PREFIX_HEADER = "FeedReaderTests/FeedReaderTests-Prefix.pch";
 				INFOPLIST_FILE = "FeedReaderTests/FeedReaderTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeedReader.app/Contents/MacOS/FeedReader";
 				WRAPPER_EXTENSION = octest;
 			};
