@@ -15,15 +15,49 @@
 /*
  Returns the single feed store. 
  */
-+ (FeedStore *) singleton;
++ (FeedStore *)singleton;
+
+/*
+ Returns a testable store.
+ pListName must contain a file name of the form "x.plist".
+ */
++ (FeedStore *)testable:(NSString *)plistName;
+
+/**
+ Returns the feed list
+ */
 
 - (NSArray *)feeds;
+
+/**
+ Returns the feed count
+ */
 - (int)count;
+
+/**
+ Returns true if the feed store is empty
+ */
 - (BOOL)isEmpty;
 
-- (void) add:(Feed *)feed;
-- (void) remove:(Feed *)feed;
+/**
+ Adds a feed to the store, and writes it to storage
+ */
+- (void)add:(Feed *)feed;
 
+/**
+ Removes a feed from the store, and writes it to storage
+ */
+
+- (void)remove:(Feed *)feed;
+
+/**
+ Removes all of the feeds from the store, and writes it to storage
+ */
+- (void)removeAll;
+
+/**
+ Writes the store to storage
+ */
 -(void)write;
 
 @end

@@ -57,6 +57,8 @@
 		555F556017438EC500124DA1 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 555F555F17438EC500124DA1 /* Default-Portrait@2x~ipad.png */; };
 		555F556217438ECC00124DA1 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 555F556117438ECC00124DA1 /* Default-Portrait~ipad.png */; };
 		555F5564174390BA00124DA1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 555F5563174390BA00124DA1 /* InfoPlist.strings */; };
+		55668D9C1767281F00C2017C /* FeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55668D9B1767281F00C2017C /* FeedTests.m */; };
+		55668DA017672D0D00C2017C /* FeedStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55668D9F17672D0D00C2017C /* FeedStoreTests.m */; };
 		55791BDE16E1DD420083AF02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDD16E1DD420083AF02 /* UIKit.framework */; };
 		55791BE016E1DD420083AF02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDF16E1DD420083AF02 /* Foundation.framework */; };
 		55791BE216E1DD420083AF02 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BE116E1DD420083AF02 /* CoreGraphics.framework */; };
@@ -75,14 +77,11 @@
 		55C377C517168C66002E5B56 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791C0116E1DD420083AF02 /* SenTestingKit.framework */; };
 		55C377C617168C66002E5B56 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDD16E1DD420083AF02 /* UIKit.framework */; };
 		55C377C717168C66002E5B56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDF16E1DD420083AF02 /* Foundation.framework */; };
-		55C377CD17168C66002E5B56 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55C377CB17168C66002E5B56 /* InfoPlist.strings */; };
 		55C377D017168C66002E5B56 /* FeedReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C377CF17168C66002E5B56 /* FeedReaderTests.m */; };
 		55C377E4171695C1002E5B56 /* NewsDataFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C377E3171695C1002E5B56 /* NewsDataFactoryTests.m */; };
 		55C377E7171696A4002E5B56 /* RSSNewsDataFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C377E6171696A4002E5B56 /* RSSNewsDataFactoryTests.m */; };
 		55C377E917169795002E5B56 /* RSSNewsDataFactoryTestData.rss in Resources */ = {isa = PBXBuildFile; fileRef = 55C377E817169795002E5B56 /* RSSNewsDataFactoryTestData.rss */; };
 		55D0F5941711585900AF68FD /* ArticleTableViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 55D0F5931711585900AF68FD /* ArticleTableViewController.h */; };
-		55E9C54E17662CC700FFF5A2 /* FeedReader-iPad-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55E9C54D17662CC700FFF5A2 /* FeedReader-iPad-Info.plist */; };
-		55E9C55017662CD200FFF5A2 /* FeedReader-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55E9C54F17662CD200FFF5A2 /* FeedReader-Info.plist */; };
 		55EB20161744E42A00C53D9F /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EB20151744E42A00C53D9F /* Section.m */; };
 		55EB20171744F40B00C53D9F /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EB20151744E42A00C53D9F /* Section.m */; };
 		55FE9E6B1702CA6200EDBEA3 /* RSSNewsDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FE9E6A1702CA6200EDBEA3 /* RSSNewsDataFactory.m */; };
@@ -123,6 +122,10 @@
 		555F555F17438EC500124DA1 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		555F556117438ECC00124DA1 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		555F5563174390BA00124DA1 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		55668D9A1767281F00C2017C /* FeedTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTests.h; sourceTree = "<group>"; };
+		55668D9B1767281F00C2017C /* FeedTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTests.m; sourceTree = "<group>"; };
+		55668D9E17672D0D00C2017C /* FeedStoreTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedStoreTests.h; sourceTree = "<group>"; };
+		55668D9F17672D0D00C2017C /* FeedStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedStoreTests.m; sourceTree = "<group>"; };
 		55791BDA16E1DD420083AF02 /* FeedReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55791BDD16E1DD420083AF02 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		55791BDF16E1DD420083AF02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -334,6 +337,10 @@
 				55C377E6171696A4002E5B56 /* RSSNewsDataFactoryTests.m */,
 				55B9446E1744D71B001BFCA5 /* ArticleTests.h */,
 				55B9446F1744D71C001BFCA5 /* ArticleTests.m */,
+				55668D9A1767281F00C2017C /* FeedTests.h */,
+				55668D9B1767281F00C2017C /* FeedTests.m */,
+				55668D9E17672D0D00C2017C /* FeedStoreTests.h */,
+				55668D9F17672D0D00C2017C /* FeedStoreTests.m */,
 			);
 			path = FeedReaderTests;
 			sourceTree = "<group>";
@@ -472,8 +479,6 @@
 				555F554E1743802700124DA1 /* icon_114.png in Resources */,
 				555F555A174388C900124DA1 /* Default-568h@2x.png in Resources */,
 				555F5564174390BA00124DA1 /* InfoPlist.strings in Resources */,
-				55E9C54E17662CC700FFF5A2 /* FeedReader-iPad-Info.plist in Resources */,
-				55E9C55017662CD200FFF5A2 /* FeedReader-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,7 +486,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55C377CD17168C66002E5B56 /* InfoPlist.strings in Resources */,
 				55C377E917169795002E5B56 /* RSSNewsDataFactoryTestData.rss in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,6 +565,8 @@
 				55C377E4171695C1002E5B56 /* NewsDataFactoryTests.m in Sources */,
 				55C377E7171696A4002E5B56 /* RSSNewsDataFactoryTests.m in Sources */,
 				55B944701744D71C001BFCA5 /* ArticleTests.m in Sources */,
+				55668D9C1767281F00C2017C /* FeedTests.m in Sources */,
+				55668DA017672D0D00C2017C /* FeedStoreTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
