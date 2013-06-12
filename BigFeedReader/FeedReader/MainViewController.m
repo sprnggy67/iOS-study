@@ -62,7 +62,7 @@
 
 - (void)displayContent {
     // Create the template factory
-    templateFactory = [[TemplateFactory alloc] init];
+    templateFactory = [[TemplateFactory alloc] initWithBundle:[NSBundle mainBundle]];
     
     // Create the page controller
     NSDictionary *options = [NSDictionary dictionaryWithObject:

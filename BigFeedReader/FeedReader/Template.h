@@ -15,16 +15,10 @@
 @property (strong, nonatomic) NSBundle * bundle;
 
 /*
- Creates a new template with a name. 
- The template itself will be loaded (eventually) from a file called name.html in the Supporting Files.
- */
--(id)initWith:(NSString *)name;
-
-/*
  Creates a new template with a name.
  The template itself will be loaded (eventually) from a file called name.html in the Supporting Files.
  */
--(id)initWith:(NSString *)name fromBundle:(NSBundle *) bundle;
+-(id)initWith:(NSString *)name bundle:(NSBundle *) bundle;
 
 /*
  Injects an article into a template and returns the final HTML

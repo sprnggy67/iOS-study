@@ -28,11 +28,7 @@ NSString *const TEMPLATE_DATA_VARIABLE = @"TEMPLATE_DATA_VARIABLE";
 
 #pragma mark - Init
 
--(id)initWith:(NSString *)nameParam {
-    return [self initWith:nameParam fromBundle:[NSBundle mainBundle]];
-}
-
--(id)initWith:(NSString *)nameParam fromBundle:(NSBundle *)bundleParam {
+-(id)initWith:(NSString *)nameParam bundle:(NSBundle *)bundleParam {
     self = [super init];
     if (self) {
         self.name = nameParam;

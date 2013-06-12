@@ -1,13 +1,13 @@
 //
-//  NewsDataFactoryTests.h
+//  TemplateFactoryTests.h
 //  FeedReader
 //
-//  Created by Dave on 2013-04-11.
+//  Created by Dave on 2013-06-12.
 //  Copyright (c) 2013 Dave. All rights reserved.
 //
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface NewsDataFactoryTests : SenTestCase
+@interface TemplateFactoryTests : SenTestCase
 
 @end

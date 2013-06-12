@@ -11,17 +11,17 @@
 
 @implementation TemplateTests
 
--(void)testInitWith
+-(void)testInitWithBundle
 {
     Template * result = [[Template alloc]initWith:@"Template1"
-        fromBundle: [NSBundle bundleForClass:[self class]]];
+        bundle: [NSBundle bundleForClass:[self class]]];
     STAssertNotNil(result, @"initWith returned nil");
 }
 
 -(void)testLoad
 {
     Template * template = [[Template alloc]initWith:@"Template1"
-                                       fromBundle: [NSBundle bundleForClass:[self class]]];
+                                       bundle: [NSBundle bundleForClass:[self class]]];
     NSString * result = [template load:@"{ foo:bar }"];
     
     STAssertEqualObjects(result,
@@ -32,7 +32,7 @@
 -(void)testLoadSubTemplate
 {
     Template * template = [[Template alloc]initWith:@"Template2"
-                                         fromBundle: [NSBundle bundleForClass:[self class]]];
+                                         bundle: [NSBundle bundleForClass:[self class]]];
     NSString * result = [template load:@"{ foo:f }"
                          subTemplate:@"SubTemplate1"];
     
