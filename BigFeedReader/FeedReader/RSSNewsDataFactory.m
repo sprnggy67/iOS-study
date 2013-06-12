@@ -39,12 +39,6 @@ static int articleCount = 0;
 }
 
 // Reads a set of articles from a resource.
--(NSArray *)parseResource:(NSString*)name {
-    return [self parseResource:name fromBundle:[NSBundle mainBundle]];
-}
-
-
-// Reads a set of articles from a resource.
 -(NSArray *)parseResource:(NSString*)name fromBundle:(NSBundle *) bundle {
     NSString *filePath = [bundle pathForResource:name ofType:@"rss"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];

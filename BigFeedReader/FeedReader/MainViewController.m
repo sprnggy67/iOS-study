@@ -7,7 +7,6 @@
 //
 
 #import "MainViewController.h"
-#import "NewsDataFactory.h"
 #import "RSSNewsDataFactory.h"
 #import "Downloader.h"
 #import "FeedTableViewController.h"

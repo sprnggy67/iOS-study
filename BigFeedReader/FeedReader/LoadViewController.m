@@ -7,7 +7,6 @@
 
 #import "LoadViewController.h"
 #import "FeedStore.h"
-#import "NewsDataFactory.h"
 #import "RSSNewsDataFactory.h"
 #import "Downloader.h"
 #import "ArticleTableViewController.h"

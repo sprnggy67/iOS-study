@@ -21,11 +21,6 @@
 /*
  Loads a resource, parses it, and returns the articles within it
  */
--(NSArray *)parseResource:(NSString*)name;
-
-/*
- Loads a resource, parses it, and returns the articles within it
- */
 -(NSArray *)parseResource:(NSString*)name fromBundle:(NSBundle *) bundle;
 
 /*
