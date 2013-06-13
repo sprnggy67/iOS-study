@@ -16,7 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel * progressLabel;
 @property (strong, nonatomic) IBOutlet UIButton * reloadButton;
 
--(void)readContentFeeds;
 -(IBAction)reload:(id)sender;
 
 @end

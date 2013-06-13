@@ -19,9 +19,11 @@
 @property (strong, nonatomic) NSMutableArray * articleList;
 @property (strong, nonatomic) NSMutableString * progressText;
 
+-(void)readContentFeeds;
 -(void)displayContent;
 -(void)sortContentByPubDate;
 -(void)insertNavigationPages;
+-(void)didDisplayContent;
 
 @end
 
@@ -97,7 +99,6 @@
 
 - (void)displayContent {
     // Prepare the content
-    // [self sortContentByPubDate];
     [self insertNavigationPages];
     
     // Load it into the article table view.
@@ -106,6 +107,14 @@
     [[self navigationController] pushViewController:secondView animated:YES];
 
     reloadButton.hidden = NO;
+    
+    [self didDisplayContent];
+}
+
+-(void)didDisplayContent
+{
+    // This method exists for test purposes.
+    // Do not remove it.
 }
 
 -(void)insertNavigationPages {

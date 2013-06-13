@@ -59,9 +59,9 @@
     
     // when
     [feedLoader readContentFeeds:feedStore delegate:self];
+    WaitFor(^BOOL(void) { return calledDidLoadArticles; }, 10);
     
     // then
-    WaitFor(^BOOL(void) { return calledDidLoadArticles; }, 10);
     STAssertTrue(calledDidLoadArticles, nil);
     STAssertEquals((int)[callbackSectionList count], 1, nil);
     STAssertEquals((int)[callbackArticleList count], 10, nil);
@@ -75,9 +75,9 @@
     
     // when
     [feedLoader readContentFeeds:feedStore delegate:self];
+    WaitFor(^BOOL(void) { return calledDidLoadArticles; }, 10);
     
     // then
-    WaitFor(^BOOL(void) { return calledDidLoadArticles; }, 10);
     STAssertTrue(calledDidLoadArticles, nil);
     STAssertEquals((int)[callbackSectionList count], 2, nil);
     STAssertEquals((int)[callbackArticleList count], 11, nil);
