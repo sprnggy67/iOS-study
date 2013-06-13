@@ -8,5 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-BOOL WaitFor(BOOL (^block)(void));
+BOOL WaitFor(BOOL (^block)(void), int seconds);
 

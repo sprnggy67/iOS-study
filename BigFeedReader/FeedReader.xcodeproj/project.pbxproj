@@ -222,6 +222,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5534C7691769D42900530FBE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55B9446E1744D71B001BFCA5 /* ArticleTests.h */,
+				55B9446F1744D71C001BFCA5 /* ArticleTests.m */,
+				55668DA1176738DE00C2017C /* SectionTests.h */,
+				55668DA2176738DE00C2017C /* SectionTests.m */,
+				55668D9A1767281F00C2017C /* FeedTests.h */,
+				55668D9B1767281F00C2017C /* FeedTests.m */,
+				55668D9E17672D0D00C2017C /* FeedStoreTests.h */,
+				55668D9F17672D0D00C2017C /* FeedStoreTests.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5534C76A1769D44A00530FBE /* Loaders */ = {
+			isa = PBXGroup;
+			children = (
+				5534C7611769C1CB00530FBE /* FeedLoaderTests.h */,
+				5534C7621769C1CB00530FBE /* FeedLoaderTests.m */,
+				55C377E5171696A4002E5B56 /* RSSNewsDataFactoryTests.h */,
+				55C377E6171696A4002E5B56 /* RSSNewsDataFactoryTests.m */,
+			);
+			name = Loaders;
+			sourceTree = "<group>";
+		};
+		5534C76B1769D45400530FBE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5576BA451768796400D25FFE /* LoadViewControllerTests.h */,
+				5576BA461768796400D25FFE /* LoadViewControllerTests.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		5534C76C1769D45A00530FBE /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				55668DA917673C5100C2017C /* TemplateTests.h */,
+				55668DAA17673C5100C2017C /* TemplateTests.m */,
+				5576BA401768718700D25FFE /* TemplateFactoryTests.h */,
+				5576BA411768718700D25FFE /* TemplateFactoryTests.m */,
+			);
+			name = Templates;
+			sourceTree = "<group>";
+		};
 		555F55281743721100124DA1 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,24 +425,10 @@
 			children = (
 				5534C7641769CD2400530FBE /* TestUtils.h */,
 				5534C7651769CD2400530FBE /* TestUtils.m */,
-				55B9446E1744D71B001BFCA5 /* ArticleTests.h */,
-				55B9446F1744D71C001BFCA5 /* ArticleTests.m */,
-				55668D9A1767281F00C2017C /* FeedTests.h */,
-				55668D9B1767281F00C2017C /* FeedTests.m */,
-				55668D9E17672D0D00C2017C /* FeedStoreTests.h */,
-				55668D9F17672D0D00C2017C /* FeedStoreTests.m */,
-				5534C7611769C1CB00530FBE /* FeedLoaderTests.h */,
-				5534C7621769C1CB00530FBE /* FeedLoaderTests.m */,
-				55668DA1176738DE00C2017C /* SectionTests.h */,
-				55668DA2176738DE00C2017C /* SectionTests.m */,
-				55668DA917673C5100C2017C /* TemplateTests.h */,
-				55668DAA17673C5100C2017C /* TemplateTests.m */,
-				5576BA401768718700D25FFE /* TemplateFactoryTests.h */,
-				5576BA411768718700D25FFE /* TemplateFactoryTests.m */,
-				55C377E5171696A4002E5B56 /* RSSNewsDataFactoryTests.h */,
-				55C377E6171696A4002E5B56 /* RSSNewsDataFactoryTests.m */,
-				5576BA451768796400D25FFE /* LoadViewControllerTests.h */,
-				5576BA461768796400D25FFE /* LoadViewControllerTests.m */,
+				5534C7691769D42900530FBE /* Model */,
+				5534C76A1769D44A00530FBE /* Loaders */,
+				5534C76B1769D45400530FBE /* UI */,
+				5534C76C1769D45A00530FBE /* Templates */,
 				55C377C917168C66002E5B56 /* Supporting Files */,
 			);
 			path = FeedReaderTests;
