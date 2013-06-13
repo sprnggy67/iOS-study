@@ -68,10 +68,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)reload:(id)sender {
-    [self readContentFeeds];
-}
-
 -(void)readContentFeeds {
     reloadButton.hidden = YES;
     progressText = [[NSMutableString alloc] init];
@@ -80,6 +76,8 @@
     FeedLoader * feedLoader = [[FeedLoader alloc] init];
     [feedLoader readContentFeeds:[FeedStore singleton] delegate:self];
 }
+
+#pragma mark - FeedLoaderDelegate
 
 -(void)didProgress:(NSString *)str
 {
@@ -94,6 +92,8 @@
     self.sectionList = sections;
     [self displayContent];
 }
+
+#pragma mark - Display
 
 - (void)displayContent {
     // Prepare the content
@@ -155,6 +155,10 @@
         Article * articleB = (Article*)b;
         return [articleB compare:articleA];
     }];
+}
+
+-(IBAction)reload:(id)sender {
+    [self readContentFeeds];
 }
 
 @end

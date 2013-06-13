@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/"
+	>
+    
+    <channel>
+        <title>A Copy of Multitouch Design</title>
+        <atom:link href="http://multitouchdesign.wordpress.com/feed/" rel="self" type="application/rss+xml" />
+        <link>http://multitouchdesign.wordpress.com</link>
+        <description>Mobile design, development and delivery</description>
+        <lastBuildDate>Wed, 13 Mar 2013 21:53:44 +0000</lastBuildDate>
+        <language>en</language>
+        <sy:updatePeriod>hourly</sy:updatePeriod>
+        <sy:updateFrequency>1</sy:updateFrequency>
+        <generator>http://wordpress.com/</generator>
+        <cloud domain='multitouchdesign.wordpress.com' port='80' path='/?rsscloud=notify' registerProcedure='' protocol='http-post' />
+        <image>
+            <url>http://s2.wp.com/i/buttonw-com.png</url>
+            <title>Multitouch Design</title>
+            <link>http://multitouchdesign.wordpress.com</link>
+        </image>
+        <atom:link rel="search" type="application/opensearchdescription+xml" href="http://multitouchdesign.wordpress.com/osd.xml" title="Multitouch Design" />
+        <atom:link rel='hub' href='http://multitouchdesign.wordpress.com/?pushpress=hub'/>
+        <item>
+            <title>Booch and Rumbaugh</title>
+            <link>http://multitouchdesign.wordpress.com/2013/03/13/booch-and-rumbaugh/</link>
+            <comments>http://multitouchdesign.wordpress.com/2013/03/13/booch-and-rumbaugh/#comments</comments>
+            <pubDate>Wed, 13 Mar 2013 21:52:45 +0000</pubDate>
+            <dc:creator>David Springgay</dc:creator>
+            <category><![CDATA[Development]]></category>
+            <category><![CDATA[Patterns]]></category>
+            <category><![CDATA[Principles]]></category>
+            
+            <guid isPermaLink="false">http://multitouchdesign.wordpress.com/?p=507</guid>
+            <description><![CDATA[The other day I was called into a meeting to discuss the requirements for a role we call Principal Engineer. There were about eight of us in the room. We each threw a few ideas on the table and within a few minutes the list was so long that I began to wonder if I&#8217;d [...]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=multitouchdesign.wordpress.com&#038;blog=20536839&#038;post=507&#038;subd=multitouchdesign&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+            <content:encoded><![CDATA[<p>The other day I was called into a meeting to discuss the requirements for a role we call Principal Engineer. There were about eight of us in the room. We each threw a few ideas on the table and within a few minutes the list was so long that I began to wonder if I&#8217;d pass through the interview process myself.</p>
+            <p>After the meeting one idea stuck with me. We need someone who understands the &#8220;Fundamentals of Software Development&#8221;. Now, I&#8217;m not sure if there&#8217;s an official list of fundamentals, so I sat down with some of my old text books today to refresh my memory.</p>
+            <p><a href="http://multitouchdesign.files.wordpress.com/2013/03/0805353402.jpg"> <img class="wp-image-527 alignleft" alt="0805353402" src="http://multitouchdesign.files.wordpress.com/2013/03/0805353402.jpg?w=254&#038;h=318" width="254" height="318" /></a><a href="http://multitouchdesign.files.wordpress.com/2013/03/128837.jpg"><img class="wp-image-528 alignnone" alt="128837" src="http://multitouchdesign.files.wordpress.com/2013/03/128837.jpg?w=224&#038;h=317" width="224" height="317" /></a></p>
+            <p>I started out with a copy of <em>Object Oriented Design</em>, by Grady Booch. Booch starts his book by discussing the nature of software, or to be more precise, complexity. Complexity is a continual challenge in the development of large software systems. He describes a number of ways to bring order to chaos:</p>
+            <ol>
+            <li><span style="line-height:13px;"><em>Decomposition:</em> When designing a complex software system, it is essential to decompose it into smaller and smaller parts, each of which we may then refine independently. In order to understand any given level of the system, we need only comprehend a few parts (rather than all parts) at once.</span></li>
+            <li><em>Abstraction:</em> We humans have an exceptionally powerful technique for dealing with complexity.  We abstract from it. Unable to master the entirety of a complex object, we chose to ignore the inessential details and deal instead with the generalized, ideal model of the object.</li>
+            <li><em>Hierarchy:</em> Abstraction is a good thing, but in all except the most trivial applications we may find many more different abstractions than we can comprehend at one time. A set of abstractions often form a hierarchy, and by identifying these hierarchies in our design we greatly simplify our understanding of the problem.</li>
+            <li><em>Encapsulation:</em> The abstraction of an object should precede the decisions about its implementation, and this should be hidden, or encapsulated from most clients. This encapsulation allows us to modify the implementation without affecting those clients.</li>
+            </ol>
+            <p>I also took a look at <em>Object Oriented Modeling and Design</em>, by James Rumbaugh and company. He points out that good programs do more than simply satisfy their functional requirements. Programs that follow proper design guidelines are more likely to be correct, reusable, extensible and quickly debugged.  Then he defines a set of object oriented style guidelines under the following categories:</p>
+            <ol>
+            <li>Reusability</li>
+            <li>Extensibility</li>
+            <li>Robustness</li>
+            <li>Programming in the large. This refers to the creation of large software systems by large teams.</li>
+            </ol>
+            <p>He  goes on to define a number of rules for each category. Here&#8217;s a quick sample:</p>
+            <ul>
+            <li><em>Keep methods small:</em> If a method is large, break it into smaller methods. By breaking it into smaller parts, you may be able to reuse some parts. A method that exceeds one or two pages is probably too large.</li>
+            <li><em>Separate policy and implementation:</em> Policy methods make decisions, and often vary from one application to the next. Implementation methods perform specific detailed operations, without deciding whether or why to do them. These are more likely to meaningful and reusable in other contexts.</li>
+            <li><em>Provide uniform coverage:</em> If you write a method to get the last element of a list, write one to get the first element.</li>
+            <li><em>Delegation:</em> Sometimes it appears that use of inheritance would increase code reuse within a program, when a true superclass/subclass relationship doesn&#8217;t exist.  Don&#8217;t give in to the temptation to use implementation inheritance. Use delegation instead.</li>
+            <li><em>Encapsulate classes:</em> A class is encapsulated if its internal structure is hidden from other classes.  This makes it easier to change that implementation.</li>
+            <li><em>Avoid case statements on object type:</em> Use methods instead. Case statements can be used to test internal attributes of an object, but should not be used to select behavior based on object type. Dispatching operations based on object type is the whole point of methods.</li>
+            <li><em>Optimize after the program runs:</em> Often programmers spend too much effort trying to improve portions of the code that are infrequently executed. Measure the performance before optimizing it. You may be surprised to find that most parts consume little of the total time.</li>
+            <li><em>Make methods readable:</em> It should be possible for someone other than the creator of the method to understand the code. This makes it easier to maintain or improve the code in the future.</li>
+            <li><em>Choose names carefully:</em> There&#8217;s a reason programmers use a language. They need to communicate with the compiler and with other programmers. Make every name meaningful and correct.</li>
+            </ul>
+            <p>This is just a small sample from these books. They may be old, but the concepts they teach are just as valid today as they were when they were written.</p>
+            <br />  <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/multitouchdesign.wordpress.com/507/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/multitouchdesign.wordpress.com/507/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=multitouchdesign.wordpress.com&#038;blog=20536839&#038;post=507&#038;subd=multitouchdesign&#038;ref=&#038;feed=1" width="1" height="1" />]]></content:encoded>
+			<wfw:commentRss>http://multitouchdesign.wordpress.com/2013/03/13/booch-and-rumbaugh/feed/</wfw:commentRss>
+            <slash:comments>0</slash:comments>
+            
+            <media:content url="http://2.gravatar.com/avatar/baaf3b5c536257b9132f368c3694a2b9?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">sprnggy</media:title>
+            </media:content>
+            
+            <media:content url="http://multitouchdesign.files.wordpress.com/2013/03/0805353402.jpg" medium="image">
+			<media:title type="html">0805353402</media:title>
+            </media:content>
+            
+            <media:content url="http://multitouchdesign.files.wordpress.com/2013/03/128837.jpg" medium="image">
+			<media:title type="html">128837</media:title>
+            </media:content>
+        </item>
+    </channel>
+</rss>

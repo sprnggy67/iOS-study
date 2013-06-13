@@ -17,6 +17,9 @@
 		5524D5A517115ED900BB0720 /* LoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5524D5A417115ED900BB0720 /* LoadViewController.m */; };
 		5524D5A8171160ED00BB0720 /* LoadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5524D5A6171160ED00BB0720 /* LoadViewController.xib */; };
 		55333DDC16FC2B5A00CAD539 /* WebViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55333DDB16FC2B5A00CAD539 /* WebViewDelegate.m */; };
+		5534C7631769C1CB00530FBE /* FeedLoaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5534C7621769C1CB00530FBE /* FeedLoaderTests.m */; };
+		5534C7661769CD2400530FBE /* TestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5534C7651769CD2400530FBE /* TestUtils.m */; };
+		5534C7681769D2AF00530FBE /* RSSFeed2.rss in Resources */ = {isa = PBXBuildFile; fileRef = 5534C7671769D2AF00530FBE /* RSSFeed2.rss */; };
 		555570751712BB6900FED58C /* wildfire_logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 555570741712BB6900FED58C /* wildfire_logo_transparent.png */; };
 		555570771712BB7000FED58C /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 555570761712BB7000FED58C /* background.png */; };
 		555F54F61743721100124DA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55791BE916E1DD420083AF02 /* main.m */; };
@@ -59,12 +62,13 @@
 		55668DA017672D0D00C2017C /* FeedStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55668D9F17672D0D00C2017C /* FeedStoreTests.m */; };
 		55668DA3176738DE00C2017C /* SectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55668DA2176738DE00C2017C /* SectionTests.m */; };
 		55668DAB17673C5100C2017C /* TemplateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55668DAA17673C5100C2017C /* TemplateTests.m */; };
-		55668DAD1767404100C2017C /* RSSNewsDataFactoryTestData.rss in Resources */ = {isa = PBXBuildFile; fileRef = 55668DAC1767404100C2017C /* RSSNewsDataFactoryTestData.rss */; };
+		55668DAD1767404100C2017C /* RSSFeed1.rss in Resources */ = {isa = PBXBuildFile; fileRef = 55668DAC1767404100C2017C /* RSSFeed1.rss */; };
 		55668DAF1767415B00C2017C /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = 55668DAE1767415B00C2017C /* Templates */; };
 		5576BA421768718700D25FFE /* TemplateFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5576BA411768718700D25FFE /* TemplateFactoryTests.m */; };
 		5576BA471768796400D25FFE /* LoadViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5576BA461768796400D25FFE /* LoadViewControllerTests.m */; };
 		5576BA4C1768839400D25FFE /* FeedLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5576BA4B1768839400D25FFE /* FeedLoader.m */; };
 		5576BA4D1768839400D25FFE /* FeedLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5576BA4B1768839400D25FFE /* FeedLoader.m */; };
+		5576BA581768BBAB00D25FFE /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5576BA571768BBAA00D25FFE /* libOCMock.a */; };
 		55791BDE16E1DD420083AF02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDD16E1DD420083AF02 /* UIKit.framework */; };
 		55791BE016E1DD420083AF02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BDF16E1DD420083AF02 /* Foundation.framework */; };
 		55791BE216E1DD420083AF02 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55791BE116E1DD420083AF02 /* CoreGraphics.framework */; };
@@ -106,6 +110,11 @@
 		5524D5A7171160ED00BB0720 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LoadViewController.xib; sourceTree = "<group>"; };
 		55333DDA16FC2B5A00CAD539 /* WebViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewDelegate.h; sourceTree = "<group>"; };
 		55333DDB16FC2B5A00CAD539 /* WebViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewDelegate.m; sourceTree = "<group>"; };
+		5534C7611769C1CB00530FBE /* FeedLoaderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedLoaderTests.h; sourceTree = "<group>"; };
+		5534C7621769C1CB00530FBE /* FeedLoaderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedLoaderTests.m; sourceTree = "<group>"; };
+		5534C7641769CD2400530FBE /* TestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUtils.h; sourceTree = "<group>"; };
+		5534C7651769CD2400530FBE /* TestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUtils.m; sourceTree = "<group>"; };
+		5534C7671769D2AF00530FBE /* RSSFeed2.rss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RSSFeed2.rss; sourceTree = "<group>"; };
 		555570741712BB6900FED58C /* wildfire_logo_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wildfire_logo_transparent.png; sourceTree = "<group>"; };
 		555570761712BB7000FED58C /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		555F55221743721100124DA1 /* FeedReader-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FeedReader-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +140,7 @@
 		55668DA2176738DE00C2017C /* SectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionTests.m; sourceTree = "<group>"; };
 		55668DA917673C5100C2017C /* TemplateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateTests.h; sourceTree = "<group>"; };
 		55668DAA17673C5100C2017C /* TemplateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTests.m; sourceTree = "<group>"; };
-		55668DAC1767404100C2017C /* RSSNewsDataFactoryTestData.rss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RSSNewsDataFactoryTestData.rss; sourceTree = "<group>"; };
+		55668DAC1767404100C2017C /* RSSFeed1.rss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RSSFeed1.rss; sourceTree = "<group>"; };
 		55668DAE1767415B00C2017C /* Templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Templates; sourceTree = "<group>"; };
 		5576BA401768718700D25FFE /* TemplateFactoryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateFactoryTests.h; sourceTree = "<group>"; };
 		5576BA411768718700D25FFE /* TemplateFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateFactoryTests.m; sourceTree = "<group>"; };
@@ -140,6 +149,7 @@
 		5576BA491768837700D25FFE /* FeedLoaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedLoaderDelegate.h; sourceTree = "<group>"; };
 		5576BA4A1768839400D25FFE /* FeedLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedLoader.h; sourceTree = "<group>"; };
 		5576BA4B1768839400D25FFE /* FeedLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedLoader.m; sourceTree = "<group>"; };
+		5576BA571768BBAA00D25FFE /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = include/libOCMock.a; sourceTree = "<group>"; };
 		55791BDA16E1DD420083AF02 /* FeedReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55791BDD16E1DD420083AF02 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		55791BDF16E1DD420083AF02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -202,6 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5576BA581768BBAB00D25FFE /* libOCMock.a in Frameworks */,
 				55C377C517168C66002E5B56 /* SenTestingKit.framework in Frameworks */,
 				55C377C617168C66002E5B56 /* UIKit.framework in Frameworks */,
 				55C377C717168C66002E5B56 /* Foundation.framework in Frameworks */,
@@ -366,12 +377,16 @@
 		55C377C817168C66002E5B56 /* FeedReaderTests */ = {
 			isa = PBXGroup;
 			children = (
+				5534C7641769CD2400530FBE /* TestUtils.h */,
+				5534C7651769CD2400530FBE /* TestUtils.m */,
 				55B9446E1744D71B001BFCA5 /* ArticleTests.h */,
 				55B9446F1744D71C001BFCA5 /* ArticleTests.m */,
 				55668D9A1767281F00C2017C /* FeedTests.h */,
 				55668D9B1767281F00C2017C /* FeedTests.m */,
 				55668D9E17672D0D00C2017C /* FeedStoreTests.h */,
 				55668D9F17672D0D00C2017C /* FeedStoreTests.m */,
+				5534C7611769C1CB00530FBE /* FeedLoaderTests.h */,
+				5534C7621769C1CB00530FBE /* FeedLoaderTests.m */,
 				55668DA1176738DE00C2017C /* SectionTests.h */,
 				55668DA2176738DE00C2017C /* SectionTests.m */,
 				55668DA917673C5100C2017C /* TemplateTests.h */,
@@ -390,8 +405,10 @@
 		55C377C917168C66002E5B56 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5576BA571768BBAA00D25FFE /* libOCMock.a */,
 				55668DAE1767415B00C2017C /* Templates */,
-				55668DAC1767404100C2017C /* RSSNewsDataFactoryTestData.rss */,
+				55668DAC1767404100C2017C /* RSSFeed1.rss */,
+				5534C7671769D2AF00530FBE /* RSSFeed2.rss */,
 				55C377CA17168C66002E5B56 /* FeedReaderTests-Info.plist */,
 				55C377CB17168C66002E5B56 /* InfoPlist.strings */,
 				55C377D117168C66002E5B56 /* FeedReaderTests-Prefix.pch */,
@@ -527,8 +544,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55668DAD1767404100C2017C /* RSSNewsDataFactoryTestData.rss in Resources */,
+				55668DAD1767404100C2017C /* RSSFeed1.rss in Resources */,
 				55668DAF1767415B00C2017C /* Templates in Resources */,
+				5534C7681769D2AF00530FBE /* RSSFeed2.rss in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +629,8 @@
 				55668DAB17673C5100C2017C /* TemplateTests.m in Sources */,
 				5576BA421768718700D25FFE /* TemplateFactoryTests.m in Sources */,
 				5576BA471768796400D25FFE /* LoadViewControllerTests.m in Sources */,
+				5534C7631769C1CB00530FBE /* FeedLoaderTests.m in Sources */,
+				5534C7661769CD2400530FBE /* TestUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -791,8 +811,18 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReaderTests/FeedReaderTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = FeedReaderTests/include;
 				INFOPLIST_FILE = "FeedReaderTests/FeedReaderTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FeedReaderTests/include\"",
+				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"$(SRCROOT)/FeedReaderTests/include/libOCMock.a\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeedReader.app/FeedReader";
@@ -811,7 +841,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FeedReaderTests/FeedReaderTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = FeedReaderTests/include;
 				INFOPLIST_FILE = "FeedReaderTests/FeedReaderTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FeedReaderTests/include\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"$(SRCROOT)/FeedReaderTests/include/libOCMock.a\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeedReader.app/Contents/MacOS/FeedReader";
