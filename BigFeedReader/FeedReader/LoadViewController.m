@@ -23,7 +23,7 @@
 -(void)displayContent;
 -(void)sortContentByPubDate;
 -(void)insertNavigationPages;
--(void)didDisplayContent;
+-(void)didDisplayContent:(NSArray *) articles with:(UIViewController *) vc;
 
 @end
 
@@ -31,6 +31,7 @@
 
 @synthesize progressLabel;
 @synthesize reloadButton;
+@synthesize feedStore;
 @synthesize articleList;
 @synthesize progressText;
 
@@ -76,7 +77,7 @@
     progressLabel.text = progressText;
     
     FeedLoader * feedLoader = [[FeedLoader alloc] init];
-    [feedLoader readContentFeeds:[FeedStore singleton] delegate:self];
+    [feedLoader readContentFeeds:feedStore delegate:self];
 }
 
 #pragma mark - FeedLoaderDelegate
@@ -108,10 +109,10 @@
 
     reloadButton.hidden = NO;
     
-    [self didDisplayContent];
+    [self didDisplayContent:articleList with:secondView];
 }
 
--(void)didDisplayContent
+-(void)didDisplayContent:(NSArray *) articles with:(UIViewController *) vc
 {
     // This method exists for test purposes.
     // Do not remove it.

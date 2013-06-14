@@ -8,26 +8,45 @@
 
 #import "LoadViewControllerTests.h"
 #import "LoadViewController.h"
+#import "ArticleTableViewController.h"
 #import "TestUtils.h"
 #import <OCMock/OCMock.h>
 
 @interface LoadViewController (Tests)
 
--(void)readContentFeeds;
--(void)didLoadArticles:(NSMutableArray *) articles sections:(NSMutableArray *)sections;
--(void)didDisplayContent;
+-(void)didDisplayContent:(NSArray *)articleList with:(UIViewController *)vc;
 
 @end
 
 @implementation LoadViewControllerTests
 {
-    BOOL calledDidLoadArticles;
+    LoadViewController * viewController;
     BOOL calledDidDisplayContent;
+    NSArray * callbackArticleList;
+    UIViewController * callbackVC;
+}
+
+- (void)setUp
+{
+    viewController = [[LoadViewController alloc] initWithNibName:@"LoadViewController" bundle:nil];
+    viewController.feedStore = [self createTestableFeedStore];
+    calledDidDisplayContent = FALSE;
+}
+
+- (FeedStore *) createTestableFeedStore {
+    FeedStore * feedStore = [FeedStore testable:@"FeedStoreTests.plist"];
+    [self addFeed:@"RSSFeed2" toStore:feedStore];
+    return feedStore;
+}
+
+- (void)addFeed:(NSString *) feedName toStore:(FeedStore *) store
+{
+    NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:feedName withExtension:@"rss"];
+    [store add:[[Feed alloc] initWithName:feedName url:[url absoluteString]]];
 }
 
 - (void) testProgressLabelRef {
     // given
-    LoadViewController *viewController = [[LoadViewController alloc] initWithNibName:@"LoadViewController" bundle:nil];
     [viewController view];
 
     // then
@@ -35,8 +54,7 @@
 }
 
 - (void) testReloadButtonRef {
-    // given
-    LoadViewController *viewController = [[LoadViewController alloc] initWithNibName:@"LoadViewController" bundle:nil];
+    // when
     [viewController view];
     
     // then
@@ -44,8 +62,7 @@
 }
 
 - (void) testReloadButtonAction {
-    // given
-    LoadViewController *viewController = [[LoadViewController alloc] initWithNibName:@"LoadViewController" bundle:nil];
+    // when
     [viewController view];
 
     // then
@@ -54,56 +71,32 @@
     STAssertTrue([array containsObject:@"reload:"], @"reloadButton must be bound correctly");
 }
 
-- (void) testReadContentFeedsIsCalled
-{
-    // given
-    LoadViewController *viewController = [[LoadViewController alloc] initWithNibName:@"LoadViewController" bundle:nil];
-    id aMock = [OCMockObject partialMockForObject:viewController];
-    [[aMock expect] readContentFeeds];
-
-    // when
-    [viewController view];
-    
-    // then
-    [aMock verify];
-}
-
-- (void) testDidLoadArticlesIsCalled
-{
-    // given
-    LoadViewController *viewController = [[LoadViewController alloc] initWithNibName:@"LoadViewController" bundle:nil];
-    id aMock = [OCMockObject partialMockForObject:viewController];
-    [[[aMock stub] andCall:@selector(didLoadArticles:sections:) onObject:self] didLoadArticles:[OCMArg any] sections:[OCMArg any] ];
-    
-    // when
-    [viewController view];
-    WaitFor(^BOOL(void) { return calledDidLoadArticles; }, 10);
-    
-    // then
-    STAssertTrue(calledDidLoadArticles, nil);
-}
-
 - (void) testDisplayContent
 {
     // given
-    LoadViewController *viewController = [[LoadViewController alloc] initWithNibName:@"LoadViewController" bundle:nil];
     id aMock = [OCMockObject partialMockForObject:viewController];
-    [[[aMock stub] andCall:@selector(didDisplayContent) onObject:self] didDisplayContent];
+    [[[aMock stub] andCall:@selector(didDisplayContent:with:) onObject:self] didDisplayContent:[OCMArg any] with:[OCMArg any]];
+
     // when
     [viewController view];
     WaitFor(^BOOL(void) { return calledDidDisplayContent; }, 10);
     
     // then
+    // confirm that the right articles have been loaded
     STAssertTrue(calledDidDisplayContent, nil);
+    STAssertEquals((int)[callbackArticleList count], 3, nil);
+    
+    // confirm that the ArticleTableViewController is now active
+    STAssertTrue([callbackVC isKindOfClass:[ArticleTableViewController class]], nil);
 }
 
-- (void)didLoadArticles:(NSMutableArray *)articleList sections:(NSMutableArray *)sectionList
+#pragma mark - Observer methods
+
+- (void)didDisplayContent:(NSArray *)articleList with:(UIViewController *) vc
 {
-    calledDidLoadArticles = TRUE;
-}
-
-- (void)didDisplayContent {
     calledDidDisplayContent = TRUE;
+    callbackArticleList = articleList;
+    callbackVC = vc;
 }
 
 

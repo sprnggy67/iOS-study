@@ -7,7 +7,11 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "FeedStore.h"
 
 @interface LoadViewControllerTests : SenTestCase
+
+- (FeedStore *) createTestableFeedStore;
+- (void)addFeed:(NSString *) feedName toStore:(FeedStore *) store;
 
 @end

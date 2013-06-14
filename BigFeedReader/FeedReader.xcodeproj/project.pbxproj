@@ -22,6 +22,7 @@
 		5534C7681769D2AF00530FBE /* RSSFeed2.rss in Resources */ = {isa = PBXBuildFile; fileRef = 5534C7671769D2AF00530FBE /* RSSFeed2.rss */; };
 		555570751712BB6900FED58C /* wildfire_logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 555570741712BB6900FED58C /* wildfire_logo_transparent.png */; };
 		555570771712BB7000FED58C /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 555570761712BB7000FED58C /* background.png */; };
+		555BD2B1176B202E005B22AE /* ArticleTableViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 555BD2B0176B202E005B22AE /* ArticleTableViewControllerTests.m */; };
 		555F54F61743721100124DA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55791BE916E1DD420083AF02 /* main.m */; };
 		555F54F71743721100124DA1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55791BED16E1DD420083AF02 /* AppDelegate.m */; };
 		555F54F81743721100124DA1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55791BF616E1DD420083AF02 /* MainViewController.m */; };
@@ -117,6 +118,8 @@
 		5534C7671769D2AF00530FBE /* RSSFeed2.rss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RSSFeed2.rss; sourceTree = "<group>"; };
 		555570741712BB6900FED58C /* wildfire_logo_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wildfire_logo_transparent.png; sourceTree = "<group>"; };
 		555570761712BB7000FED58C /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		555BD2AF176B202E005B22AE /* ArticleTableViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleTableViewControllerTests.h; sourceTree = "<group>"; };
+		555BD2B0176B202E005B22AE /* ArticleTableViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTableViewControllerTests.m; sourceTree = "<group>"; };
 		555F55221743721100124DA1 /* FeedReader-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FeedReader-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		555F552C1743721300124DA1 /* ContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
 		555F552D1743721300124DA1 /* FeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
@@ -253,6 +256,8 @@
 			children = (
 				5576BA451768796400D25FFE /* LoadViewControllerTests.h */,
 				5576BA461768796400D25FFE /* LoadViewControllerTests.m */,
+				555BD2AF176B202E005B22AE /* ArticleTableViewControllerTests.h */,
+				555BD2B0176B202E005B22AE /* ArticleTableViewControllerTests.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -663,6 +668,7 @@
 				5576BA471768796400D25FFE /* LoadViewControllerTests.m in Sources */,
 				5534C7631769C1CB00530FBE /* FeedLoaderTests.m in Sources */,
 				5534C7661769CD2400530FBE /* TestUtils.m in Sources */,
+				555BD2B1176B202E005B22AE /* ArticleTableViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

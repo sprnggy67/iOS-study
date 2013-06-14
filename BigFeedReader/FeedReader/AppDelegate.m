@@ -33,6 +33,7 @@
         [feedStore add:[[Feed alloc] initWithName:@"Herman Miller" url:@"http://www.hermanmiller.com/discover/feed/"]];
         [feedStore add:[[Feed alloc] initWithName:@"Variety" url:@"http://variety.com/feed/"]];
     }
+    rootView.feedStore = feedStore;
 
     [self.window makeKeyAndVisible];
     return YES;

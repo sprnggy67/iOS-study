@@ -18,7 +18,6 @@
     
     // Set-up code here.
     self.feedStore = [FeedStore testable:@"FeedStoreTests.plist"];
-    [feedStore removeAll];
 }
 
 - (void)tearDown

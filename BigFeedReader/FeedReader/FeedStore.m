@@ -37,7 +37,9 @@ static FeedStore * singleton;
 }
 
 + (FeedStore *)testable:(NSString *)plistName {
-    return [[FeedStore alloc] initWithName:plistName];
+    FeedStore * store = [[FeedStore alloc] initWithName:plistName];
+    [store removeAll];
+    return store;
 }
 
 -(id)initWithName:(NSString *)name {
