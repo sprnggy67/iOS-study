@@ -8,6 +8,8 @@
 
 #import "ArticleTableViewControllerTests.h"
 #import "RSSNewsDataFactory.h"
+#import "FeedTableViewController.h"
+#import "MainViewController.h"
 #import <OCMock/OCMock.h>
 
 @interface ArticleTableViewController (Tests)
@@ -109,13 +111,18 @@
     [viewController view];
     
     // expect navigation
-    [[navigationController expect] pushViewController:[OCMArg any] animated:YES];
+    [[navigationController expect] pushViewController:[OCMArg checkWithSelector:@selector(isFeedTableViewController:)onObject:self] animated:YES];
     
     // when the menu button is pressed
     [viewController menuButtonPressed:nil];
     
     // verify navigation
     [navigationController verify];
+}
+
+- (BOOL) isFeedTableViewController:(id)object
+{
+    return [object isKindOfClass:[FeedTableViewController class]];
 }
 
 - (void) testRowSelected {
@@ -131,13 +138,18 @@
     [viewController view];
     
     // expect navigation
-    [[navigationController expect] pushViewController:[OCMArg any] animated:YES];
+    [[navigationController expect] pushViewController:[OCMArg checkWithSelector:@selector(isMainViewController:)onObject:self] animated:YES];
     
     // when the first row is selected
     [viewController tableView:viewController.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     
     // verify navigation
     [navigationController verify];
+}
+
+- (BOOL) isMainViewController:(id)object
+{
+    return [object isKindOfClass:[MainViewController class]];
 }
 
 

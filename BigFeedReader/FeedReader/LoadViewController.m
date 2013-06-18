@@ -105,6 +105,7 @@
     // Load it into the article table view.
     ArticleTableViewController * secondView = [[ArticleTableViewController alloc] initWithStyle:UITableViewStylePlain];
     secondView.articleList = articleList;
+    secondView.feedStore = feedStore;
     [[self navigationController] pushViewController:secondView animated:YES];
 
     reloadButton.hidden = NO;

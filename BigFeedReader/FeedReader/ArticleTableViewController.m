@@ -17,6 +17,7 @@
 @implementation ArticleTableViewController
 
 @synthesize articleList;
+@synthesize feedStore;
 
 #pragma mark - Init
 
@@ -104,7 +105,8 @@
 
 -(void)menuButtonPressed:(id)parameter {
     FeedTableViewController *secondView = [[FeedTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    [secondView setDelegate:self];
+    secondView.feedStore = feedStore;
+    secondView.delegate = self;
     [[self navigationController] pushViewController:secondView animated:YES];
 }
 
