@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		55038AF8170B7D0300C5CE02 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55038AF7170B7D0200C5CE02 /* FeedTableViewController.m */; };
+		55047B121771BC2400620BCE /* FeedViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55047B111771BC2400620BCE /* FeedViewControllerTests.m */; };
 		5511A5331770732D002E6F45 /* WebViewDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5511A5321770732D002E6F45 /* WebViewDelegateTests.m */; };
 		551F7D2F16F5AA1F00D7F4B0 /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = 551F7D2E16F5AA1F00D7F4B0 /* Templates */; };
 		552115C5170D4D3A0097BD53 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 552115C3170D4D3A0097BD53 /* FeedViewController.m */; };
@@ -98,6 +99,8 @@
 /* Begin PBXFileReference section */
 		55038AF6170B7D0200C5CE02 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		55038AF7170B7D0200C5CE02 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
+		55047B101771BC2400620BCE /* FeedViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewControllerTests.h; sourceTree = "<group>"; };
+		55047B111771BC2400620BCE /* FeedViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewControllerTests.m; sourceTree = "<group>"; };
 		5511A5311770732D002E6F45 /* WebViewDelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewDelegateTests.h; sourceTree = "<group>"; };
 		5511A5321770732D002E6F45 /* WebViewDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewDelegateTests.m; sourceTree = "<group>"; };
 		55131D0517589DE900FA8655 /* NavigationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationDelegate.h; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 				555BD2B0176B202E005B22AE /* ArticleTableViewControllerTests.m */,
 				5586FDD3176F6A8A00067A9F /* FeedTableViewControllerTests.h */,
 				5586FDD4176F6A8A00067A9F /* FeedTableViewControllerTests.m */,
+				55047B101771BC2400620BCE /* FeedViewControllerTests.h */,
+				55047B111771BC2400620BCE /* FeedViewControllerTests.m */,
 				5511A5311770732D002E6F45 /* WebViewDelegateTests.h */,
 				5511A5321770732D002E6F45 /* WebViewDelegateTests.m */,
 			);
@@ -681,6 +686,7 @@
 				555BD2B1176B202E005B22AE /* ArticleTableViewControllerTests.m in Sources */,
 				5586FDD5176F6A8A00067A9F /* FeedTableViewControllerTests.m in Sources */,
 				5511A5331770732D002E6F45 /* WebViewDelegateTests.m in Sources */,
+				55047B121771BC2400620BCE /* FeedViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
