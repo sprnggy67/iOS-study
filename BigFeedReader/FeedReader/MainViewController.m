@@ -149,15 +149,6 @@
 
 #pragma mark - Navigation
 
--(void)menuButtonPressed{
-    UIViewController *secondView = [[FeedTableViewController alloc]
-                                    initWithStyle:UITableViewStylePlain];
-    [[self navigationController] pushViewController:secondView animated:YES];
-}
-
-/*
- Asks the receiver to navigate to a specific article.
- */
 - (void)navigateTo:(NSString *)destId {
     // Find the article
     int articleIndex = -1;
@@ -191,6 +182,15 @@
                 });
             }
         }];
+}
+
+-(int)getVisibleIndex {
+    ContentViewController * visibleVC = [self getVisibleViewController];
+    return [self indexOfViewController:visibleVC];
+}
+
+-(ContentViewController *)getVisibleViewController {
+    return [pageController.viewControllers objectAtIndex:0];
 }
 
 
