@@ -1,0 +1,161 @@
+{
+ "targets": [
+  {
+   "name": "default",
+   "layout": {
+    "uniqueID": "defaultRoot",
+    "componentType": "grid",
+    "width": 576,
+    "height": 776,
+    "rows": "2",
+    "columns": "2",
+    "rowGutter": 10,
+    "columnGutter": 10,
+    "children": [
+     {
+      "componentType": "flow",
+      "uniqueID": "cmp1371725208423",
+      "children": [
+       {
+        "componentType": "headline",
+        "dataPath": "children",
+        "dataIndex": 0,
+        "uniqueID": "cmp1371725208427"
+       },
+       {
+        "componentType": "image",
+        "dataPath": "children",
+        "dataIndex": 0,
+        "uniqueID": "cmp1371725208428"
+       },
+       {
+        "componentType": "body",
+        "dataPath": "children",
+        "dataIndex": 0,
+        "uniqueID": "cmp1371725208429"
+       },
+       {
+        "componentType": "headline",
+        "dataPath": "children",
+        "dataIndex": 2,
+        "uniqueID": "cmp1371725208433"
+       },
+       {
+        "componentType": "image",
+        "dataPath": "children",
+        "dataIndex": 2,
+        "uniqueID": "cmp1371725208435"
+       },
+       {
+        "componentType": "body",
+        "dataPath": "children",
+        "dataIndex": 2,
+        "uniqueID": "cmp1371725208437"
+       }
+      ],
+      "position": {
+       "left": 0,
+       "top": 0,
+       "width": 1,
+       "height": 1
+      },
+      "scroll": true
+     },
+     {
+      "componentType": "flow",
+      "uniqueID": "cmp1371725208424",
+      "children": [
+       {
+        "componentType": "headline",
+        "dataPath": "children",
+        "dataIndex": 1,
+        "uniqueID": "cmp1371725208430"
+       },
+       {
+        "componentType": "image",
+        "dataPath": "children",
+        "dataIndex": 1,
+        "uniqueID": "cmp1371725208431"
+       },
+       {
+        "componentType": "body",
+        "dataPath": "children",
+        "dataIndex": 1,
+        "uniqueID": "cmp1371725208432"
+       }
+      ],
+      "position": {
+       "left": 1,
+       "top": 0,
+       "width": 1,
+       "height": 1
+      },
+      "scroll": true
+     },
+     {
+      "componentType": "flow",
+      "uniqueID": "cmp1371725208425",
+      "children": [
+       {
+        "componentType": "headline",
+        "dataPath": "children",
+        "dataIndex": 2,
+        "uniqueID": "cmp1371725208434"
+       },
+       {
+        "componentType": "image",
+        "dataPath": "children",
+        "dataIndex": 2,
+        "uniqueID": "cmp1371725208436"
+       },
+       {
+        "componentType": "body",
+        "dataPath": "children",
+        "dataIndex": 2,
+        "uniqueID": "cmp1371725208438"
+       }
+      ],
+      "position": {
+       "left": 0,
+       "top": 1,
+       "width": 1,
+       "height": 1
+      },
+      "scroll": true
+     },
+     {
+      "componentType": "flow",
+      "uniqueID": "cmp1371725208426",
+      "children": [
+       {
+        "componentType": "headline",
+        "dataPath": "children",
+        "dataIndex": 3,
+        "uniqueID": "cmp1371725208439"
+       },
+       {
+        "componentType": "image",
+        "dataPath": "children",
+        "dataIndex": 3,
+        "uniqueID": "cmp1371725208440"
+       },
+       {
+        "componentType": "body",
+        "dataPath": "children",
+        "dataIndex": 3,
+        "uniqueID": "cmp1371725208441"
+       }
+      ],
+      "position": {
+       "left": 1,
+       "top": 1,
+       "width": 1,
+       "height": 1
+      },
+      "scroll": true
+     }
+    ],
+   }
+  }
+ ]
+}

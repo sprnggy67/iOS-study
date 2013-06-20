@@ -158,6 +158,31 @@
         
         offset ++;
     }
+
+    // Create a multi scroll page for the last few articles in the first section.
+    {
+        Section * section = [self.sectionList objectAtIndex:0];
+        NSMutableArray * children = [NSMutableArray arrayWithCapacity:4];
+        int count = 4;
+        offset = 2; // front page + section page
+        if (section.length >= count) {
+            int articleIndex = section.start + (section.length - count) + offset;
+            for (int x = 0; x < count; x++) {
+                Article * article = [self.articleList objectAtIndex:(articleIndex + x)];
+                [children addObject:article];
+            }
+            Article * multiScroll = [Article articleWithId:@"Recap"
+                                                headline:@"The Last Four Articles"
+                                                template:@"dynamicTemplate"
+                                             subTemplate:@"multiScroll"
+                                            withChildren:children];
+            multiScroll.source = section.name;
+            [self.articleList insertObject:multiScroll atIndex:(section.start + section.length + offset)];
+            
+            offset ++;
+            
+        }
+    }
 }
 
 -(void)sortContentByPubDate {
