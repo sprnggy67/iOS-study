@@ -21,4 +21,9 @@ BOOL WaitFor(BOOL (^block)(void), int seconds)
     return blockValue;
 }
 
+BOOL Wait(int seconds)
+{
+    return WaitFor(^BOOL(void) { return false; }, seconds);
+}
+
 

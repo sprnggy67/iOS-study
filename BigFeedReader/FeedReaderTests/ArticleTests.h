@@ -7,7 +7,10 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "Article.h"
 
 @interface ArticleTests : SenTestCase
+
++ (Article *) createArticle:(NSString *)headline template:(NSString *)template standFirst:(NSString *)sf body:(NSString *) body;
 
 @end

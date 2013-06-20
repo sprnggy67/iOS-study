@@ -10,3 +10,5 @@
 
 BOOL WaitFor(BOOL (^block)(void), int seconds);
 
+BOOL Wait(int seconds);
+
