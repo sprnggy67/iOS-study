@@ -12,12 +12,7 @@
 
 @interface TemplateFactory : NSObject
 
-@property (strong, nonatomic) NSBundle * bundle;
-
-/**
- Creates a new factory. The factory will retrieve templates from the given bundle.
- */
--(id)initWithBundle:(NSBundle *)bundleParam;
+-(id)init;
 
 /*
  Returns a template with the given name, or nil if it cannot be found.

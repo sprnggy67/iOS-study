@@ -11,21 +11,12 @@
 @interface WebViewDelegate ()
 
 @property (weak) UIWebView *webView;
-@property (nonatomic, strong) NSMutableDictionary * timeDictionary;
-
--(void)log:(NSString *) args;
--(void)logv:(NSString *) args, ...;
--(void)navigateTo:(NSString *) args;
--(void)time:(NSString *) args;
--(void)timeEnd:(NSString *) args onError:(NSString *) errorCallback;
--(void)onMissingArgument:(NSString *)name withArgs:(NSObject *) args onError:(NSString *) errorCallback;
 
 @end
 
 @implementation WebViewDelegate
 
 @synthesize webView;
-@synthesize navigationDelegate;
 
 NSString *const PROTOCOL_PREFIX = @"js2ios://";
 
@@ -33,7 +24,6 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
     self = [super init];
     if (self) {
         self.webView = view;
-        self.timeDictionary = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -80,9 +70,9 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
         
         NSString *successCallback = [callInfo objectForKey:@"success"];
         NSString *errorCallback = [callInfo objectForKey:@"error"];
-        NSObject * args = [callInfo objectForKey:@"args"];
+        NSArray *argsArray = [callInfo objectForKey:@"args"];
         
-        [self callNativeFunction:functionName withArgs:args onSuccess:successCallback onError:errorCallback];
+        [self callNativeFunction:functionName withArgs:argsArray onSuccess:successCallback onError:errorCallback];
         
         // Do not load this url in the WebView
         return NO;
@@ -91,75 +81,28 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
     return YES;
 }
 
-- (void) callNativeFunction:(NSString *) name withArgs:(NSObject *) args onSuccess:(NSString *) successCallback onError:(NSString *) errorCallback
+- (void) callNativeFunction:(NSString *) name withArgs:(NSArray *) args onSuccess:(NSString *) successCallback onError:(NSString *) errorCallback
 {
-    if (args == nil) {
-        [self onMissingArgument:name withArgs:args onError:errorCallback];
-    } else if ([name isEqualToString:@"log"]) {
-        [self log:(NSString *)args];
-    } else if ([name isEqualToString:@"navigateTo"]) {
-        [self navigateTo:(NSString *)args];
-    } else if ([name isEqualToString:@"time"]) {
-        [self time:(NSString *)args];
-    } else if ([name isEqualToString:@"timeEnd"]) {
-        [self timeEnd:(NSString *)args onError:errorCallback];
-    } else {
-        // Unknown function called from JavaScript
+    if ([name compare:@"log" options:NSCaseInsensitiveSearch] == NSOrderedSame)
+    {
+        if (args != nil)
+        {
+            NSLog(@"UIWebView.log: %@", args);
+        }
+        else
+        {
+            NSString *resultStr = [NSString stringWithFormat:@"Error calling function %@. Error : Missing argument", name];
+            [self callErrorCallback:errorCallback withMessage:resultStr];
+            NSLog(@"UIWebView.log: %@", resultStr);
+        }
+    }
+    else
+    {
+        //Unknown function called from JavaScript
         NSString *resultStr = [NSString stringWithFormat:@"Cannot process function %@. Function not found", name];
         [self callErrorCallback:errorCallback withMessage:resultStr];
-        NSLog(@"UIWebViewDelegate: %@", resultStr);
+        NSLog(@"UIWebView delegate: %@", resultStr);
     }
-}
-
--(void)log:(NSString *) args
-{
-    [self logv:@"UIWebViewDelegate.log: %@", args];
-}
-
-/**
- This method has been added to facilitate testing
- */
--(void)logv:(NSString *)format, ...
-{
-    va_list arglist;
-    va_start(arglist, format);
-    NSLogv(format, arglist);
-    va_end(arglist);
-}
-
--(void)navigateTo:(NSString *) args
-{
-    if (navigationDelegate != nil) {
-        [navigationDelegate navigateTo:args];
-    }
-}
-
--(void)time:(NSString *) args
-{
-    NSString * key = (NSString *) args;
-    [self.timeDictionary setObject:[NSDate date] forKey:key];
-    [self logv:@"UIWebViewDelegate.time: %@", key];
-}
-
--(void)timeEnd:(NSString *) args onError:(NSString *) errorCallback
-{
-    NSString * key = (NSString *) args;
-    NSDate * startDate = [self.timeDictionary objectForKey:key];
-    if (startDate != nil) {
-        double timePassed_ms = [startDate timeIntervalSinceNow] * -1000.0;
-        [self logv:@"UIWebViewDelegate.timeEnd: %@ (%fms)", key, timePassed_ms];
-        [self.timeDictionary removeObjectForKey:key];
-    } else {
-        NSString *resultStr = [NSString stringWithFormat:@"Error calling function %@. Error : cannot find startDate", @"timeEnd"];
-        [self callErrorCallback:errorCallback withMessage:resultStr];
-        NSLog(@"UIWebViewDelegate.timeEnd cannot find startDate for timer:%@", key);
-    }
-}
-
--(void) onMissingArgument:(NSString *)name withArgs:(NSObject *) args onError:(NSString *) errorCallback {
-    NSString *resultStr = [NSString stringWithFormat:@"Error calling function %@. Error : Missing argument", name];
-    [self callErrorCallback:errorCallback withMessage:resultStr];
-    NSLog(@"UIWebViewDelegate onMissingArgument: %@", resultStr);
 }
 
 -(void) callSuccessCallback:(NSString *) name withRetValue:(id) retValue forFunction:(NSString *) funcName
@@ -171,6 +114,11 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
         [resultDict setObject:retValue forKey:@"result"];
         [self callJSFunction:name withArgs:resultDict];
     }
+    else
+    {
+        NSLog(@"Result of function %@ = %@", funcName,retValue);
+    }
+    
 }
 -(void) callErrorCallback:(NSString *) name withMessage:(NSString *) msg
 {
@@ -181,6 +129,11 @@ NSString *const PROTOCOL_PREFIX = @"js2ios://";
         [resultDict setObject:msg forKey:@"error"];
         [self callJSFunction:name withArgs:resultDict];
     }
+    else
+    {
+        NSLog(@"%@",msg);
+    }
+    
 }
 
 -(void) callJSFunction:(NSString *) name withArgs:(NSMutableDictionary *) args

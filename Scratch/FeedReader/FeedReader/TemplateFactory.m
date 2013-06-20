@@ -16,15 +16,13 @@
 
 @implementation TemplateFactory
 
-@synthesize bundle;
 @synthesize dictionary;
 
 #pragma mark - Init
 
--(id)initWithBundle:(NSBundle *)bundleParam {
+-(id)init {
     self = [super init];
     if (self) {
-        self.bundle = bundleParam;
         self.dictionary = [[NSMutableDictionary alloc] init];
     }
     return self;
@@ -40,7 +38,7 @@
         return result;
     
     // If it doesn't exist, create it.
-    result = [[Template alloc] initWith:name bundle:bundle];
+    result = [[Template alloc] initWith:name];
     if (result) {
         [dictionary setObject:result forKey:name];
     }

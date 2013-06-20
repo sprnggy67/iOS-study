@@ -9,18 +9,14 @@
 #import "RSSNewsDataFactory.h"
 #import "Article.h"
 
-static int articleCount = 0;
-
 @interface RSSNewsDataFactory ()
 {
     BOOL inItem;
-    BOOL debug;
-    int count;
 }
 
 @property (strong, nonatomic) NSMutableArray * results;
 @property (strong, nonatomic) NSMutableDictionary * currentArticleAttributes;
-@property (strong, nonatomic) NSMutableString * currentStringValue;
+@property (strong, nonatomic) NSString * currentStringValue;
 
 @end
 
@@ -37,6 +33,12 @@ static int articleCount = 0;
     NSData * data = [str dataUsingEncoding:NSUTF8StringEncoding];
     return [self parseData:data];
 }
+
+// Reads a set of articles from a resource.
+-(NSArray *)parseResource:(NSString*)name {
+    return [self parseResource:name fromBundle:[NSBundle mainBundle]];
+}
+
 
 // Reads a set of articles from a resource.
 -(NSArray *)parseResource:(NSString*)name fromBundle:(NSBundle *) bundle {
@@ -56,7 +58,6 @@ static int articleCount = 0;
     self.currentArticleAttributes = nil;
     self.currentStringValue = nil;
     inItem = FALSE;
-    count = 0;
     
     // Initialize the parser
     NSXMLParser * parser = [[NSXMLParser alloc] initWithData:data];
@@ -80,51 +81,28 @@ static int articleCount = 0;
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
     qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
-    if (debug)
-        NSLog(@"didStartElement: %@", elementName);
-
     if ( [elementName isEqualToString:@"item"]) {
         inItem = TRUE;
-        ++ articleCount;
         self.currentArticleAttributes = [[NSMutableDictionary alloc] init];
-        [currentArticleAttributes setObject:[NSString stringWithFormat:@"Article %i", articleCount] forKey:@"id"];
-        [currentArticleAttributes setObject:@"dynamicTemplate" forKey:@"templateName"];
-        if (count == 0) {
-            [currentArticleAttributes setObject:@"featureArticle" forKey:@"subTemplateName"];
-        } else {
-            [currentArticleAttributes setObject:@"standardArticle" forKey:@"subTemplateName"];
-        }
-        count ++;
+        [currentArticleAttributes setObject:@"ArticleTemplate" forKey:@"templateName"];
         return;
     }
-    
-    self.currentStringValue = [[NSMutableString alloc] init];
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    if (debug)
-        NSLog(@"foundCharacters: %@", string);
-
-    [self.currentStringValue appendString:string];
+    self.currentStringValue = string;
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
     qualifiedName:(NSString *)qName
 {
-    if (debug) {
-        NSLog(@"didEndElement: %@", elementName);
-        NSLog(@"The currentStringValue is: %@", self.currentStringValue);
-    }
-    
     if ( [elementName isEqualToString:@"item"] ) {
         Article * article = [Article articleFromDictionary:currentArticleAttributes];
         if (article != NULL) {
             [results addObject:article];
-            if (debug) {
-                NSLog(@"Found article %@", [article headline]);
-            }
+            NSLog(@"Found article %@", [article headline]);
         } else {
-            NSLog(@"Could not parse article %@", currentArticleAttributes);
+            NSLog(@"Could not parse article");
         }
         self.currentArticleAttributes = nil;
         inItem = FALSE;
@@ -147,21 +125,11 @@ static int articleCount = 0;
     }
 
     if ( inItem && [elementName isEqualToString:@"description"] ) {
-        [currentArticleAttributes setObject:currentStringValue forKey:@"standFirst"];
-        return;
-    }
-      
-    if ( inItem && [elementName isEqualToString:@"author"] ) {
-        [currentArticleAttributes setObject:currentStringValue forKey:@"byline"];
+        [currentArticleAttributes setObject:currentStringValue forKey:@"description"];
         return;
     }
     
-    if ( inItem && [elementName isEqualToString:@"dc:creator"] ) {
-        [currentArticleAttributes setObject:currentStringValue forKey:@"byline"];
-        return;
-    }
-    
-    self.currentStringValue = [[NSMutableString alloc] init];
+    self.currentStringValue = nil;
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {

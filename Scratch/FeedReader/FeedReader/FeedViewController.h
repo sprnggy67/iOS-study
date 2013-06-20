@@ -30,12 +30,9 @@
 }
 
 @property (strong, nonatomic) Feed * feed;
-@property (nonatomic, weak) id <FeedViewControllerDelegate> delegate;
-
 @property (strong, nonatomic) UITextField * name;
 @property (strong, nonatomic) UITextField * url;
-@property (strong, nonatomic) IBOutlet UIButton * saveButton;
-@property (strong, nonatomic) IBOutlet UIButton * cancelButton;
+@property (nonatomic, weak) id <FeedViewControllerDelegate> delegate;
 
 /*
  Saves the feed

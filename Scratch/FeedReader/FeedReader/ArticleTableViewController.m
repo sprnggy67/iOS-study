@@ -9,20 +9,14 @@
 //  Copyright (c) 2013 Dave. All rights reserved.
 //
 
+#import "MainViewController.h"
+#import "ArticleTableViewController.h"
 #import "FeedTableViewController.h"
-#import "FeedViewController.h"
-#import "FeedStore.h"
+#import "Article.h"
 
-@interface FeedTableViewController () {
-    BOOL wasModified;
-}
+@implementation ArticleTableViewController
 
-@end
-
-@implementation FeedTableViewController
-
-@synthesize feedStore;
-@synthesize delegate;
+@synthesize articleList;
 
 #pragma mark - Init
 
@@ -39,20 +33,18 @@
 {
     [super viewDidLoad];
 
-    self.title = @"Feeds";
+    self.title = @"Articles";
     self.clearsSelectionOnViewWillAppear = NO;
     self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
                                                   target:self
-                                                  action:@selector(openCreateVC:)];
-    self.toolbarItems = [NSArray arrayWithObjects:self.editButtonItem,nil];
-    self.navigationController.toolbarHidden = NO;
+                                                  action:@selector(menuButtonPressed:)];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    if (wasModified) {
-        [delegate didModifyTable:feedStore];
-    }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,7 +64,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [feedStore count];
+    return [articleList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -86,8 +78,9 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     int index = [indexPath indexAtPosition:1];
-    Feed * feed = [[feedStore feeds] objectAtIndex:index];
-    cell.textLabel.text = feed.name;
+    Article * article = [articleList objectAtIndex:index];
+    cell.textLabel.text = article.headline;
+    cell.detailTextLabel.text = article.source;
     
     return cell;
 }
@@ -95,18 +88,13 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the feed data
+        // Delete the article
         int index = [indexPath indexAtPosition:1];
-        Feed * feed = [[feedStore feeds] objectAtIndex:index];
-        [feedStore remove:feed];
-        wasModified = YES;
+        [articleList removeObjectAtIndex:index];
         
-        // Delete the feed row
-        [tableView reloadData];
-        
-        // The following code fails in ocunit tests, so I have switched to reloadData
-        // [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
@@ -114,13 +102,8 @@
 
 #pragma mark - Table view delegate
 
--(void)openCreateVC:(id)parameter {
-    [self openFeedVC:NULL];
-}
-
--(void)openFeedVC:(Feed *)feed {
-    FeedViewController *secondView = [[FeedViewController alloc] initWithNibName:@"FeedViewController" bundle:nil];
-    [secondView setFeed:feed];
+-(void)menuButtonPressed:(id)parameter {
+    FeedTableViewController *secondView = [[FeedTableViewController alloc] initWithStyle:UITableViewStylePlain];
     [secondView setDelegate:self];
     [[self navigationController] pushViewController:secondView animated:YES];
 }
@@ -129,24 +112,18 @@
 {
     // Get the feed
     int index = [indexPath indexAtPosition:1];
-    Feed * feed = [[feedStore feeds] objectAtIndex:index];
 
-    // Open the child view controller
-    [self openFeedVC:feed];
+    // Open the content view controller
+    MainViewController * secondView = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    secondView.articleList = articleList;
+    [secondView setFirstVisibleIndex:index];
+    [[self navigationController] pushViewController:secondView animated:YES];
 }
 
 #pragma mark - New feed view delegate
 
-- (void)didCreateFeed:(Feed *)feed {
-    [feedStore add:feed];
-    [[self tableView] reloadData];
-    wasModified = YES;
-}
-
-- (void)didModifyFeed:(Feed *)feed {
-    [feedStore write];
-    [[self tableView] reloadData];
-    wasModified = YES;
+- (void)didModifyTable:(FeedStore *)store {
+    // To do
 }
 
 

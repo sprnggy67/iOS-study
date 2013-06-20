@@ -13,8 +13,6 @@
 
 @property (strong, nonatomic) WebViewDelegate * webViewDelegate;
 
-- (void)loadContent;
-
 @end
 
 @implementation ContentViewController
@@ -23,8 +21,6 @@
 @synthesize article;
 @synthesize templateFactory;
 @synthesize webViewDelegate;
-@synthesize navigationDelegate;
-@synthesize loaded;
 
 #pragma mark - Init
 
@@ -39,44 +35,21 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"ContentViewController.viewDidLoad called");
-    
     [super viewDidLoad];
     self.title = @"Article";
     
     // Set the web view delegate
     self.webViewDelegate = [[WebViewDelegate alloc] initWith:webView];
-    [webViewDelegate setNavigationDelegate:navigationDelegate];
     [webView setDelegate:webViewDelegate];
-
-    [self loadContent];
-
-    NSLog(@"ContentViewController.viewDidLoad done");   
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    NSLog(@"ContentViewController.viewWillAppear: called");
-
-    [super viewWillAppear:animated];
-    
-//    [self loadContent];
-
-    NSLog(@"ContentViewController.viewWillAppear: done");
 }
 
 // Loads the article into the webView.
-- (void)loadContent
+- (void)viewWillAppear:(BOOL)animated
 {
-   // Short circuit.
-    if (self.loaded)
-        return;
-    self.loaded = true;
+    [super viewWillAppear:animated];
     
     // Get the article template
     NSString * templateName = [article templateName];
-    NSLog(@"ContentViewController.loadContent: Loading template: %@", templateName);
-    NSString * subTemplateName = [article subTemplateName];
     Template * template = [templateFactory template:templateName];
     if (template == nil) {
         NSLog(@"Could not load template: %@", templateName);
@@ -85,18 +58,12 @@
         return;
     }
 
-    // Inject the article data into the template
-    NSLog(@"ContentViewController.loadContent: Injecting content into template");
-    NSString * contents = [template load:[article jsonData] subTemplate:subTemplateName];
+    // Inject the article data into the template and display it.
+    NSString * contents = [template load:[article jsonData]];
     NSString * path = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/Templates"];
     NSURL * pathURL = [NSURL fileURLWithPath:path];
-    
-    // Display the content.
-    NSLog(@"ContentViewController.loadContent: Loading content into webView");
     [webView loadHTMLString:contents
                     baseURL:pathURL];
-
-    NSLog(@"ContentViewController.loadContent: Done loading content into webView");
 }
 
 - (void)didReceiveMemoryWarning

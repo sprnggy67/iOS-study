@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "NewsDataFactory.h"
 #import "RSSNewsDataFactory.h"
 #import "Downloader.h"
 #import "FeedTableViewController.h"
@@ -33,13 +34,11 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"MainViewController.viewDidLoad called");
+    NSLog(@"ViewController.viewDidLoad entered");
     
     [super viewDidLoad];
     self.title = @"In Detail";
     [self displayContent];
-   
-    NSLog(@"MainViewController.viewDidLoad done");
 }
 
 -(void)setFirstVisibleIndex:(int)index {
@@ -61,7 +60,7 @@
 
 - (void)displayContent {
     // Create the template factory
-    templateFactory = [[TemplateFactory alloc] initWithBundle:[NSBundle mainBundle]];
+    templateFactory = [[TemplateFactory alloc] init];
     
     // Create the page controller
     NSDictionary *options = [NSDictionary dictionaryWithObject:
@@ -86,11 +85,13 @@
     [self addChildViewController:pageController];
     [[self view] addSubview:[pageController view]];
     [pageController didMoveToParentViewController:self];
+    
+    NSLog(@"ViewController.viewDidLoad done");
 }
 
 - (ContentViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    NSLog(@"MainViewController.viewControllerAtIndex:%d called", index);
+    NSLog(@"ViewController.viewControllerAtIndex:%d entered", index);
     
     // If index is out of bounds, return nil.
     int articleCount = [self.articleList count];
@@ -99,16 +100,14 @@
     }
     
     // Create a new view controller and pass suitable data.
-    NSLog(@"MainViewController.viewControllerAtIndex: creating ContentViewController");
     Article * article = [articleList objectAtIndex:index];
     ContentViewController *dataViewController = [[ContentViewController alloc]
                                                  initWithNibName:@"ContentViewController"
                                                  bundle:nil];
     [dataViewController setArticle:article];
     [dataViewController setTemplateFactory:templateFactory];
-    [dataViewController setNavigationDelegate:self];
      
-    NSLog(@"MainViewController.viewControllerAtIndex: done");
+    NSLog(@"ViewController.viewControllerAtIndex:%d done", index);
 
     return dataViewController;
 }
@@ -147,53 +146,11 @@
     return [self viewControllerAtIndex:index];
 }
 
-#pragma mark - Navigation
-
-- (void)navigateTo:(NSString *)destId {
-    // Find the article
-    int articleIndex = -1;
-    int count = [self.articleList count];
-    for (int index = 0; index < count; index ++) {
-        Article * article = [self.articleList objectAtIndex:index];
-        if ([destId isEqualToString:article.uniqueId]) {
-            articleIndex = index;
-            break;
-        }
-    }
-
-    // Error check.
-    if (articleIndex == -1) {
-        NSLog(@"MainViewController: Unable to find destId %@ in navigateTo", destId);
-        return;
-    }
-    
-    // Create the new page
-    ContentViewController *initialViewController = [self viewControllerAtIndex:articleIndex];
-    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
-    
-    // Animate to the new page
-    __block MainViewController * blocksafeSelf = self;
-    [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished){
-            if(finished) {
-                // Clear the original page by calling this again.
-                // See http://stackoverflow.com/questions/12939280/uipageviewcontroller-navigates-to-wrong-page-with-scroll-transition-style
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [blocksafeSelf.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
-                });
-            }
-        }];
+-(void)menuButtonPressed{
+    UIViewController *secondView = [[FeedTableViewController alloc]
+                                    initWithStyle:UITableViewStylePlain];
+    [[self navigationController] pushViewController:secondView animated:YES];
 }
-
--(int)getVisibleIndex {
-    ContentViewController * visibleVC = [self getVisibleViewController];
-    return [self indexOfViewController:visibleVC];
-}
-
--(ContentViewController *)getVisibleViewController {
-    return [pageController.viewControllers objectAtIndex:0];
-}
-
-
 
 
 @end

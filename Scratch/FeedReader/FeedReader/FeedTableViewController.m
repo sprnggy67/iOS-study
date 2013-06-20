@@ -17,6 +17,8 @@
     BOOL wasModified;
 }
 
+@property (strong, nonatomic) FeedStore * feedStore;
+
 @end
 
 @implementation FeedTableViewController
@@ -47,6 +49,8 @@
                                                   action:@selector(openCreateVC:)];
     self.toolbarItems = [NSArray arrayWithObjects:self.editButtonItem,nil];
     self.navigationController.toolbarHidden = NO;
+    
+    self.feedStore = [FeedStore singleton];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -95,18 +99,14 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the feed data
+        // Delete the feed
         int index = [indexPath indexAtPosition:1];
         Feed * feed = [[feedStore feeds] objectAtIndex:index];
         [feedStore remove:feed];
-        wasModified = YES;
         
-        // Delete the feed row
-        [tableView reloadData];
-        
-        // The following code fails in ocunit tests, so I have switched to reloadData
-        // [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   

@@ -13,7 +13,7 @@
 @property (strong, nonatomic) NSString * pListFileName;
 @property (strong, nonatomic) NSMutableArray * feeds;
 
--(id)initWithName:(NSString *)name;
+-(id)init;
 -(void)read;
 -(void)write;
 
@@ -28,26 +28,20 @@ static FeedStore * singleton;
 
 #pragma mark - Init
 
-+ (FeedStore *)singleton {
++ (FeedStore *) singleton {
     if (singleton == nil) {
-        singleton = [[FeedStore alloc] initWithName:@"FeedStore.plist"];
+        singleton = [[FeedStore alloc] init];
         [singleton read];
     }
     return singleton;
 }
 
-+ (FeedStore *)testable:(NSString *)plistName {
-    FeedStore * store = [[FeedStore alloc] initWithName:plistName];
-    [store removeAll];
-    return store;
-}
-
--(id)initWithName:(NSString *)name {
+-(id)init {
     self = [super init];
     if (self != nil) {
         NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentFolder = [documentPath objectAtIndex:0];
-        self.pListFileName = [documentFolder stringByAppendingPathComponent:name];
+        self.pListFileName = [documentFolder stringByAppendingPathComponent:@"FeedStore.plist"];
         self.feeds = [[NSMutableArray alloc] init];
     }
     return self;
@@ -67,29 +61,19 @@ static FeedStore * singleton;
     return ([feeds count] == 0);
 }
 
-- (void)add:(Feed *)feed {
+- (void) add:(Feed *)feed {
     if (![feeds containsObject:feed]) {
         [feeds addObject:feed];
         [self write];
     }
 }
 
-- (void)remove:(Feed *)feed {
+- (void) remove:(Feed *)feed {
     if ([feeds containsObject:feed]) {
         [feeds removeObject:feed];
         [self write];
     }
 }
-
-- (void)removeAll
-{
-    if ([feeds count] > 0) {
-        [feeds removeAllObjects];
-        [self write];
-    }    
-}
-
-#pragma mark - Readers / Writers
 
 -(void)read {
     self.feeds = [[NSMutableArray alloc] init];

@@ -9,14 +9,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ContentViewController.h"
-#import "FeedLoaderDelegate.h"
-#import "FeedStore.h"
 
-@interface LoadViewController : UIViewController <FeedLoaderDelegate>
+@interface LoadViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel * progressLabel;
 @property (strong, nonatomic) IBOutlet UIButton * reloadButton;
-@property (strong, nonatomic) FeedStore * feedStore;
 
 -(IBAction)reload:(id)sender;
 

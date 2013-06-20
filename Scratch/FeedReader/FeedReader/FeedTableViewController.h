@@ -22,7 +22,6 @@
 
 @interface FeedTableViewController : UITableViewController <FeedViewControllerDelegate>
 
-@property (strong, nonatomic) FeedStore * feedStore;
 @property (nonatomic, weak) id <FeedTableViewControllerDelegate> delegate;
 
 @end

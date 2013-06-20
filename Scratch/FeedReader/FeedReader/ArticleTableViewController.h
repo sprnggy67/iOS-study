@@ -9,11 +9,9 @@
 
 #import <UIKit/UIKit.h>
 #import "FeedTableViewController.h"
-#import "FeedStore.h"
 
 @interface ArticleTableViewController : UITableViewController <FeedTableViewControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray * articleList;
-@property (strong, nonatomic) FeedStore * feedStore;
 
 @end
