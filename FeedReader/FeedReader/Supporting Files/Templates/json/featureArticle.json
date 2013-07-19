@@ -2,48 +2,63 @@
  "targets": [
   {
    "name": "default",
-   "portraitLayout": {
-    "uniqueID": "defaultRoot",
-    "componentType": "grid",
-    "width": 600,
-    "height": 800,
-    "rows": 4,
+   "layout": {
+    "width": 576,
+    "height": 776,
     "columns": 3,
-    "rowGutter": 10,
-    "columnGutter": 10,
+    "rows": 4,
     "children": [
      {
-      "componentType": "flow",
-      "uniqueID": "cmp1369306220346",
       "children": [
        {
+        "uniqueID": "cmp1374232015377",
+        "children": [],
         "componentType": "headline",
         "dataPath": "#root",
-        "uniqueID": "cmp1369306220347"
+        "dataIndex": null,
+        "color": "#ffffff",
+        "style": "padding:5px;"
        },
        {
+        "uniqueID": "cmp1374232015378",
+        "children": [],
         "componentType": "standfirst",
         "dataPath": "#root",
-        "uniqueID": "cmp1369306220348"
+        "dataIndex": null,
+        "color": "#ffffff",
+        "style": "padding:5px;"
        }
       ],
+      "uniqueID": "cmp1374232015375",
+      "componentType": "flow",
       "position": {
        "left": 0,
        "top": 0,
        "width": 1,
-       "height": 3
-      }
+       "height": 2
+      },
+      "backgroundColor": "#800080"
      },
      {
-      "componentType": "flow",
-      "uniqueID": "cmp1369306220349",
       "children": [
        {
+        "uniqueID": "cmp1374232015379",
+        "children": [],
+        "componentType": "image",
+        "dataPath": "#root",
+        "dataIndex": null
+       },
+       {
+        "uniqueID": "cmp1374232015380",
+        "children": [],
         "componentType": "body",
         "dataPath": "#root",
-        "uniqueID": "cmp1369306220351"
+        "dataIndex": null,
+        "style": "padding:5px 0px;"
        }
       ],
+      "uniqueID": "cmp1374232015376",
+      "componentType": "flow",
       "position": {
        "left": 1,
        "top": 0,
@@ -53,6 +68,11 @@
       "scroll": true
      }
     ],
+    "uniqueID": "defaultRoot",
+    "componentType": "grid",
+    "rowGutter": 10,
+    "columnGutter": 10,
+    "designTime": false
    }
   }
  ]

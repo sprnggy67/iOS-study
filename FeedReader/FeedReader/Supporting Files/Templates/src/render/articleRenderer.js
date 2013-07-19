@@ -136,8 +136,8 @@ ds.ArticleRenderer.prototype.renderComponent = function(component, article, opti
 ds.ArticleRenderer.BOILER_PLATE = 
 	'<script type="text/javascript" src="lib/jq.mobi.js"></script>' +
 	'<script type="text/javascript" src="lib/iscroll.js"></script>' +
-	'<link rel="stylesheet" type="text/css" href="src/renderRuntime.css">' +
-	'<script type="text/javascript" src="src/renderRuntime.js"></script>';
+	'<link rel="stylesheet" type="text/css" href="src/render/renderRuntime.css">' +
+	'<script type="text/javascript" src="src/render/renderRuntime.js"></script>';
 
 ds.ArticleRenderer._initClass = function() {
 	ds.ArticleRenderer.initialised = true;
@@ -156,15 +156,16 @@ ds.ArticleRenderer._initClass = function() {
 			'{{if componentType==="body" tmpl="body"/}}' +
 			'{{if componentType==="image" tmpl="image"/}}' +
 			'{{if componentType==="flow" tmpl="flow"/}}' +
-			'{{if componentType==="grid" tmpl="grid"/}}',
+			'{{if componentType==="grid" tmpl="grid"/}}' +
+			'{{if componentType==="test" tmpl="test"/}}',
+		test: 
+			'test',
 		headline: 
 			'<h1 class="{{:~getClass(#data)}}"' +
 				'{{if uniqueID}}' +
 					' id="{{:uniqueID}}"' +
 				'{{/if}}' +
-				'{{if style}}' +
-					' style="{{:style}}"' +
-				'{{/if}}' +
+				'{{:~getStyle(#data)}}' +
 				'{{if link}}' +
 					' data-article_id="{{:realData.id}}"' +
 				'{{/if}}' +
@@ -176,9 +177,7 @@ ds.ArticleRenderer._initClass = function() {
 				'{{if uniqueID}}' +
 					' id="{{:uniqueID}}"' +
 				'{{/if}}' +
-				'{{if style}}' +
-					' style="{{:style}}"' +
-				'{{/if}}' +
+				'{{:~getStyle(#data)}}' +
 				'{{if link}}' +
 					' data-article_id="{{:realData.id}}"' +
 				'{{/if}}' +
@@ -190,9 +189,7 @@ ds.ArticleRenderer._initClass = function() {
 				'{{if uniqueID}}' +
 					' id="{{:uniqueID}}"' +
 				'{{/if}}' +
-				'{{if style}}' +
-					' style="{{:style}}"' +
-				'{{/if}}' +
+				'{{:~getStyle(#data)}}' +
 				'{{if link}}' +
 					' data-article_id="{{:realData.id}}"' +
 				'{{/if}}' +
@@ -200,7 +197,7 @@ ds.ArticleRenderer._initClass = function() {
 			'{{:realData.body}}' +
 			'</span>',
 		image: 
-			'<img class="{{:~getClass(#data)}}" style="width:100%;"' +
+			'<img class="{{:~getClass(#data)}}"' +
 				'{{if uniqueID}}' +
 					' id="{{:uniqueID}}" ' +
 				'{{/if}}' +
@@ -214,6 +211,7 @@ ds.ArticleRenderer._initClass = function() {
 				'{{if uniqueID}}' +
 					' id="{{:uniqueID}}"' +
 				'{{/if}}' +
+				'{{:~getStyle(#data)}}' +
 				'{{if link}}' +
 					' data-article_id="{{:realData.id}}"' +
 				'{{/if}}' +
@@ -225,6 +223,7 @@ ds.ArticleRenderer._initClass = function() {
 				'{{if uniqueID}}' +
 					' id="{{:uniqueID}}"' +
 				'{{/if}}' +
+				'{{:~getStyle(#data)}}' +
 			'>' +
 				'{{if ~root.designTime}}' +
 					'{{for ~getRowObjects(#data)}}' +
@@ -292,6 +291,28 @@ ds.ArticleRenderer._initClass = function() {
 				classes = classes + " link";
 			}
 			return classes;
+		},
+		getStyle:function(component) {
+			var style = "";
+			if (component.color || component.backgroundColor || component.style || (component.componentType == "body")) {
+				style = ' style="';
+			}
+			if (component.color) {
+				style += 'color:' + component.color + ';';
+			}
+			if (component.backgroundColor) {
+				style += 'background-color:' + component.backgroundColor + ';';
+			}
+			if (component.componentType == "body") {
+				style += 'display:table-cell;';
+			}
+			if (component.style) {
+				style += component.style;
+			}
+			if (style) {
+				style += '"';
+			}
+			return style;
 		},
 		getGridDataClass:function(component) {
 			var classes = "gridData";

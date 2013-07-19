@@ -7,16 +7,19 @@
 <script type="text/javascript" src="lib/jsrender-1.0.js"></script>
 <script type="text/javascript" src="lib/iscroll.js"></script>
 <script type="text/javascript" src="iosBridge.js"></script>
-<script type="text/javascript" src="src/articleRenderer.js"></script>
-<script type="text/javascript" src="src/template.js"></script>
+<script type="text/javascript" src="src/render/articleRenderer.js"></script>
+<script type="text/javascript" src="src/render/template.js"></script>
+<link rel="stylesheet" type="text/css" href="src/render/renderRuntime.css">
+<script type="text/javascript" src="src/render/renderRuntime.js"></script>
 
 <script>
 
+console.log("init");
 console.time("init");
 
 var articleData = JSON_DATA_VARIABLE;
 if (articleData == null) {
-	require("src/sampleArticles.js", function() {
+	require("src/model/sampleArticles.js", function() {
 		articleData = sampleArticles[0].definition;
 		init();
 	});
@@ -24,8 +27,8 @@ if (articleData == null) {
 
 var templateData = TEMPLATE_DATA_VARIABLE;
 if (templateData == null) {
-	require("src/defaultTemplates.js", function() { 
-		templateData = defaultTemplates.front3;
+	require("src/model/sampleTemplates.js", function() { 
+		templateData = sampleTemplates.front3; // singleRootArticle, featureArticle or front3;
 		init();
 	});
 }
@@ -35,7 +38,6 @@ $(document).ready(function() { init(); });
 function init() {
 	if (articleData != null && templateData != null) {
 	    renderArticle();
-		console.timeEnd("init");
 	}
 }
 
@@ -78,13 +80,20 @@ function renderArticle() {
 	console.timeEnd("displayPage");
 }
 
+document.addEventListener('DOMContentLoaded', function () { setTimeout(onDOMContentLoaded, 100); }, false); // Wait for images to load.
+
+function onDOMContentLoaded() {
+	console.log("onDOMContentLoaded");
+	console.time("addRuntime");
+	ds.addRuntime();
+	console.timeEnd("addRuntime");
+	console.timeEnd("init");
+}
+
 </script>
 
-<link rel="stylesheet" type="text/css" href="src/renderRuntime.css">
-<script type="text/javascript" src="src/renderRuntime.js"></script>
-
 </head>
-<body style="margin:0px; padding:16pt;">
+<body style="margin:0px; padding:9pt;">
 <div id="contents" style="position:relative;">
 
 Loading ...

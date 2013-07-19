@@ -1,5 +1,5 @@
 /**
- A set of functions to manipulate tempaltes.
+ * A set of functions to manipulate tempaltes.
  */
 
 'use strict';

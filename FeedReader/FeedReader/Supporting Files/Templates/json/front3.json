@@ -1,176 +1,138 @@
 {
-	targets: [ {
-		name:"default",
-		portraitLayout: {
-			componentType:"grid",
-			width:600, 
-			height:800,
-			rows:4, 
-			columns:3,
-			rowGutter:10,
-			columnGutter:10,
-			children: [
-				{
-					componentType:"flow",
-					children: [
-						{
-							componentType:"headline",
-							dataPath:"children",
-							dataIndex:0,
-							style:"font-size:20px; margin-top:0px",
-                            link:true
-						},
-						{
-							componentType:"standfirst",
-							style:"font-size:20px;",
-							dataPath:"children",
-							dataIndex:0,
-							style:"font-size:18px",
-                            link:true
-						},
-						{
-							componentType:"body",
-							dataPath:"children",
-							dataIndex:0,
-							style:"font-size:16px",
-                            link:true
-						}
-					],
-					position: { left:0, top:0, width:3, height:2 }
-				},
-				{
-					componentType:"flow",
-					children: [
-						{
-							componentType:"headline",
-							dataPath:"children",
-							dataIndex:1,
-							style:"font-size:20px; margin-top:0px",
-                            link:true
-						},
-						{
-							componentType:"standfirst",
-							dataPath:"children",
-							dataIndex:1,
-							style:"font-size:16px;",
-                            link:true
-						},
-                        {
-                           componentType:"body",
-                           dataPath:"children",
-                           dataIndex:1,
-                           style:"font-size:14px",
-                           link:true
-                        }
-					],
-					position: { left:0, top:2, width:1.5, height:2 }
-				},
-				{
-					componentType:"flow",
-					children: [
-						{
-							componentType:"headline",
-							dataPath:"children",
-							dataIndex:2,
-							style:"font-size:20px; margin-top:0px",
-                            link:true
-						},
-						{
-							componentType:"standfirst",
-							dataPath:"children",
-							dataIndex:2,
-							style:"font-size:16px;",
-                            link:true
-						},
-                        {
-                           componentType:"body",
-                           dataPath:"children",
-                           dataIndex:2,
-                           style:"font-size:14px",
-                           link:true
-                        }
-					],
-					position: { left:1.5, top:2, width:1.5, height:2 }
-				},
-			]
-		},
-		landscapeLayout: {
-			componentType:"grid",
-			width:800, 
-			height:600,
-			rows:3, 
-			columns:4,
-			rowGutter:10,
-			columnGutter:10,
-			children: [
-				{
-					componentType:"flow",
-					children: [
-						{
-							componentType:"headline",
-							dataPath:"children",
-							dataIndex:0
-						},
-						{
-							componentType:"standfirst",
-							style:"font-size:20px;",
-							dataPath:"children",
-							dataIndex:0
-						},
-						{
-							componentType:"body",
-							dataPath:"children",
-							dataIndex:0
-						}
-					],
-					position: { left:0, top:0, width:1, height:2 }
-				},
-				{
-					componentType:"image",
-					dataPath:"children",
-					dataIndex:1,
-					position: { left:1, top:0, width:2, height:2 },
-				},
-				{
-					componentType:"flow",
-					children: [
-						{
-							componentType:"headline",
-							dataPath:"children",
-							dataIndex:1
-						},
-						{
-							componentType:"standfirst",
-							style:"font-size:20px;",
-							dataPath:"children",
-							dataIndex:1
-						},
-					],
-					position: { left:1, top:2, width:2, height:1 }
-				},
-				{
-					componentType:"flow",
-					children: [
-						{
-							componentType:"headline",
-							dataPath:"children",
-							dataIndex:2
-						},
-						{
-							componentType:"standfirst",
-							style:"font-size:20px;",
-							dataPath:"children",
-							dataIndex:2
-						},
-						{
-							componentType:"body",
-							dataPath:"children",
-							dataIndex:2
-						}
-					],
-					position: { left:3, top:0, width:1, height:3 }
-				},
-			]
-		}
-	}]
+ "targets": [
+  {
+   "name": "default",
+   "layout": {
+    "width": 576,
+    "height": 776,
+    "columns": "4",
+    "rows": 4,
+    "children": [
+     {
+      "children": [
+       {
+        "uniqueID": "cmp1374232015384",
+        "children": [],
+        "componentType": "headline",
+        "dataPath": "children",
+        "dataIndex": 0,
+        "link": true
+       },
+       {
+        "uniqueID": "cmp1374232015388",
+        "children": [],
+        "componentType": "standfirst",
+        "dataPath": "children",
+        "dataIndex": 0,
+        "link": true
+       },
+       {
+        "uniqueID": "cmp1374232015400",
+        "children": [],
+        "componentType": "body",
+        "dataPath": "children",
+        "dataIndex": 0,
+        "link": true
+       }
+      ],
+      "uniqueID": "cmp1374232015381",
+      "componentType": "flow",
+      "position": {
+       "left": 0,
+       "top": 0,
+       "width": 4,
+       "height": 2
+      }
+     },
+     {
+      "children": [
+       {
+        "uniqueID": "cmp1374232015391",
+        "children": [],
+        "componentType": "headline",
+        "dataPath": "children",
+        "dataIndex": 1,
+        "style": "font-size:20px;",
+        "link": true
+       },
+       {
+        "uniqueID": "cmp1374232015393",
+        "children": [],
+        "componentType": "standfirst",
+        "dataPath": "children",
+        "dataIndex": 1,
+        "style": "font-size:18px;",
+        "link": true
+       },
+       {
+        "uniqueID": "cmp1374232015395",
+        "children": [],
+        "componentType": "body",
+        "dataPath": "children",
+        "dataIndex": 1,
+        "link": true
+       }
+      ],
+      "uniqueID": "cmp1374232015382",
+      "componentType": "flow",
+      "position": {
+       "left": 0,
+       "top": 2,
+       "width": 2,
+       "height": 2
+      },
+      "scroll": false,
+      "backgroundColor": "#800080",
+      "style": "padding:5px;"
+     },
+     {
+      "children": [
+       {
+        "uniqueID": "cmp1374232015396",
+        "children": [],
+        "componentType": "headline",
+        "dataPath": "children",
+        "dataIndex": 2,
+        "style": "font-size:20px;",
+        "link": true
+       },
+       {
+        "uniqueID": "cmp1374232015397",
+        "children": [],
+        "componentType": "standfirst",
+        "dataPath": "children",
+        "dataIndex": 2,
+        "style": "font-size:18px;",
+        "link": true
+       },
+       {
+        "uniqueID": "cmp1374232845471",
+        "children": [],
+        "componentType": "body",
+        "dataPath": "children",
+        "dataIndex": 2,
+        "link": true
+       }
+      ],
+      "uniqueID": "cmp1374232015383",
+      "componentType": "flow",
+      "position": {
+       "left": 2,
+       "top": 2,
+       "width": 2,
+       "height": 2
+      },
+      "backgroundColor": "#339966",
+      "style": "padding:5px;",
+      "scroll": false
+     }
+    ],
+    "uniqueID": "defaultRoot",
+    "componentType": "grid",
+    "rowGutter": 10,
+    "columnGutter": 10,
+    "designTime": false
+   }
+  }
+ ]
 }
