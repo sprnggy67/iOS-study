@@ -294,7 +294,7 @@ ds.ArticleRenderer._initClass = function() {
 		},
 		getStyle:function(component) {
 			var style = "";
-			if (component.color || component.backgroundColor || component.style || (component.componentType == "body")) {
+			if (component.color || component.backgroundColor || component.style) {
 				style = ' style="';
 			}
 			if (component.color) {
@@ -302,9 +302,6 @@ ds.ArticleRenderer._initClass = function() {
 			}
 			if (component.backgroundColor) {
 				style += 'background-color:' + component.backgroundColor + ';';
-			}
-			if (component.componentType == "body") {
-				style += 'display:table-cell;';
 			}
 			if (component.style) {
 				style += component.style;

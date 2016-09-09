@@ -48,6 +48,11 @@
     self.webViewDelegate = [[WebViewDelegate alloc] initWith:webView];
     [webViewDelegate setNavigationDelegate:navigationDelegate];
     [webView setDelegate:webViewDelegate];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.navigationController.navigationBar.translucent = NO;
+    }
 
     [self loadContent];
 

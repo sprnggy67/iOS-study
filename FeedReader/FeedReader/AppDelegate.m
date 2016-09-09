@@ -11,6 +11,7 @@
 #import "LoadViewController.h"
 #import "FeedStore.h"
 #import "Feed.h"
+#import "ArticleCoreData.h"
 
 @implementation AppDelegate
 
@@ -35,6 +36,9 @@
         [feedStore add:[[Feed alloc] initWithName:@"The Inquisitr" url:@"http://www.inquisitr.com/feed"]];
     }
     rootView.feedStore = feedStore;
+    
+    // Test the database.
+    [self testDatabase];
 
     [self.window makeKeyAndVisible];
     return YES;
@@ -66,5 +70,18 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (ArticleCoreData *)managedObjectModel {
+    if (managedObjectModel != nil) {
+        return managedObjectModel;
+    }
+    managedObjectModel = [[ArticleCoreData alloc] initWithName:@"FeedReader.sqlite"];
+    return managedObjectModel;
+}
+
+- (void) testDatabase {
+    ArticleCoreData * data = [self managedObjectModel];
+}
+
 
 @end

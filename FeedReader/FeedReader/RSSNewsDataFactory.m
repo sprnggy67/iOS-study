@@ -118,7 +118,7 @@ static int articleCount = 0;
     
     if ( [elementName isEqualToString:@"item"] ) {
         Article * article = [Article articleFromDictionary:currentArticleAttributes];
-        if (article != NULL) {
+        if (article != NULL && count <= 5) {
             [results addObject:article];
             if (debug) {
                 NSLog(@"Found article %@", [article headline]);

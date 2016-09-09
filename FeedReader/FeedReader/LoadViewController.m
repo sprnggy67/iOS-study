@@ -124,6 +124,7 @@
     int offset = 0;
     
     // Create a front page.
+    /*
     if (sectionCount > 0) {
         NSMutableArray * children = [NSMutableArray arrayWithCapacity:sectionCount];
         for (Section * section in self.sectionList) {
@@ -139,6 +140,7 @@
         
         offset ++;
     }
+     */
     
     // Create a front page for every section.
     for (Section * section in self.sectionList) {
@@ -164,7 +166,7 @@
         Section * section = [self.sectionList objectAtIndex:0];
         NSMutableArray * children = [NSMutableArray arrayWithCapacity:4];
         int count = 4;
-        offset = 2; // front page + section page
+        offset = 1; // front page + section page
         if (section.length >= count) {
             int articleIndex = section.start + (section.length - count) + offset;
             for (int x = 0; x < count; x++) {

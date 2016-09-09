@@ -16,26 +16,23 @@
         "componentType": "headline",
         "dataPath": "children",
         "dataIndex": 0,
-        "link": true,
-        "color": "#333399",
-        "backgroundColor": "#ffffff"
+        "link": true
        },
        {
-        "uniqueID": "cmp1392858966860",
+        "uniqueID": "cmp1374232015388",
         "children": [],
         "componentType": "standfirst",
         "dataPath": "children",
         "dataIndex": 0,
-        "backgroundColor": "#ffffff",
-        "color": "#666699"
+        "link": true
        },
        {
-        "uniqueID": "cmp1392858966861",
+        "uniqueID": "cmp1374232015400",
         "children": [],
         "componentType": "body",
         "dataPath": "children",
         "dataIndex": 0,
-        "backgroundColor": "#ffffff"
+        "link": true
        }
       ],
       "uniqueID": "cmp1374232015381",
@@ -45,8 +42,7 @@
        "top": 0,
        "width": 4,
        "height": 2
-      },
-      "backgroundColor": "#ffffff"
+      }
      },
      {
       "children": [
@@ -57,9 +53,7 @@
         "dataPath": "children",
         "dataIndex": 1,
         "style": "font-size:20px;",
-        "link": true,
-        "color": "#333300",
-        "backgroundColor": "#ffffff"
+        "link": true
        },
        {
         "uniqueID": "cmp1374232015393",
@@ -68,9 +62,7 @@
         "dataPath": "children",
         "dataIndex": 1,
         "style": "font-size:18px;",
-        "link": true,
-        "color": "#808000",
-        "backgroundColor": "#ffffff"
+        "link": true
        },
        {
         "uniqueID": "cmp1374232015395",
@@ -90,7 +82,7 @@
        "height": 2
       },
       "scroll": false,
-      "backgroundColor": "#ffffff",
+      "backgroundColor": "#800080",
       "style": "padding:5px;"
      },
      {
@@ -102,8 +94,7 @@
         "dataPath": "children",
         "dataIndex": 2,
         "style": "font-size:20px;",
-        "link": true,
-        "color": "#800000"
+        "link": true
        },
        {
         "uniqueID": "cmp1374232015397",
@@ -112,9 +103,7 @@
         "dataPath": "children",
         "dataIndex": 2,
         "style": "font-size:18px;",
-        "link": true,
-        "color": "#993300",
-        "backgroundColor": "#ffffff"
+        "link": true
        },
        {
         "uniqueID": "cmp1374232845471",
@@ -133,7 +122,7 @@
        "width": 2,
        "height": 2
       },
-      "backgroundColor": "#ffffff",
+      "backgroundColor": "#339966",
       "style": "padding:5px;",
       "scroll": false
      }

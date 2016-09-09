@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ArticleDetails" representedClassName="ArticleDetails" syncable="YES">
+        <attribute name="jsonData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subTemplateName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="templateName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="info" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="ArticleOverview" inverseName="details" inverseEntity="ArticleOverview" syncable="YES"/>
+    </entity>
+    <entity name="ArticleOverview" representedClassName="ArticleOverview" syncable="YES">
+        <attribute name="headline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pubData" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="details" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="ArticleDetails" inverseName="info" inverseEntity="ArticleDetails" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ArticleOverview" positionX="-2898" positionY="-1953" width="128" height="118"/>
+        <element name="ArticleDetails" positionX="-2898" positionY="-1737" width="128" height="103"/>
+    </elements>
+</model>

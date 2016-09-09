@@ -17,8 +17,7 @@
         "dataPath": "#root",
         "dataIndex": null,
         "color": "#ffffff",
-        "style": "padding:5px;",
-        "backgroundColor": "#333399"
+        "style": "padding:5px;"
        },
        {
         "uniqueID": "cmp1374232015378",
@@ -26,7 +25,7 @@
         "componentType": "standfirst",
         "dataPath": "#root",
         "dataIndex": null,
-        "color": "#333399",
+        "color": "#ffffff",
         "style": "padding:5px;"
        }
       ],
@@ -38,7 +37,7 @@
        "width": 1,
        "height": 2
       },
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#800080"
      },
      {
       "children": [
@@ -50,12 +49,12 @@
         "dataIndex": null
        },
        {
-        "uniqueID": "cmp1392858870206",
+        "uniqueID": "cmp1374232015380",
         "children": [],
         "componentType": "body",
         "dataPath": "#root",
         "dataIndex": null,
-        "backgroundColor": "#ffffff"
+        "style": "padding:5px 0px;"
        }
       ],
       "uniqueID": "cmp1374232015376",
@@ -66,8 +65,7 @@
        "width": 2,
        "height": 4
       },
-      "scroll": true,
-      "backgroundColor": "#ffffff"
+      "scroll": true
      }
     ],
     "uniqueID": "defaultRoot",
